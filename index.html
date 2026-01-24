@@ -1,182 +1,223 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>MVComplex — разработчик MVZ</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MVComplex — разработчик MVZ. Обход блокировок через DNS, удобный клиент для Windows, автообновление и темы.">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>MVComplex — MVZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MVZ — обход блокировок через DNS-серверы. Windows-клиент с автообновлением, темами и удобным управлением." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <!-- FULL-WIDTH HEADER -->
+  <header class="nav-outer">
+    <div class="nav container">
+      <a class="nav-logo" href="#home">MVComplex</a>
 
-    <!-- FULL WIDTH HEADER (outer) + centered inner -->
-    <header class="nav-outer">
-        <div class="nav">
-            <div class="nav-logo">MVComplex</div>
-            <nav class="nav-menu">
-                <a href="#home">Главная</a>
-                <a href="#projects">Проекты</a>
-                <a href="#mvz">MVZ</a>
-                <a href="#news">Новости</a>
-                <a href="#contact">Контакты</a>
-            </nav>
+      <nav class="nav-menu">
+        <a href="#home">Главная</a>
+        <a href="#mvz">MVZ</a>
+        <a href="#news">Новости</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+
+      <a class="nav-cta" href="#mvz">Скачать</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-blobs" aria-hidden="true">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+      </div>
+
+      <div class="container hero-inner reveal">
+        <div class="hero-top">
+          <!-- ЛОГО: положи в assets/logo-mvz.jpg -->
+          <img class="hero-logo" src="assets/logo-mvz.jpg" alt="MVZ logo" />
+          <div class="hero-title-wrap">
+            <!-- Текст оставил как доступность + SEO, визуально можно скрыть -->
+            <h1 class="hero-title">MVZ</h1>
+            <div class="hero-tagline">by MVComplex</div>
+          </div>
         </div>
-    </header>
 
-    <main>
-        <!-- HERO -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>MVZ</h1>
-                <p class="hero-subtitle">
-                    MVZ — клиент для обхода блокировок через DNS‑серверы (не VPN).
-                    Быстрый запуск, автообновление, темы интерфейса и понятное управление.
-                </p>
+        <p class="hero-subtitle">
+          MVZ — клиент для обхода блокировок через DNS‑серверы (не VPN).
+          Быстрый запуск, автообновление, темы интерфейса и понятное управление.
+        </p>
 
-                <div class="hero-buttons">
-                    <a href="#mvz" class="btn primary">Скачать MVZ</a>
-                    <a href="#news" class="btn ghost">Новости / апдейты</a>
-                </div>
-
-                <div class="hero-pills">
-                    <span class="pill">DNS обход</span>
-                    <span class="pill">Windows</span>
-                    <span class="pill">Автообновление</span>
-                    <span class="pill">Темы UI</span>
-                </div>
-            </div>
-
-            <div class="hero-badge">
-                <span>MVZ 1.4</span>
-                <span>Автообновление · Темы · Windows</span>
-            </div>
-        </section>
-
-        <!-- PROJECTS (минимально, фокус на MVZ) -->
-        <section id="projects" class="section">
-            <h2 class="section-title">Проекты</h2>
-            <p class="section-subtitle">
-                Сейчас основной фокус — MVZ. Остальное пока на паузе.
-            </p>
-
-            <div class="cards compact">
-                <article class="card featured">
-                    <h3>MVZ</h3>
-                    <p>
-                        Обход блокировок через DNS‑серверы. Удобный клиент для Windows с автообновлением и темами.
-                    </p>
-                    <a href="#mvz" class="card-link">Перейти к скачиванию →</a>
-                </article>
-
-                <article class="card muted">
-                    <h3>MV Активатор</h3>
-                    <p>В разработке. Статус и детали будут позже (сейчас приоритет MVZ).</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- MVZ BLOCK -->
-        <section id="mvz" class="section mvz">
-            <div class="mvz-header">
-                <h2 class="section-title">MVZ — обход блокировок через DNS</h2>
-                <p class="mvz-subtitle">
-                    MVZ помогает обходить блокировки за счёт использования DNS‑серверов.
-                    Это не VPN: трафик не туннелируется, меняется DNS‑маршрут/резолвинг.
-                </p>
-            </div>
-
-            <div class="mvz-layout">
-                <div class="mvz-info">
-                    <h3>Что умеет</h3>
-                    <ul>
-                        <li>DNS‑обход: быстрый способ “оживить” доступ к сайтам.</li>
-                        <li>Автообновление: приложение само проверяет новые версии и обновляется.</li>
-                        <li>Темы интерфейса: тёмные и неоновые схемы (MVZ‑стиль).</li>
-                        <li>Простая настройка DNS‑профилей/серверов (в пару кликов).</li>
-                    </ul>
-
-                    <h3>Загрузка</h3>
-                    <div class="mvz-downloads">
-                        <a href="PUT_RELEASE_EXE_LINK_HERE" class="btn primary" target="_blank" rel="noopener">Скачать MVZ 1.4 (.exe)</a>
-                        <a href="PUT_RELEASE_ZIP_LINK_HERE" class="btn ghost" target="_blank" rel="noopener">Скачать архив (.zip)</a>
-                    </div>
-
-                    <p class="mvz-note">
-                        Если у вас была установлена MVZ 1.3 через инсталлятор, перед установкой 1.4
-                        удалите папку <code>C:\MVZ</code>, затем запускайте новую версию.
-                    </p>
-                </div>
-
-                <div class="mvz-panel">
-                    <div class="mvz-panel-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="mvz-panel-title">MVZ status</span>
-                    </div>
-                    <div class="mvz-panel-body">
-                        <div class="mvz-status">
-                            <span class="mvz-status-label">Статус:</span>
-                            <span class="mvz-status-value">Отключено</span>
-                        </div>
-                        <div class="mvz-server">
-                            <span class="mvz-status-label">DNS:</span>
-                            <span class="mvz-status-value">не выбран</span>
-                        </div>
-                        <button class="btn primary mvz-btn" type="button">Подключиться</button>
-                        <p class="mvz-hint">Добавь скриншоты MVZ — и блок будет выглядеть ещё сильнее.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TELEGRAM POSTS -->
-        <section id="news" class="section">
-            <h2 class="section-title">Новости (Telegram)</h2>
-            <p class="section-subtitle">
-                Апдейты MVZ и анонсы — прямо из Telegram‑канала.
-            </p>
-
-            <!-- ВАЖНО: tg-grid должен быть закрыт, иначе кнопка "Открыть" уедет -->
-            <div class="tg-grid">
-                <div class="tg-card">
-                    <script async src="https://telegram.org/js/telegram-widget.js?22"
-                            data-telegram-post="motyait2/55"
-                            data-width="100%"
-                            data-userpic="true"></script>
-                </div>
-
-                <div class="tg-card">
-                    <script async src="https://telegram.org/js/telegram-widget.js?22"
-                            data-telegram-post="motyait2/10"
-                            data-width="100%"
-                            data-userpic="true"></script>
-                </div>
-            </div>
-
-            <div class="tg-more">
-                <a class="btn ghost" href="https://t.me/motyait2" target="_blank" rel="noopener">Открыть Telegram</a>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="section">
-            <h2 class="section-title">Контакты</h2>
-            <p class="section-subtitle">
-                Пишите по поводу багов, идей, предложений и сотрудничества.
-            </p>
-            <div class="contacts">
-                <a href="https://t.me/motyait2" target="_blank" rel="noopener">Telegram</a>
-                <a href="https://github.com/MVComplex" target="_blank" rel="noopener">GitHub</a>
-                <a href="mailto:MVComplexsite@gmail.com">Почта</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <span>© MVComplex, 2026</span>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#mvz">Скачать MVZ</a>
+          <a class="btn ghost" href="#news">Новости / апдейты</a>
         </div>
-    </footer>
+
+        <div class="hero-pills">
+          <span class="pill">DNS обход</span>
+          <span class="pill">Windows</span>
+          <span class="pill">Автообновление</span>
+          <span class="pill">Темы UI</span>
+        </div>
+
+        <div class="hero-strip">
+          <div class="strip-item">
+            <div class="strip-k">Текущая версия</div>
+            <div class="strip-v">MVZ 1.4</div>
+          </div>
+          <div class="strip-sep"></div>
+          <div class="strip-item">
+            <div class="strip-k">Канал</div>
+            <a class="strip-v link" href="https://t.me/motyait2" target="_blank" rel="noopener">t.me/motyait2</a>
+          </div>
+          <div class="strip-sep"></div>
+          <div class="strip-item">
+            <div class="strip-k">Платформа</div>
+            <div class="strip-v">Windows</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (минимально) -->
+    <section id="projects" class="section">
+      <div class="container reveal">
+        <h2 class="section-title">Проекты</h2>
+        <p class="section-subtitle">Сейчас основной фокус — MVZ. Остальное пока на паузе.</p>
+
+        <div class="cards compact">
+          <article class="card featured">
+            <h3>MVZ</h3>
+            <p>Обход блокировок через DNS‑серверы. Windows‑клиент с автообновлением и темами.</p>
+            <a href="#mvz" class="card-link">Перейти к скачиванию →</a>
+          </article>
+
+          <article class="card muted">
+            <h3>MV Активатор</h3>
+            <p>В разработке. Статус и детали будут позже (сейчас приоритет MVZ).</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MVZ -->
+    <section id="mvz" class="section mvz">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">MVZ — обход блокировок через DNS</h2>
+          <p class="section-subtitle">
+            MVZ помогает обходить блокировки за счёт использования DNS‑серверов. Это не VPN: трафик не туннелируется.
+          </p>
+        </div>
+
+        <div class="grid-2 reveal">
+          <div class="card glass">
+            <h3>Что умеет</h3>
+            <ul class="list">
+              <li>DNS‑обход: быстрый способ “оживить” доступ к сайтам.</li>
+              <li>Автообновление: приложение само проверяет новые версии и обновляется.</li>
+              <li>Темы интерфейса: тёмные и неоновые схемы (MVZ‑стиль).</li>
+              <li>Простая настройка DNS‑профилей/серверов (в пару кликов).</li>
+            </ul>
+
+            <div class="callout">
+              <div class="callout-title">Важно при переходе с 1.3</div>
+              <div class="callout-text">Если MVZ 1.3 ставили инсталлятором — удалите <code>C:\MVZ</code> перед установкой 1.4.</div>
+            </div>
+          </div>
+
+          <div class="card glass mvz-panel">
+            <div class="mvz-panel-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="mvz-panel-title">MVZ status</span>
+            </div>
+            <div class="mvz-panel-body">
+              <div class="mvz-status">
+                <span class="mvz-status-label">Статус:</span>
+                <span class="mvz-status-value">Отключено</span>
+              </div>
+              <div class="mvz-server">
+                <span class="mvz-status-label">DNS:</span>
+                <span class="mvz-status-value">не выбран</span>
+              </div>
+
+              <div class="mvz-downloads">
+                <a href="PUT_RELEASE_EXE_LINK_HERE" class="btn primary" target="_blank" rel="noopener">Скачать MVZ 1.4 (.exe)</a>
+                <a href="PUT_RELEASE_ZIP_LINK_HERE" class="btn ghost" target="_blank" rel="noopener">Скачать архив (.zip)</a>
+              </div>
+
+              <p class="mvz-hint">Скачать ведёт на GitHub Releases.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELEGRAM POSTS -->
+    <section id="news" class="section">
+      <div class="container reveal">
+        <h2 class="section-title">Новости (Telegram)</h2>
+        <p class="section-subtitle">Апдейты MVZ и анонсы — прямо из Telegram‑канала.</p>
+
+        <div class="tg-grid">
+          <div class="tg-card">
+            <script async src="https://telegram.org/js/telegram-widget.js?22"
+                    data-telegram-post="motyait2/55"
+                    data-width="100%"
+                    data-userpic="true"></script>
+          </div>
+
+          <div class="tg-card">
+            <script async src="https://telegram.org/js/telegram-widget.js?22"
+                    data-telegram-post="motyait2/10"
+                    data-width="100%"
+                    data-userpic="true"></script>
+          </div>
+        </div>
+
+        <div class="tg-more">
+          <a class="btn ghost" href="https://t.me/motyait2" target="_blank" rel="noopener">Открыть Telegram</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container reveal">
+        <h2 class="section-title">Контакты</h2>
+        <p class="section-subtitle">Пишите по поводу багов, идей, предложений и сотрудничества.</p>
+
+        <div class="contacts">
+          <a href="https://t.me/motyait2" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://github.com/MVComplex" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:MVComplexsite@gmail.com">Почта</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner container">
+      <span>© MVComplex, 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Мягкое появление блоков при скролле (без библиотек)
+    const items = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(i => io.observe(i));
+  </script>
 </body>
 </html>
