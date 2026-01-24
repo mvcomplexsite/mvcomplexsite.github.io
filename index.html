@@ -8,15 +8,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="nav">
-        <div class="nav-logo">MVComplex</div>
-        <nav class="nav-menu">
-            <a href="#home">Главная</a>
-            <a href="#projects">Проекты</a>
-            <a href="#mvz">MVZ</a>
-            <a href="#news">Новости</a>
-            <a href="#contact">Контакты</a>
-        </nav>
+
+    <!-- FULL WIDTH HEADER (outer) + centered inner -->
+    <header class="nav-outer">
+        <div class="nav">
+            <div class="nav-logo">MVComplex</div>
+            <nav class="nav-menu">
+                <a href="#home">Главная</a>
+                <a href="#projects">Проекты</a>
+                <a href="#mvz">MVZ</a>
+                <a href="#news">Новости</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -28,6 +32,7 @@
                     MVZ — клиент для обхода блокировок через DNS‑серверы (не VPN).
                     Быстрый запуск, автообновление, темы интерфейса и понятное управление.
                 </p>
+
                 <div class="hero-buttons">
                     <a href="#mvz" class="btn primary">Скачать MVZ</a>
                     <a href="#news" class="btn ghost">Новости / апдейты</a>
@@ -92,9 +97,6 @@
 
                     <h3>Загрузка</h3>
                     <div class="mvz-downloads">
-                        <!-- РЕКОМЕНДЕД: ссылки на GitHub Releases -->
-                        <!-- Подставь свои реальные ссылки вида:
-                             https://github.com/MVComplex/MVComplex.github.io/releases/download/v1.4/MVZ-1.4.exe -->
                         <a href="PUT_RELEASE_EXE_LINK_HERE" class="btn primary" target="_blank" rel="noopener">Скачать MVZ 1.4 (.exe)</a>
                         <a href="PUT_RELEASE_ZIP_LINK_HERE" class="btn ghost" target="_blank" rel="noopener">Скачать архив (.zip)</a>
                     </div>
@@ -135,17 +137,8 @@
                 Апдейты MVZ и анонсы — прямо из Telegram‑канала.
             </p>
 
+            <!-- ВАЖНО: tg-grid должен быть закрыт, иначе кнопка "Открыть" уедет -->
             <div class="tg-grid">
-                <!-- ВАЖНО:
-                     Telegram встраивает конкретные посты (по ссылке t.me/канал/ID).
-                     Код можно получить, открыв пост в браузере и нажав EMBED. [web:136]
-                     Пример data-telegram-post="durov/43" [web:136]
-                -->
-
-                <!-- ЗАМЕНИ на свои посты:
-                     data-telegram-post="motyait2/123"
-                     data-telegram-post="motyait2/124"
-                -->
                 <div class="tg-card">
                     <script async src="https://telegram.org/js/telegram-widget.js?22"
                             data-telegram-post="motyait2/55"
@@ -159,8 +152,8 @@
                             data-width="100%"
                             data-userpic="true"></script>
                 </div>
+            </div>
 
-    
             <div class="tg-more">
                 <a class="btn ghost" href="https://t.me/motyait2" target="_blank" rel="noopener">Открыть Telegram</a>
             </div>
@@ -181,7 +174,9 @@
     </main>
 
     <footer class="footer">
-        <span>© MVComplex, 2026</span>
+        <div class="footer-inner">
+            <span>© MVComplex, 2026</span>
+        </div>
     </footer>
 </body>
 </html>
