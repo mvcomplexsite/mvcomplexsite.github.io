@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>MVComplex — разработчик MVZ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MVComplex — разработчик MVZ. Современные десктопные приложения, инструменты для Windows и не только.">
+    <meta name="description" content="MVComplex — разработчик MVZ. Обход блокировок через DNS, удобный клиент для Windows, автообновление и темы.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,6 +14,7 @@
             <a href="#home">Главная</a>
             <a href="#projects">Проекты</a>
             <a href="#mvz">MVZ</a>
+            <a href="#news">Новости</a>
             <a href="#contact">Контакты</a>
         </nav>
     </header>
@@ -24,36 +25,47 @@
             <div class="hero-content">
                 <h1>MVZ</h1>
                 <p class="hero-subtitle">
-                    Разрабатываю десктопные инструменты с упором на скорость, удобство и современный дизайн. 
-                    MVZ — клиент с автообновлением и кастомными темами.
+                    MVZ — клиент для обхода блокировок через DNS‑серверы (не VPN).
+                    Быстрый запуск, автообновление, темы интерфейса и понятное управление.
                 </p>
                 <div class="hero-buttons">
                     <a href="#mvz" class="btn primary">Скачать MVZ</a>
-                    <a href="#projects" class="btn ghost">Смотреть проекты</a>
+                    <a href="#news" class="btn ghost">Новости / апдейты</a>
+                </div>
+
+                <div class="hero-pills">
+                    <span class="pill">DNS обход</span>
+                    <span class="pill">Windows</span>
+                    <span class="pill">Автообновление</span>
+                    <span class="pill">Темы UI</span>
                 </div>
             </div>
+
             <div class="hero-badge">
                 <span>MVZ 1.4</span>
                 <span>Автообновление · Темы · Windows</span>
             </div>
         </section>
 
-        <!-- PROJECTS -->
+        <!-- PROJECTS (минимально, фокус на MVZ) -->
         <section id="projects" class="section">
-            <h2 class="section-title">Проекты MVComplex</h2>
-            <div class="cards">
-                <article class="card">
+            <h2 class="section-title">Проекты</h2>
+            <p class="section-subtitle">
+                Сейчас основной фокус — MVZ. Остальное пока на паузе.
+            </p>
+
+            <div class="cards compact">
+                <article class="card featured">
                     <h3>MVZ</h3>
-                    <p>VPN‑клиент для Windows c автообновлением, темами интерфейса и удобным управлением конфигами.</p>
-                    <a href="#mvz" class="card-link">Подробнее →</a>
+                    <p>
+                        Обход блокировок через DNS‑серверы. Удобный клиент для Windows с автообновлением и темами.
+                    </p>
+                    <a href="#mvz" class="card-link">Перейти к скачиванию →</a>
                 </article>
-                <article class="card">
-                    <h3>MV Активатор (в разработке)</h3>
-                    <p>Активатор Windows</p>
-                </article>
-                <article class="card">
-                    <h3>Эксперименты</h3>
-                    <p>Песочница: дизайн‑концепты, анимации интерфейсов, прототипы будущих приложений.</p>
+
+                <article class="card muted">
+                    <h3>MV Активатор</h3>
+                    <p>В разработке. Статус и детали будут позже (сейчас приоритет MVZ).</p>
                 </article>
             </div>
         </section>
@@ -61,31 +73,34 @@
         <!-- MVZ BLOCK -->
         <section id="mvz" class="section mvz">
             <div class="mvz-header">
-                <h2 class="section-title">MVZ — VPN‑клиент для Windows</h2>
+                <h2 class="section-title">MVZ — обход блокировок через DNS</h2>
                 <p class="mvz-subtitle">
-                    Простое подключение, автообновление через GitHub, несколько тем оформления и удобная работа с конфигами.
+                    MVZ помогает обходить блокировки за счёт использования DNS‑серверов.
+                    Это не VPN: трафик не туннелируется, меняется DNS‑маршрут/резолвинг.
                 </p>
             </div>
 
             <div class="mvz-layout">
                 <div class="mvz-info">
-                    <h3>Возможности</h3>
+                    <h3>Что умеет</h3>
                     <ul>
+                        <li>DNS‑обход: быстрый способ “оживить” доступ к сайтам.</li>
                         <li>Автообновление: приложение само проверяет новые версии и обновляется.</li>
-                        <li>Темы интерфейса: тёмные и неоновые схемы, настраиваемый визуал.</li>
-                        <li>Удобное управление конфигами и серверами.</li>
-                        <li>Работа под Windows, без лишней установки мусора.</li>
+                        <li>Темы интерфейса: тёмные и неоновые схемы (MVZ‑стиль).</li>
+                        <li>Простая настройка DNS‑профилей/серверов (в пару кликов).</li>
                     </ul>
 
                     <h3>Загрузка</h3>
                     <div class="mvz-downloads">
-                        <!-- Заменишь href на реальные ссылки -->
-                        <a href="MVZ-1.4.exe" class="btn primary">Скачать MVZ 1.4 (.exe)</a>
-                        <a href="MVZ-1.4.zip" class="btn ghost">Скачать архив (.zip)</a>
+                        <!-- РЕКОМЕНДЕД: ссылки на GitHub Releases -->
+                        <!-- Подставь свои реальные ссылки вида:
+                             https://github.com/MVComplex/MVComplex.github.io/releases/download/v1.4/MVZ-1.4.exe -->
+                        <a href="PUT_RELEASE_EXE_LINK_HERE" class="btn primary" target="_blank" rel="noopener">Скачать MVZ 1.4 (.exe)</a>
+                        <a href="PUT_RELEASE_ZIP_LINK_HERE" class="btn ghost" target="_blank" rel="noopener">Скачать архив (.zip)</a>
                     </div>
 
                     <p class="mvz-note">
-                        Если у вас была установлена MVZ 1.3 через инсталлятор, перед установкой 1.4 
+                        Если у вас была установлена MVZ 1.3 через инсталлятор, перед установкой 1.4
                         удалите папку <code>C:\MVZ</code>, затем запускайте новую версию.
                     </p>
                 </div>
@@ -103,13 +118,58 @@
                             <span class="mvz-status-value">Отключено</span>
                         </div>
                         <div class="mvz-server">
-                            <span class="mvz-status-label">Сервер:</span>
+                            <span class="mvz-status-label">DNS:</span>
                             <span class="mvz-status-value">не выбран</span>
                         </div>
-                        <button class="btn primary mvz-btn">Подключиться</button>
-                        <p class="mvz-hint">Скриншоты интерфейса скоро будут здесь.</p>
+                        <button class="btn primary mvz-btn" type="button">Подключиться</button>
+                        <p class="mvz-hint">Добавь скриншоты MVZ — и блок будет выглядеть ещё сильнее.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- TELEGRAM POSTS -->
+        <section id="news" class="section">
+            <h2 class="section-title">Новости (Telegram)</h2>
+            <p class="section-subtitle">
+                Апдейты MVZ и анонсы — прямо из Telegram‑канала.
+            </p>
+
+            <div class="tg-grid">
+                <!-- ВАЖНО:
+                     Telegram встраивает конкретные посты (по ссылке t.me/канал/ID).
+                     Код можно получить, открыв пост в браузере и нажав EMBED. [web:136]
+                     Пример data-telegram-post="durov/43" [web:136]
+                -->
+
+                <!-- ЗАМЕНИ на свои посты:
+                     data-telegram-post="motyait2/123"
+                     data-telegram-post="motyait2/124"
+                -->
+                <div class="tg-card">
+                    <script async src="https://telegram.org/js/telegram-widget.js?22"
+                            data-telegram-post="motyait2/1"
+                            data-width="100%"
+                            data-userpic="true"></script>
+                </div>
+
+                <div class="tg-card">
+                    <script async src="https://telegram.org/js/telegram-widget.js?22"
+                            data-telegram-post="motyait2/2"
+                            data-width="100%"
+                            data-userpic="true"></script>
+                </div>
+
+                <div class="tg-card">
+                    <script async src="https://telegram.org/js/telegram-widget.js?22"
+                            data-telegram-post="motyait2/3"
+                            data-width="100%"
+                            data-userpic="true"></script>
+                </div>
+            </div>
+
+            <div class="tg-more">
+                <a class="btn ghost" href="https://t.me/motyait2" target="_blank" rel="noopener">Открыть Telegram</a>
             </div>
         </section>
 
@@ -117,11 +177,11 @@
         <section id="contact" class="section">
             <h2 class="section-title">Контакты</h2>
             <p class="section-subtitle">
-                Пишете по поводу багов, идей, предложений по сотрудничеству.
+                Пишите по поводу багов, идей, предложений и сотрудничества.
             </p>
             <div class="contacts">
-                <a href="https://t.me/motyait2" target="_blank">Telegram</a>
-                <a href="https://github.com/MVComplex" target="_blank">GitHub</a>
+                <a href="https://t.me/motyait2" target="_blank" rel="noopener">Telegram</a>
+                <a href="https://github.com/MVComplex" target="_blank" rel="noopener">GitHub</a>
                 <a href="mailto:MVComplexsite@gmail.com">Почта</a>
             </div>
         </section>
