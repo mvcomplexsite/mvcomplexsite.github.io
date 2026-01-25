@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <title>MVComplex — MVZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="MVZ — обход блокировок через DNS-серверы. Лучшая версия Zapret - Windows-клиент с автообновлением, темами и удобным управлением." />
+  <meta name="description" content="MVZ — обход блокировок через DNS-серверы. Качественный аналог Zapret в виде .exe-приложения для Windows." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- FULL-WIDTH HEADER -->
   <header class="nav-outer">
     <div class="nav container">
       <a class="nav-logo" href="#home">MVComplex</a>
@@ -21,7 +20,6 @@
         <a href="#contact">Контакты</a>
       </nav>
 
-      <!-- CTA теперь ведёт сразу на скачивание -->
       <a class="nav-cta"
          href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
          target="_blank" rel="noopener">Скачать</a>
@@ -39,7 +37,6 @@
 
       <div class="container hero-inner reveal">
         <div class="hero-top">
-          <!-- ЛОГО: положи в assets/logo-mvz.jpg -->
           <img class="hero-logo" src="assets/logo-mvz.jpg" alt="MVZ logo" />
           <div class="hero-title-wrap">
             <h1 class="hero-title">MVZ</h1>
@@ -48,17 +45,17 @@
         </div>
 
         <p class="hero-subtitle">
-          MVZ — клиент для обхода блокировок через DNS‑серверы.
-          Быстрый запуск, автообновление, темы интерфейса и понятное управление.
+          MVZ — клиент для обхода блокировок через DNS‑серверы (не VPN).
+          Более качественный аналог Zapret в виде .exe‑приложения для Windows.
+          Если обход не работает — чаще всего мешают сторонние антивирусы (особенно 360 Total Security).
         </p>
 
         <div class="hero-buttons">
-          <!-- Кнопка hero теперь реально скачивает -->
           <a class="btn primary"
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
-             target="_blank" rel="noopener">Скачать MVZ</a>
+             target="_blank" rel="noopener">Скачать для Windows (.exe)</a>
 
-          <a class="btn ghost" href="#news">Новости / апдейты</a>
+          <a class="btn ghost" href="#mvz">Инструкция / FAQ</a>
         </div>
 
         <div class="hero-pills">
@@ -118,6 +115,34 @@
           </p>
         </div>
 
+        <!-- 5) CHANGES / CHANGELOG (аккуратный блок) -->
+        <div class="changelog reveal">
+          <div class="changelog-head">
+            <div>
+              <div class="changelog-title">Что нового</div>
+              <div class="changelog-sub">Коротко по последним изменениям (полный список — на странице релиза).</div>
+            </div>
+            <a class="btn ghost small"
+               href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
+               target="_blank" rel="noopener">Страница релиза</a>
+          </div>
+
+          <div class="changelog-grid">
+            <div class="change">
+              <div class="change-k">MVZ 1.4</div>
+              <div class="change-v">Автообновление внутри приложения + улучшения интерфейса.</div>
+            </div>
+            <div class="change">
+              <div class="change-k">Стабильность</div>
+              <div class="change-v">Фиксы и доводки под Windows.</div>
+            </div>
+            <div class="change">
+              <div class="change-k">Установка</div>
+              <div class="change-v">Для пользователей 1.3: чистая установка (см. FAQ ниже).</div>
+            </div>
+          </div>
+        </div>
+
         <div class="grid-2 reveal">
           <div class="card glass">
             <h3>Что умеет</h3>
@@ -133,6 +158,34 @@
               <div class="callout-text">
                 Если MVZ 1.3 ставили инсталлятором — удалите <code>C:\MVZ</code> перед установкой 1.4.
               </div>
+            </div>
+
+            <!-- 2) + 4) FAQ + нормальные формулировки -->
+            <div class="faq">
+              <h3 class="faq-title">FAQ (быстро)</h3>
+
+              <details class="faq-item" open>
+                <summary>MVZ — это VPN?</summary>
+                <div class="faq-body">
+                  Нет. MVZ — обход блокировок через DNS‑серверы (трафик не туннелируется как в VPN).
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>MVZ — это Zapret?</summary>
+                <div class="faq-body">
+                  MVZ — более качественный аналог Zapret в формате удобного .exe‑приложения под Windows.
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>Обход не работает — что делать?</summary>
+                <div class="faq-body">
+                  1) Проверь, что MVZ запущен с нужными правами.<br />
+                  2) Временно отключи сторонний антивирус или добавь MVZ в исключения.<br />
+                  3) Часто мешает 360 Total Security — с ним лучше тестировать в первую очередь.
+                </div>
+              </details>
             </div>
           </div>
 
@@ -153,13 +206,13 @@
                 <span class="mvz-status-value">не выбран</span>
               </div>
 
-              <!-- Тут убрал ZIP, оставил 1 кнопку скачивания + доп.кнопку -->
+              <!-- Убрали ZIP навсегда -->
               <div class="mvz-downloads">
                 <a href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
-                   class="btn primary" target="_blank" rel="noopener">Скачать MVZ (.exe)</a>
+                   class="btn primary" target="_blank" rel="noopener">Скачать установщик (.exe)</a>
 
                 <a href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
-                   class="btn ghost" target="_blank" rel="noopener">Страница релиза</a>
+                   class="btn ghost" target="_blank" rel="noopener">Что нового</a>
               </div>
 
               <p class="mvz-hint">Загрузка идёт из GitHub Releases.</p>
@@ -219,7 +272,6 @@
   </footer>
 
   <script>
-    // Мягкое появление блоков при скролле (без библиотек)
     const items = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
