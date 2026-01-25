@@ -58,6 +58,21 @@
           <a class="btn ghost" href="#mvz">Описание / FAQ</a>
         </div>
 
+        <!-- NEW: trust-bar + help -->
+        <div class="hero-trust" aria-label="Trust bar">
+          <span class="trust-chip">Не VPN</span>
+          <span class="trust-chip">Windows 10/11</span>
+          <span class="trust-chip">Загрузка из GitHub Releases</span>
+          <a class="trust-chip link" href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ" target="_blank" rel="noopener">Страница релиза</a>
+        </div>
+
+        <div class="hero-help-row">
+          <button class="hero-help" type="button" data-modal-open="mvz-help">
+            Не работает? Подсказки
+          </button>
+        </div>
+        <!-- /NEW -->
+
         <div class="hero-pills">
           <span class="pill">DNS обход</span>
           <span class="pill">Windows</span>
@@ -213,6 +228,18 @@
               </div>
 
               <p class="mvz-hint">Загрузка идёт из GitHub Releases.</p>
+
+              <!-- NEW: install in 30 sec -->
+              <div class="install-mini" aria-label="Установка за 30 секунд">
+                <div class="install-mini-title">Установка за 30 секунд</div>
+                <ol class="install-mini-list">
+                  <li>Скачай <b>.exe</b> и запусти установщик.</li>
+                  <li>Открой MVZ и выбери DNS‑профиль.</li>
+                  <li>Включи обход и проверь нужный сайт.</li>
+                </ol>
+                <button class="install-mini-link" type="button" data-modal-open="mvz-help">Если не заработало →</button>
+              </div>
+              <!-- /NEW -->
             </div>
           </div>
         </div>
@@ -268,7 +295,36 @@
     </div>
   </footer>
 
+  <!-- NEW: modal help -->
+  <div class="modal" id="mvz-help" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mvz-help-title">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+
+      <h3 class="modal-title" id="mvz-help-title">Если обход не работает</h3>
+      <p class="modal-sub">
+        Чаще всего проблема не в MVZ, а в сторонней защите/настройках системы. Проверь быстрое:
+      </p>
+
+      <ul class="modal-list">
+        <li>Антивирус/защита: добавь MVZ в исключения или временно отключи для теста (часто мешает 360 Total Security).</li>
+        <li>Запусти от имени администратора и перезапусти браузер/ПК (иногда нужно, чтобы DNS применился).</li>
+        <li>Поменяй DNS‑профиль и проверь другой сайт (иногда блок/маршрут “ложится” выборочно).</li>
+      </ul>
+
+      <div class="modal-actions">
+        <a class="btn ghost small" href="#mvz" data-modal-close>Перейти в FAQ</a>
+        <a class="btn primary small"
+           href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
+           target="_blank" rel="noopener">Скачать .exe</a>
+      </div>
+    </div>
+  </div>
+  <!-- /NEW -->
+
   <script>
+    // Reveal on scroll (existing)
     const items = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -279,6 +335,119 @@
       });
     }, { threshold: 0.12 });
     items.forEach(i => io.observe(i));
+
+    // NEW: Scrollspy for header nav
+    (function(){
+      const links = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
+      const map = new Map();
+      links.forEach(a => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) map.set(id, a);
+      });
+
+      if (!map.size) return;
+
+      const spy = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+        const id = visible.target.id;
+
+        links.forEach(a => a.classList.remove('is-active'));
+        const active = map.get(id);
+        if (active) active.classList.add('is-active');
+      }, { rootMargin: "-45% 0px -52% 0px", threshold: [0.06, 0.12, 0.2, 0.35] });
+
+      map.forEach((_, id) => {
+        const el = document.getElementById(id);
+        if (el) spy.observe(el);
+      });
+    })();
+
+    // NEW: Modal open/close
+    (function(){
+      const body = document.body;
+
+      function getFocusable(root){
+        return Array.from(root.querySelectorAll(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        ));
+      }
+
+      function openModal(id){
+        const modal = document.getElementById(id);
+        if (!modal) return;
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        body.classList.add('modal-open');
+
+        const focusables = getFocusable(modal);
+        (focusables[0] || modal).focus();
+
+        const onKey = (e) => {
+          if (e.key === 'Escape') closeModal(modal);
+          if (e.key !== 'Tab') return;
+
+          const f = getFocusable(modal);
+          if (!f.length) return;
+
+          const first = f[0];
+          const last = f[f.length - 1];
+          const active = document.activeElement;
+
+          if (e.shiftKey && active === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && active === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        };
+
+        modal._onKey = onKey;
+        document.addEventListener('keydown', onKey);
+      }
+
+      function closeModal(modal){
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        body.classList.remove('modal-open');
+
+        if (modal._onKey) {
+          document.removeEventListener('keydown', modal._onKey);
+          modal._onKey = null;
+        }
+      }
+
+      document.addEventListener('click', (e) => {
+        const opener = e.target.closest('[data-modal-open]');
+        if (opener) {
+          e.preventDefault();
+          openModal(opener.getAttribute('data-modal-open'));
+          return;
+        }
+
+        const closer = e.target.closest('[data-modal-close]');
+        if (closer) {
+          const modal = closer.closest('.modal');
+          closeModal(modal);
+          return;
+        }
+      });
+
+      // Close on anchor inside modal
+      document.addEventListener('click', (e) => {
+        const a = e.target.closest('.modal a[data-modal-close]');
+        if (!a) return;
+        const modal = a.closest('.modal');
+        closeModal(modal);
+      });
+    })();
   </script>
 </body>
 </html>
