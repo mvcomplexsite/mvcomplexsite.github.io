@@ -55,7 +55,7 @@
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
              target="_blank" rel="noopener">Скачать для Windows (.exe)</a>
 
-          <a class="btn ghost" href="#mvz">Инструкция / FAQ</a>
+          <a class="btn ghost" href="#mvz">Описание / FAQ</a>
         </div>
 
         <div class="hero-pills">
@@ -115,14 +115,15 @@
           </p>
         </div>
 
-        <!-- 5) CHANGES / CHANGELOG (аккуратный блок) -->
+        <!-- CHANGES / CHANGELOG -->
         <div class="changelog reveal">
           <div class="changelog-head">
-            <div>
+            <div class="changelog-text">
               <div class="changelog-title">Что нового</div>
               <div class="changelog-sub">Коротко по последним изменениям (полный список — на странице релиза).</div>
             </div>
-            <a class="btn ghost small"
+
+            <a class="btn ghost small changelog-action"
                href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
                target="_blank" rel="noopener">Страница релиза</a>
           </div>
@@ -138,7 +139,7 @@
             </div>
             <div class="change">
               <div class="change-k">Установка</div>
-              <div class="change-v">Для пользователей 1.3: чистая установка (см. FAQ ниже).</div>
+              <div class="change-v">Для пользователей 1.3: чистая установка (см. ниже).</div>
             </div>
           </div>
         </div>
@@ -160,32 +161,29 @@
               </div>
             </div>
 
-            <!-- 2) + 4) FAQ + нормальные формулировки -->
+            <!-- FAQ (упрощённый, без details/summary) -->
             <div class="faq">
-              <h3 class="faq-title">FAQ (быстро)</h3>
+              <h3 class="faq-title">FAQ</h3>
 
-              <details class="faq-item" open>
-                <summary>MVZ — это VPN?</summary>
-                <div class="faq-body">
-                  Нет. MVZ — обход блокировок через DNS‑серверы (трафик не туннелируется как в VPN).
+              <div class="faq-list">
+                <div class="faq-row">
+                  <div class="faq-q">MVZ — это VPN?</div>
+                  <div class="faq-a">Нет. MVZ — обход блокировок через DNS‑серверы (трафик не туннелируется как в VPN).</div>
                 </div>
-              </details>
 
-              <details class="faq-item">
-                <summary>MVZ — это Zapret?</summary>
-                <div class="faq-body">
-                  MVZ — более качественный аналог Zapret в формате удобного .exe‑приложения под Windows.
+                <div class="faq-row">
+                  <div class="faq-q">MVZ — это Zapret?</div>
+                  <div class="faq-a">MVZ — более качественный аналог Zapret в формате удобного .exe‑приложения под Windows.</div>
                 </div>
-              </details>
 
-              <details class="faq-item">
-                <summary>Обход не работает — что делать?</summary>
-                <div class="faq-body">
-                  1) Проверь, что MVZ запущен с нужными правами.<br />
-                  2) Временно отключи сторонний антивирус или добавь MVZ в исключения.<br />
-                  3) Часто мешает 360 Total Security — с ним лучше тестировать в первую очередь.
+                <div class="faq-row">
+                  <div class="faq-q">Обход не работает — что делать?</div>
+                  <div class="faq-a">
+                    Часто мешают сторонние антивирусы — добавь MVZ в исключения или временно отключи защиту для теста.
+                    Больше всего работе MVZ обычно мешает 360 Total Security.
+                  </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
 
@@ -206,7 +204,6 @@
                 <span class="mvz-status-value">не выбран</span>
               </div>
 
-              <!-- Убрали ZIP навсегда -->
               <div class="mvz-downloads">
                 <a href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
                    class="btn primary" target="_blank" rel="noopener">Скачать установщик (.exe)</a>
