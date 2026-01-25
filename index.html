@@ -51,27 +51,27 @@
         </p>
 
         <div class="hero-buttons">
-          <a class="btn primary"
+          <a class="btn primary js-download"
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
              target="_blank" rel="noopener">Скачать для Windows (.exe)</a>
 
           <a class="btn ghost" href="#mvz">Описание / FAQ</a>
         </div>
 
-        <!-- NEW: trust-bar + help -->
+        <!-- Trust bar (fixed look) -->
         <div class="hero-trust" aria-label="Trust bar">
           <span class="trust-chip">Не VPN</span>
           <span class="trust-chip">Windows 10/11</span>
           <span class="trust-chip">Загрузка из GitHub Releases</span>
-          <a class="trust-chip link" href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ" target="_blank" rel="noopener">Страница релиза</a>
-        </div>
 
-        <div class="hero-help-row">
-          <button class="hero-help" type="button" data-modal-open="mvz-help">
-            Не работает? Подсказки
+          <a class="trust-chip action"
+             href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
+             target="_blank" rel="noopener">Страница релиза</a>
+
+          <button class="trust-chip action" type="button" data-modal-open="mvz-help">
+            Подсказки
           </button>
         </div>
-        <!-- /NEW -->
 
         <div class="hero-pills">
           <span class="pill">DNS обход</span>
@@ -176,7 +176,7 @@
               </div>
             </div>
 
-            <!-- FAQ (упрощённый, без details/summary) -->
+            <!-- FAQ -->
             <div class="faq">
               <h3 class="faq-title">FAQ</h3>
 
@@ -209,6 +209,7 @@
               <span class="dot green"></span>
               <span class="mvz-panel-title">MVZ status</span>
             </div>
+
             <div class="mvz-panel-body">
               <div class="mvz-status">
                 <span class="mvz-status-label">Статус:</span>
@@ -221,7 +222,7 @@
 
               <div class="mvz-downloads">
                 <a href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
-                   class="btn primary" target="_blank" rel="noopener">Скачать установщик (.exe)</a>
+                   class="btn primary js-download" target="_blank" rel="noopener">Скачать установщик (.exe)</a>
 
                 <a href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
                    class="btn ghost" target="_blank" rel="noopener">Что нового</a>
@@ -229,17 +230,19 @@
 
               <p class="mvz-hint">Загрузка идёт из GitHub Releases.</p>
 
-              <!-- NEW: install in 30 sec -->
+              <!-- Install mini (fixed look) -->
               <div class="install-mini" aria-label="Установка за 30 секунд">
                 <div class="install-mini-title">Установка за 30 секунд</div>
                 <ol class="install-mini-list">
-                  <li>Скачай <b>.exe</b> и запусти установщик.</li>
+                  <li>Скачай установщик (.exe) и запусти.</li>
                   <li>Открой MVZ и выбери DNS‑профиль.</li>
                   <li>Включи обход и проверь нужный сайт.</li>
                 </ol>
-                <button class="install-mini-link" type="button" data-modal-open="mvz-help">Если не заработало →</button>
+
+                <button class="btn ghost small install-mini-link" type="button" data-modal-open="mvz-help">
+                  Если не заработало →
+                </button>
               </div>
-              <!-- /NEW -->
             </div>
           </div>
         </div>
@@ -295,7 +298,7 @@
     </div>
   </footer>
 
-  <!-- NEW: modal help -->
+  <!-- Modal help (fixed positioning) -->
   <div class="modal" id="mvz-help" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -315,16 +318,15 @@
 
       <div class="modal-actions">
         <a class="btn ghost small" href="#mvz" data-modal-close>Перейти в FAQ</a>
-        <a class="btn primary small"
+        <a class="btn primary small js-download"
            href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
            target="_blank" rel="noopener">Скачать .exe</a>
       </div>
     </div>
   </div>
-  <!-- /NEW -->
 
   <script>
-    // Reveal on scroll (existing)
+    // Reveal on scroll
     const items = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -336,7 +338,7 @@
     }, { threshold: 0.12 });
     items.forEach(i => io.observe(i));
 
-    // NEW: Scrollspy for header nav
+    // Scrollspy for header nav
     (function(){
       const links = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
       const map = new Map();
@@ -345,17 +347,15 @@
         const el = document.getElementById(id);
         if (el) map.set(id, a);
       });
-
       if (!map.size) return;
 
       const spy = new IntersectionObserver((entries) => {
         const visible = entries
           .filter(e => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
         if (!visible) return;
-        const id = visible.target.id;
 
+        const id = visible.target.id;
         links.forEach(a => a.classList.remove('is-active'));
         const active = map.get(id);
         if (active) active.classList.add('is-active');
@@ -367,9 +367,10 @@
       });
     })();
 
-    // NEW: Modal open/close
+    // Modal open/close (with focus restore)
     (function(){
       const body = document.body;
+      let lastActive = null;
 
       function getFocusable(root){
         return Array.from(root.querySelectorAll(
@@ -380,6 +381,8 @@
       function openModal(id){
         const modal = document.getElementById(id);
         if (!modal) return;
+
+        lastActive = document.activeElement;
 
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
@@ -414,6 +417,7 @@
 
       function closeModal(modal){
         if (!modal) return;
+
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
         body.classList.remove('modal-open');
@@ -422,6 +426,11 @@
           document.removeEventListener('keydown', modal._onKey);
           modal._onKey = null;
         }
+
+        if (lastActive && typeof lastActive.focus === 'function') {
+          lastActive.focus();
+        }
+        lastActive = null;
       }
 
       document.addEventListener('click', (e) => {
@@ -436,11 +445,9 @@
         if (closer) {
           const modal = closer.closest('.modal');
           closeModal(modal);
-          return;
         }
       });
 
-      // Close on anchor inside modal
       document.addEventListener('click', (e) => {
         const a = e.target.closest('.modal a[data-modal-close]');
         if (!a) return;
