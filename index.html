@@ -57,7 +57,7 @@
           <a class="btn ghost" href="#mvz">Описание / FAQ</a>
         </div>
 
-        <!-- Trust bar (fixed look) -->
+        <!-- Trust bar -->
         <div class="hero-trust" aria-label="Trust bar">
           <span class="trust-chip">Не VPN</span>
           <span class="trust-chip">Windows 10/11</span>
@@ -69,6 +69,16 @@
 
           <button class="trust-chip action" type="button" data-modal-open="mvz-help">
             Подсказки
+          </button>
+
+          <!-- NEW -->
+          <button class="trust-chip action" type="button" data-modal-open="mvz-disclaimer">
+            Дисклеймер
+          </button>
+
+          <!-- NEW -->
+          <button class="trust-chip action" type="button" data-modal-open="mvz-support">
+            Техподдержка
           </button>
         </div>
 
@@ -98,7 +108,7 @@
       </div>
     </section>
 
-    <!-- PROJECTS (минимально) -->
+    <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container reveal">
         <h2 class="section-title">Проекты</h2>
@@ -171,7 +181,7 @@
             <div class="callout">
               <div class="callout-title">Важно при переходе с 1.3</div>
               <div class="callout-text">
-                Если MVZ 1.3 ставили инсталлятором — удалите <code>C:\MVZ</code> перед установкой 1.4.
+                Если MVZ 1.3 ставили инсталлятором — удалите <code>C:\\MVZ</code> перед установкой 1.4.
               </div>
             </div>
 
@@ -229,7 +239,6 @@
 
               <p class="mvz-hint">Загрузка идёт из GitHub Releases.</p>
 
-              <!-- Install mini (fixed look) -->
               <div class="install-mini" aria-label="Установка за 30 секунд">
                 <div class="install-mini-title">Установка за 30 секунд</div>
                 <ol class="install-mini-list">
@@ -297,7 +306,7 @@
     </div>
   </footer>
 
-  <!-- Modal help (fixed positioning) -->
+  <!-- Modal help -->
   <div class="modal" id="mvz-help" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -320,6 +329,68 @@
         <a class="btn primary small js-download"
            href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
            target="_blank" rel="noopener">Скачать .exe</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: Disclaimer modal -->
+  <div class="modal" id="mvz-disclaimer" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mvz-disclaimer-title">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+
+      <h3 class="modal-title" id="mvz-disclaimer-title">Отказ от ответственности (Disclaimer)</h3>
+
+      <ol class="modal-list">
+        <li>
+          <b>Назначение Программного обеспечения</b><br>
+          Данное программное обеспечение (далее — «ПО») разработано исключительно в целях технической оптимизации сетевого соединения,
+          стабилизации маршрутов передачи данных и снижения задержки (пинга) в онлайн-играх. ПО работает путем перенаправления игровых
+          сетевых запросов через оптимальные узлы или изменения локальных настроек разрешения имен (DNS).
+        </li>
+        <li>
+          <b>Соблюдение законодательства</b><br>
+          Разработчики ПО действуют в рамках законодательства Российской Федерации. Данный инструмент не является средством для обхода
+          ограничений доступа к информационным ресурсам, заблокированным на территории РФ. Разработчики не пропагандируют, не поощряют
+          и не предоставляют инструкции по использованию ПО для получения доступа к запрещенному контенту.
+        </li>
+        <li>
+          <b>Ответственность пользователя</b><br>
+          Использование ПО для целей, нарушающих законодательство страны нахождения пользователя (включая, но не ограничиваясь, доступ к ресурсам,
+          внесенным в реестры запрещенной информации), категорически запрещено. Пользователь несет единоличную ответственность за любые действия,
+          совершенные с использованием данного ПО.
+        </li>
+        <li>
+          <b>Отсутствие гарантий</b><br>
+          ПО предоставляется по принципу «как есть» (as is). Разработчики не гарантируют стабильную работу сторонних сервисов (социальных сетей,
+          видеохостингов, мессенджеров), так как работа ПО сфокусирована исключительно на игровом трафике.
+        </li>
+        <li>
+          <b>Изменение условий</b><br>
+          Разработчики оставляют за собой право вносить изменения в работу ПО для обеспечения его соответствия актуальным техническим и правовым нормам.
+        </li>
+      </ol>
+
+      <div class="modal-actions">
+        <button class="btn ghost small" type="button" data-modal-close>Ок</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: Support modal -->
+  <div class="modal" id="mvz-support" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mvz-support-title">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+
+      <h3 class="modal-title" id="mvz-support-title">Техподдержка</h3>
+      <p class="modal-sub">Для связи — Telegram или почта.</p>
+
+      <div class="modal-actions">
+        <a class="btn primary small" href="https://t.me/motyait2" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn ghost small" href="mailto:MVComplexsite@gmail.com">Почта</a>
       </div>
     </div>
   </div>
