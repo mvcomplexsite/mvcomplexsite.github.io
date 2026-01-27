@@ -91,15 +91,25 @@ section{ scroll-margin-top: 92px; }
   align-items: center;
   gap: 18px;
 }
-.nav-menu a{
+.nav-menu a,
+.nav-menu button{
   text-decoration: none;
   color: var(--text-muted);
   font-size: .95rem;
   transition: color .18s ease, transform .18s ease;
   position: relative;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
-.nav-menu a:hover{ color: var(--accent); transform: translateY(-1px); }
 
+.nav-menu a:hover,
+.nav-menu button:hover{
+  color: var(--accent);
+  transform: translateY(-1px);
+}
 /* Scrollspy active state */
 .nav-menu a.is-active{
   color: rgba(245, 243, 255, 0.92);
@@ -537,12 +547,22 @@ button.trust-chip{
   gap: 14px;
   margin-top: 10px;
 }
-.contacts a{
+.contacts a,
+.contacts button{
   color: var(--accent);
   text-decoration: none;
   font-size: 1rem;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
-.contacts a:hover{ color: rgba(236,72,153,.95); }
+
+.contacts a:hover,
+.contacts button:hover{
+  color: rgba(236,72,153,.95);
+}
 
 /* Footer */
 .footer{
