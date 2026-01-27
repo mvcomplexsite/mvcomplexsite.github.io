@@ -18,7 +18,7 @@
         <a href="#mvz">MVZ</a>
         <a href="#news">Новости</a>
 
-        <!-- NEW: Disclaimer in top menu -->
+        <!-- Disclaimer in top menu -->
         <button class="nav-disclaimer" type="button" data-modal-open="mvz-disclaimer">
           Дисклеймер
         </button>
@@ -60,14 +60,12 @@
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
              target="_blank" rel="noopener">Скачать для Windows (.exe)</a>
 
-          <a class="btn ghost" href="#mvz">Описание / FAQ</a>
+          <a class="btn ghost" href="#mvz">Описание</a>
         </div>
 
-        <!-- Trust bar (убрал дисклеймер/техподдержку отсюда) -->
+        <!-- Trust bar (убрал "Не VPN" и "Загрузка из GitHub Releases") -->
         <div class="hero-trust" aria-label="Trust bar">
-          <span class="trust-chip">Не VPN</span>
           <span class="trust-chip">Windows 10/11</span>
-          <span class="trust-chip">Загрузка из GitHub Releases</span>
 
           <a class="trust-chip action"
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
@@ -131,7 +129,7 @@
         <div class="section-head reveal">
           <h2 class="section-title">MVZ — GUI приложение для смены DNS серверов</h2>
           <p class="section-subtitle">
-            MVZ помогает оптимизировать пинг в играх, с помощью DNS‑серверов. Это не VPN: трафик не туннелируется.
+            MVZ помогает оптимизировать пинг в играх, с помощью DNS‑серверов.
           </p>
         </div>
 
@@ -165,6 +163,7 @@
         </div>
 
         <div class="grid-2 reveal">
+          <!-- LEFT PANEL -->
           <div class="card glass">
             <h3>Что умеет</h3>
             <ul class="list">
@@ -181,32 +180,15 @@
               </div>
             </div>
 
-            <!-- FAQ -->
-            <div class="faq">
-              <h3 class="faq-title">FAQ</h3>
-
-              <div class="faq-list">
-                <div class="faq-row">
-                  <div class="faq-q">MVZ — это VPN?</div>
-                  <div class="faq-a">Нет. MVZ — оптимизация пинга через DNS‑серверы (трафик не туннелируется как в VPN).</div>
-                </div>
-
-                <div class="faq-row">
-                  <div class="faq-q">MVZ — это Zapret?</div>
-                  <div class="faq-a">MVZ — Нет, это более качественный аналог DNS Jumper в формате удобного .exe‑приложения под Windows.</div>
-                </div>
-
-                <div class="faq-row">
-                  <div class="faq-q">MVZ не работает — что делать?</div>
-                  <div class="faq-a">
-                    Часто мешают сторонние антивирусы — добавь MVZ в исключения или временно отключи защиту для теста.
-                    Больше всего работе MVZ обычно мешает 360 Total Security. (Лучше всего удалить антивирус)
-                  </div>
-                </div>
-              </div>
+            <!-- NEW: FAQ as modal -->
+            <div class="faq-cta">
+              <button class="btn ghost small" type="button" data-modal-open="mvz-faq">
+                Открыть FAQ
+              </button>
             </div>
           </div>
 
+          <!-- RIGHT PANEL -->
           <div class="card glass mvz-panel">
             <div class="mvz-panel-header">
               <span class="dot red"></span>
@@ -292,7 +274,6 @@
           <a href="https://github.com/MVComplex" target="_blank" rel="noopener">GitHub</a>
           <a href="mailto:MVComplexsite@gmail.com">Почта</a>
 
-          <!-- NEW: Support button near contacts -->
           <button class="contact-support" type="button" data-modal-open="mvz-support">
             Техподдержка
           </button>
@@ -307,7 +288,7 @@
     </div>
   </footer>
 
-  <!-- Modal help -->
+  <!-- Modal: Help -->
   <div class="modal" id="mvz-help" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -326,7 +307,7 @@
       </ul>
 
       <div class="modal-actions">
-        <a class="btn ghost small" href="#mvz" data-modal-close>Перейти в FAQ</a>
+        <a class="btn ghost small" href="#mvz" data-modal-close>Закрыть</a>
         <a class="btn primary small js-download"
            href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
            target="_blank" rel="noopener">Скачать .exe</a>
@@ -334,7 +315,42 @@
     </div>
   </div>
 
-  <!-- Disclaimer modal -->
+  <!-- Modal: FAQ -->
+  <div class="modal" id="mvz-faq" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mvz-faq-title">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+
+      <h3 class="modal-title" id="mvz-faq-title">FAQ</h3>
+      <p class="modal-sub">Коротко и по делу.</p>
+
+      <div class="faq-list">
+        <div class="faq-row">
+          <div class="faq-q">MVZ — это VPN?</div>
+          <div class="faq-a">Нет. MVZ — оптимизация пинга через DNS‑серверы (трафик не туннелируется как в VPN).</div>
+        </div>
+
+        <div class="faq-row">
+          <div class="faq-q">MVZ — это Zapret?</div>
+          <div class="faq-a">Нет, это более качественный аналог DNS Jumper в формате удобного .exe‑приложения под Windows.</div>
+        </div>
+
+        <div class="faq-row">
+          <div class="faq-q">MVZ не работает — что делать?</div>
+          <div class="faq-a">
+            Проверь сторонние антивирусы/защиту, запуск от имени администратора, и попробуй другой DNS‑профиль.
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions" style="margin-top:12px;">
+        <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Disclaimer -->
   <div class="modal" id="mvz-disclaimer" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -358,18 +374,16 @@
         </li>
         <li>
           <b>Ответственность пользователя</b><br>
-          Использование ПО для целей, нарушающих законодательство страны нахождения пользователя (включая, но не ограничиваясь, доступ к ресурсам,
-          внесенным в реестры запрещенной информации), категорически запрещено. Пользователь несет единоличную ответственность за любые действия,
-          совершенные с использованием данного ПО.
+          Использование ПО для целей, нарушающих законодательство страны нахождения пользователя, категорически запрещено.
+          Пользователь несет единоличную ответственность за любые действия, совершенные с использованием данного ПО.
         </li>
         <li>
           <b>Отсутствие гарантий</b><br>
-          ПО предоставляется по принципу «как есть» (as is). Разработчики не гарантируют стабильную работу сторонних сервисов (социальных сетей,
-          видеохостингов, мессенджеров), так как работа ПО сфокусирована исключительно на игровом трафике.
+          ПО предоставляется по принципу «как есть» (as is).
         </li>
         <li>
           <b>Изменение условий</b><br>
-          Разработчики оставляют за собой право вносить изменения в работу ПО для обеспечения его соответствия актуальным техническим и правовым нормам.
+          Разработчики оставляют за собой право вносить изменения в работу ПО.
         </li>
       </ol>
 
@@ -379,7 +393,7 @@
     </div>
   </div>
 
-  <!-- Support modal -->
+  <!-- Modal: Support -->
   <div class="modal" id="mvz-support" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
