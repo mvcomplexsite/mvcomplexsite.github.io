@@ -91,6 +91,8 @@ section{ scroll-margin-top: 92px; }
   align-items: center;
   gap: 18px;
 }
+
+/* Links + button-link (for disclaimer) */
 .nav-menu a,
 .nav-menu button{
   text-decoration: none;
@@ -104,12 +106,12 @@ section{ scroll-margin-top: 92px; }
   cursor: pointer;
   font-family: inherit;
 }
-
 .nav-menu a:hover,
 .nav-menu button:hover{
   color: var(--accent);
   transform: translateY(-1px);
 }
+
 /* Scrollspy active state */
 .nav-menu a.is-active{
   color: rgba(245, 243, 255, 0.92);
@@ -230,7 +232,8 @@ section{ scroll-margin-top: 92px; }
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background .18s ease, transform .12s ease, box-shadow .18s ease, border-color .18s ease;
+  transition: background .18s ease, transform .12s ease, box-shadow .18s ease, border-color .18s ease, opacity .18s ease;
+  font-family: inherit;
 }
 .btn.primary{
   min-width: 260px;
@@ -257,7 +260,8 @@ section{ scroll-margin-top: 92px; }
 .btn:focus-visible,
 .nav-cta:focus-visible,
 .trust-chip:focus-visible,
-.nav-menu a:focus-visible{
+.nav-menu a:focus-visible,
+.nav-menu button:focus-visible{
   outline: 2px solid rgba(139, 92, 246, 0.65);
   outline-offset: 3px;
 }
@@ -380,7 +384,7 @@ button.trust-chip{
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
   gap: 22px;
-  align-items: start;
+  align-items: stretch; /* to keep both panels same visual height */
 }
 .glass{
   background: rgba(18, 8, 40, 0.62);
@@ -406,6 +410,12 @@ button.trust-chip{
   padding: 1px 6px;
   border-radius: 6px;
   border: 1px solid rgba(167, 139, 250, 0.28);
+}
+
+/* FAQ CTA button row inside left panel */
+.faq-cta{
+  margin-top: 12px;
+  display: flex;
 }
 
 /* Changelog */
@@ -441,23 +451,6 @@ button.trust-chip{
 }
 .change-k{ font-weight: 950; margin-bottom: 2px; }
 .change-v{ color: var(--text-muted); font-size: .95rem; }
-
-/* FAQ */
-.faq{
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(167, 139, 250, 0.18);
-}
-.faq-title{ margin-bottom: 10px; font-size: 1.05rem; }
-.faq-list{ display: grid; gap: 10px; }
-.faq-row{
-  padding: 12px 12px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(167, 139, 250, 0.18);
-  background: rgba(18, 8, 40, 0.38);
-}
-.faq-q{ font-weight: 950; margin-bottom: 4px; }
-.faq-a{ color: var(--text-muted); font-size: .96rem; }
 
 /* MVZ panel */
 .mvz-panel-header{
@@ -558,11 +551,8 @@ button.trust-chip{
   cursor: pointer;
   font-family: inherit;
 }
-
 .contacts a:hover,
-.contacts button:hover{
-  color: rgba(236,72,153,.95);
-}
+.contacts button:hover{ color: rgba(236,72,153,.95); }
 
 /* Footer */
 .footer{
@@ -637,6 +627,17 @@ body.modal-open{ overflow: hidden; }
 .modal-list li{ margin: 7px 0; }
 .modal-actions{ display: flex; flex-wrap: wrap; gap: 10px; }
 
+/* FAQ rows reused inside modal */
+.faq-list{ display: grid; gap: 10px; }
+.faq-row{
+  padding: 12px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  background: rgba(18, 8, 40, 0.38);
+}
+.faq-q{ font-weight: 950; margin-bottom: 4px; }
+.faq-a{ color: var(--text-muted); font-size: .96rem; }
+
 /* Responsive */
 @media (max-width: 900px){
   .grid-2{ grid-template-columns: 1fr; }
@@ -650,37 +651,4 @@ body.modal-open{ overflow: hidden; }
   .hero-logo{ width: 70px; height: 70px; }
 
   .modal{ padding: 16px; }
-}
-/* NEW: Hero small actions row */
-.hero-aux{
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.btn.tiny{
-  padding: 9px 12px;
-  font-size: .92rem;
-  min-width: unset;
-  opacity: .86;
-}
-.btn.tiny:hover{ opacity: 1; }
-
-/* NEW: modal long-text formatting */
-.modal-body{
-  margin-top: 8px;
-  color: var(--text-muted);
-  font-size: .96rem;
-  line-height: 1.65;
-}
-.modal-body ol{
-  margin-left: 18px;
-}
-.modal-body li{
-  margin: 10px 0;
-}
-.modal-body b{
-  color: rgba(245, 243, 255, 0.92);
 }
