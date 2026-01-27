@@ -17,6 +17,12 @@
         <a href="#home">Главная</a>
         <a href="#mvz">MVZ</a>
         <a href="#news">Новости</a>
+
+        <!-- NEW: Disclaimer in top menu -->
+        <button class="nav-disclaimer" type="button" data-modal-open="mvz-disclaimer">
+          Дисклеймер
+        </button>
+
         <a href="#contact">Контакты</a>
       </nav>
 
@@ -57,7 +63,7 @@
           <a class="btn ghost" href="#mvz">Описание / FAQ</a>
         </div>
 
-        <!-- Trust bar -->
+        <!-- Trust bar (убрал дисклеймер/техподдержку отсюда) -->
         <div class="hero-trust" aria-label="Trust bar">
           <span class="trust-chip">Не VPN</span>
           <span class="trust-chip">Windows 10/11</span>
@@ -69,16 +75,6 @@
 
           <button class="trust-chip action" type="button" data-modal-open="mvz-help">
             Подсказки
-          </button>
-
-          <!-- NEW -->
-          <button class="trust-chip action" type="button" data-modal-open="mvz-disclaimer">
-            Дисклеймер
-          </button>
-
-          <!-- NEW -->
-          <button class="trust-chip action" type="button" data-modal-open="mvz-support">
-            Техподдержка
           </button>
         </div>
 
@@ -295,6 +291,11 @@
           <a href="https://t.me/motyait2" target="_blank" rel="noopener">Telegram</a>
           <a href="https://github.com/MVComplex" target="_blank" rel="noopener">GitHub</a>
           <a href="mailto:MVComplexsite@gmail.com">Почта</a>
+
+          <!-- NEW: Support button near contacts -->
+          <button class="contact-support" type="button" data-modal-open="mvz-support">
+            Техподдержка
+          </button>
         </div>
       </div>
     </section>
@@ -333,7 +334,7 @@
     </div>
   </div>
 
-  <!-- NEW: Disclaimer modal -->
+  <!-- Disclaimer modal -->
   <div class="modal" id="mvz-disclaimer" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -378,7 +379,7 @@
     </div>
   </div>
 
-  <!-- NEW: Support modal -->
+  <!-- Support modal -->
   <div class="modal" id="mvz-support" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
