@@ -65,9 +65,9 @@
         <div class="hero-trust" aria-label="Trust bar">
           <span class="trust-chip">Windows 10/11</span>
 
-          <a class="trust-chip action"
+          <a class="trust-chip action" id="release-link-latest"
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
-             target="_blank" rel="noopener">Страница релиза</a>
+             target="_blank" rel="noopener">Последний релиз</a>
 
           <button class="trust-chip action" type="button" data-modal-open="mvz-changelog">
             Changelog
@@ -90,17 +90,23 @@
             <div class="strip-k">Текущая версия</div>
             <div class="strip-v" id="release-version">MVZ 1.4</div>
           </div>
+
           <div class="strip-sep"></div>
+
           <div class="strip-item">
             <div class="strip-k">Дата релиза</div>
             <div class="strip-v" id="release-date">—</div>
           </div>
+
           <div class="strip-sep"></div>
+
           <div class="strip-item">
             <div class="strip-k">Канал</div>
             <a class="strip-v link" href="https://t.me/motyait2" target="_blank" rel="noopener">t.me/motyait2</a>
           </div>
+
           <div class="strip-sep"></div>
+
           <div class="strip-item">
             <div class="strip-k">Платформа</div>
             <div class="strip-v">Windows</div>
@@ -149,7 +155,8 @@
                 <span class="release-badge" id="release-version-2">MVZ 1.4</span>
               </div>
               <div class="changelog-sub">
-                Дата релиза: <span id="release-date-2">—</span>. Полный список — в Changelog / на странице релиза.
+                Дата релиза: <span id="release-date-2">—</span>.
+                Полный список — в Changelog (авто подтягивается).
               </div>
             </div>
 
@@ -158,9 +165,9 @@
                 Открыть Changelog
               </button>
 
-              <a class="btn ghost small changelog-action"
+              <a class="btn ghost small changelog-action" id="release-link-latest-2"
                  href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
-                 target="_blank" rel="noopener">Страница релиза</a>
+                 target="_blank" rel="noopener">Открыть релиз</a>
             </div>
           </div>
 
@@ -171,11 +178,11 @@
             </div>
             <div class="change">
               <div class="change-k">UI/UX</div>
-              <div class="change-v">Улучшения интерфейса и логики работы.</div>
+              <div class="change-v">Доводки интерфейса, мелочи, аккуратность.</div>
             </div>
             <div class="change">
               <div class="change-k">Стабильность</div>
-              <div class="change-v">Фиксы, доводки и совместимость под Windows.</div>
+              <div class="change-v">Фиксы и улучшения совместимости под Windows.</div>
             </div>
           </div>
         </div>
@@ -255,14 +262,21 @@
     <section id="news" class="section">
       <div class="container reveal">
         <h2 class="section-title">Новости (Telegram)</h2>
-        <p class="section-subtitle">Посты переключаются автоматически по кругу.</p>
+        <p class="section-subtitle">2 поста на экране + пролистывание без дерганья страницы.</p>
 
-        <div class="tg-rotator">
-          <div class="tg-card rotating" id="tg-post-container">
-            <!-- Telegram widget gets injected here -->
+        <div class="tg-slider">
+          <div class="tg-slider-head">
+            <button class="tg-nav" type="button" id="tg-prev" aria-label="Предыдущие посты">←</button>
+            <div class="tg-slider-title">Лента</div>
+            <button class="tg-nav" type="button" id="tg-next" aria-label="Следующие посты">→</button>
           </div>
 
-          <div class="tg-dots" id="tg-dots" aria-label="Telegram post slider dots"></div>
+          <div class="tg-grid tg-grid-2" id="tg-grid">
+            <div class="tg-card tg-slot" id="tg-slot-0" aria-label="Telegram post slot 1"></div>
+            <div class="tg-card tg-slot" id="tg-slot-1" aria-label="Telegram post slot 2"></div>
+          </div>
+
+          <div class="tg-dots" id="tg-dots" aria-label="Telegram post dots"></div>
         </div>
 
         <div class="tg-more">
@@ -323,7 +337,7 @@
     </div>
   </div>
 
-  <!-- Modal: Changelog -->
+  <!-- Modal: Changelog (auto) -->
   <div class="modal" id="mvz-changelog" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -334,29 +348,25 @@
         Changelog — <span class="release-badge" id="release-version-3">MVZ 1.4</span>
       </h3>
       <p class="modal-sub">
-        Последнее обновление: <span id="release-date-3">—</span>. Полный список изменений — на странице релиза.
+        Последнее обновление: <span id="release-date-3">—</span>
       </p>
 
       <div class="modal-actions" style="margin-bottom: 10px;">
-        <a class="btn primary small"
+        <a class="btn primary small" id="release-link-latest-3"
            href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
            target="_blank" rel="noopener">Открыть релиз</a>
         <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
       </div>
 
-      <div class="changelog-grid">
+      <div class="changelog-list" id="changelog-list">
         <div class="change">
-          <div class="change-k">MVZ</div>
-          <div class="change-v">Добавляй сюда короткие пункты изменений (2–6 строк), чтобы было по‑людски.</div>
+          <div class="change-k">MVZ 1.4</div>
+          <div class="change-v">Автообновление + доводка UI + фиксы стабильности.</div>
         </div>
-        <div class="change">
-          <div class="change-k">Подсказка</div>
-          <div class="change-v">Если хочешь автоген — позже подключим выгрузку заметок релиза (но это уже “опаснее” по длине текста).</div>
-        </div>
-        <div class="change">
-          <div class="change-k">Ссылка</div>
-          <div class="change-v">Страница релиза всегда актуальная и подробная.</div>
-        </div>
+      </div>
+
+      <div class="changelog-foot">
+        <span class="changelog-foot-text">Changelog обновляется автоматически по релизам GitHub.</span>
       </div>
     </div>
   </div>
@@ -396,7 +406,7 @@
     </div>
   </div>
 
-  <!-- Modal: Disclaimer -->
+  <!-- Modal: Disclaimer (FULL, not shortened) -->
   <div class="modal" id="mvz-disclaimer" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -406,11 +416,31 @@
       <h3 class="modal-title" id="mvz-disclaimer-title">Отказ от ответственности (Disclaimer)</h3>
 
       <ol class="modal-list">
-        <li><b>Назначение ПО</b><br>ПО разработано для оптимизации сетевого соединения и снижения задержки (пинга) в играх.</li>
-        <li><b>Соблюдение законодательства</b><br>Разработчики действуют в рамках законодательства РФ.</li>
-        <li><b>Ответственность пользователя</b><br>Пользователь несет единоличную ответственность за использование.</li>
-        <li><b>Отсутствие гарантий</b><br>ПО предоставляется по принципу «как есть».</li>
-        <li><b>Изменение условий</b><br>Разработчики оставляют право вносить изменения.</li>
+        <li>
+          <b>Назначение Программного обеспечения</b><br>
+          Данное программное обеспечение (далее — «ПО») разработано исключительно в целях технической оптимизации сетевого соединения,
+          стабилизации маршрутов передачи данных и снижения задержки (пинга) в онлайн-играх. ПО работает путем перенаправления игровых
+          сетевых запросов через оптимальные узлы или изменения локальных настроек разрешения имен (DNS).
+        </li>
+        <li>
+          <b>Соблюдение законодательства</b><br>
+          Разработчики ПО действуют в рамках законодательства Российской Федерации. Данный инструмент не является средством для обхода
+          ограничений доступа к информационным ресурсам, заблокированным на территории РФ. Разработчики не пропагандируют, не поощряют
+          и не предоставляют инструкции по использованию ПО для получения доступа к запрещенному контенту.
+        </li>
+        <li>
+          <b>Ответственность пользователя</b><br>
+          Использование ПО для целей, нарушающих законодательство страны нахождения пользователя, категорически запрещено.
+          Пользователь несет единоличную ответственность за любые действия, совершенные с использованием данного ПО.
+        </li>
+        <li>
+          <b>Отсутствие гарантий</b><br>
+          ПО предоставляется по принципу «как есть» (as is).
+        </li>
+        <li>
+          <b>Изменение условий</b><br>
+          Разработчики оставляют за собой право вносить изменения в работу ПО.
+        </li>
       </ol>
 
       <div class="modal-actions">
@@ -478,7 +508,7 @@
       });
     })();
 
-    // Modal open/close (with focus restore)
+    // Modal open/close (with focus trap)
     (function(){
       const body = document.body;
       let lastActive = null;
@@ -538,9 +568,7 @@
           modal._onKey = null;
         }
 
-        if (lastActive && typeof lastActive.focus === 'function') {
-          lastActive.focus();
-        }
+        if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
         lastActive = null;
       }
 
@@ -560,9 +588,9 @@
       });
     })();
 
-    // Auto version/date from GitHub Release (tag MVZ)
+    // Auto version/date + links from GitHub "latest release" endpoint [web:190]
     (function(){
-      const API_URL = 'https://api.github.com/repos/mvcomplexsite/mvcomplexsite.github.io/releases/tags/MVZ';
+      const API_LATEST = 'https://api.github.com/repos/mvcomplexsite/mvcomplexsite.github.io/releases/latest';
 
       const v1 = document.getElementById('release-version');
       const v2 = document.getElementById('release-version-2');
@@ -571,6 +599,10 @@
       const d1 = document.getElementById('release-date');
       const d2 = document.getElementById('release-date-2');
       const d3 = document.getElementById('release-date-3');
+
+      const l1 = document.getElementById('release-link-latest');
+      const l2 = document.getElementById('release-link-latest-2');
+      const l3 = document.getElementById('release-link-latest-3');
 
       function fmtDate(iso){
         try{
@@ -582,7 +614,7 @@
         }catch(_){ return '—'; }
       }
 
-      fetch(API_URL)
+      fetch(API_LATEST)
         .then(r => r.ok ? r.json() : Promise.reject(r))
         .then(rel => {
           const version = (rel.name && String(rel.name).trim()) || rel.tag_name || 'MVZ';
@@ -595,68 +627,165 @@
           if (d1) d1.textContent = date;
           if (d2) d2.textContent = date;
           if (d3) d3.textContent = date;
+
+          if (rel.html_url) {
+            if (l1) l1.href = rel.html_url;
+            if (l2) l2.href = rel.html_url;
+            if (l3) l3.href = rel.html_url;
+          }
         })
-        .catch(() => {
-          // оставляем дефолтные тексты в HTML
-        });
+        .catch(() => {});
     })();
 
-    // Telegram auto-rotator (switches posts by IDs)
+    // Auto changelog list from GitHub releases list [web:193]
     (function(){
-      const container = document.getElementById('tg-post-container');
-      const dots = document.getElementById('tg-dots');
-      if (!container || !dots) return;
+      const API_LIST = 'https://api.github.com/repos/mvcomplexsite/mvcomplexsite.github.io/releases?per_page=8';
+      const box = document.getElementById('changelog-list');
+      if (!box) return;
 
-      // ВАЖНО: Telegram Post Widget встраивает конкретный пост по "канал/ID". [web:185]
-      // Полностью "всегда последний пост" без бэка обычно не сделать — поэтому просто ведём список ID.
+      function fmtDate(iso){
+        try{
+          const dt = new Date(iso);
+          const dd = String(dt.getDate()).padStart(2,'0');
+          const mm = String(dt.getMonth()+1).padStart(2,'0');
+          const yy = dt.getFullYear();
+          return `${dd}.${mm}.${yy}`;
+        }catch(_){ return '—'; }
+      }
+
+      fetch(API_LIST)
+        .then(r => r.ok ? r.json() : Promise.reject(r))
+        .then(list => {
+          if (!Array.isArray(list) || !list.length) return;
+
+          box.innerHTML = '';
+          list
+            .filter(x => x && !x.draft)
+            .slice(0, 8)
+            .forEach(rel => {
+              const title = (rel.name && String(rel.name).trim()) || rel.tag_name || 'Release';
+              const date = rel.published_at ? fmtDate(rel.published_at) : '—';
+              const url = rel.html_url || '#';
+
+              const row = document.createElement('div');
+              row.className = 'change';
+              row.innerHTML = `
+                <div class="change-k">${title}</div>
+                <div class="change-v">
+                  ${date} · <a class="mini-link" href="${url}" target="_blank" rel="noopener">Открыть релиз</a>
+                </div>
+              `;
+              box.appendChild(row);
+            });
+        })
+        .catch(() => {});
+    })();
+
+    // Telegram: 2 slots + cache in DOM (без удаления, без прыжков) [web:185]
+    (function(){
       const TG_POSTS = [
         'motyait2/55',
         'motyait2/57'
-        // добавишь новые — просто докинь сюда: 'motyait2/58'
+        // добавляй сюда новые посты: 'motyait2/58'
       ];
 
-      let idx = 0;
+      const slot0 = document.getElementById('tg-slot-0');
+      const slot1 = document.getElementById('tg-slot-1');
+      const dots = document.getElementById('tg-dots');
+      const btnPrev = document.getElementById('tg-prev');
+      const btnNext = document.getElementById('tg-next');
+
+      if (!slot0 || !slot1 || !dots || !btnPrev || !btnNext) return;
+
+      // Стартовый индекс (какая пара сейчас показана)
+      let start = 0;
       let timer = null;
 
-      function renderDots(){
+      function buildSlot(slotEl, slotIndex){
+        slotEl.innerHTML = '';
+        slotEl.classList.add('tg-slot-ready');
+
+        TG_POSTS.forEach((post, i) => {
+          const frame = document.createElement('div');
+          frame.className = 'tg-frame';
+          frame.setAttribute('data-post-idx', String(i));
+
+          // Важно: Telegram виджет строится по data-telegram-post="channel/ID" [web:185]
+          const s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://telegram.org/js/telegram-widget.js?22';
+          s.setAttribute('data-telegram-post', post);
+          s.setAttribute('data-width', '100%');
+          s.setAttribute('data-userpic', 'true');
+
+          frame.appendChild(s);
+          slotEl.appendChild(frame);
+        });
+      }
+
+      function setActive(){
+        const a = start % TG_POSTS.length;
+        const b = (start + 1) % TG_POSTS.length;
+
+        // slot 0 shows a
+        slot0.querySelectorAll('.tg-frame').forEach(fr => {
+          fr.classList.toggle('is-active', fr.getAttribute('data-post-idx') === String(a));
+        });
+
+        // slot 1 shows b
+        slot1.querySelectorAll('.tg-frame').forEach(fr => {
+          fr.classList.toggle('is-active', fr.getAttribute('data-post-idx') === String(b));
+        });
+
+        // dots indicate start
+        dots.querySelectorAll('.tg-dot').forEach((d, i) => {
+          d.classList.toggle('is-active', i === a);
+        });
+      }
+
+      function buildDots(){
         dots.innerHTML = '';
         TG_POSTS.forEach((_, i) => {
           const b = document.createElement('button');
           b.type = 'button';
-          b.className = 'tg-dot' + (i === idx ? ' is-active' : '');
+          b.className = 'tg-dot' + (i === 0 ? ' is-active' : '');
           b.setAttribute('aria-label', `Пост ${i+1}`);
           b.addEventListener('click', () => {
-            idx = i;
-            renderPost();
+            // по клику ставим этот пост первым в паре
+            start = i;
+            setActive();
             restart();
           });
           dots.appendChild(b);
         });
       }
 
-      function renderPost(){
-        container.innerHTML = '';
-
-        const s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://telegram.org/js/telegram-widget.js?22';
-        s.setAttribute('data-telegram-post', TG_POSTS[idx]);
-        s.setAttribute('data-width', '100%');
-        s.setAttribute('data-userpic', 'true');
-
-        container.appendChild(s);
-        renderDots();
-      }
-
       function restart(){
         if (timer) clearInterval(timer);
         timer = setInterval(() => {
-          idx = (idx + 1) % TG_POSTS.length;
-          renderPost();
+          start = (start + 1) % TG_POSTS.length; // сдвиг на 1: левый становится правым, правый — следующий
+          setActive();
         }, 12000);
       }
 
-      renderPost();
+      buildSlot(slot0, 0);
+      buildSlot(slot1, 1);
+      buildDots();
+
+      btnPrev.addEventListener('click', () => {
+        start = (start - 1 + TG_POSTS.length) % TG_POSTS.length;
+        setActive();
+        restart();
+      });
+
+      btnNext.addEventListener('click', () => {
+        start = (start + 1) % TG_POSTS.length;
+        setActive();
+        restart();
+      });
+
+      // Первый показ
+      setActive();
       restart();
     })();
   </script>
