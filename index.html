@@ -91,8 +91,6 @@ section{ scroll-margin-top: 92px; }
   align-items: center;
   gap: 18px;
 }
-
-/* Links + button-link */
 .nav-menu a,
 .nav-menu button{
   text-decoration: none;
@@ -291,10 +289,7 @@ section{ scroll-margin-top: 92px; }
   text-decoration: none;
   user-select: none;
 }
-button.trust-chip{
-  appearance: none;
-  font-family: inherit;
-}
+button.trust-chip{ appearance: none; font-family: inherit; }
 .trust-chip.action{
   cursor: pointer;
   border-color: rgba(167, 139, 250, 0.36);
@@ -412,11 +407,8 @@ button.trust-chip{
   border: 1px solid rgba(167, 139, 250, 0.28);
 }
 
-/* FAQ CTA button row inside left panel */
-.faq-cta{
-  margin-top: 12px;
-  display: flex;
-}
+/* FAQ CTA */
+.faq-cta{ margin-top: 12px; display: flex; }
 
 /* Changelog */
 .changelog{
@@ -439,19 +431,12 @@ button.trust-chip{
 .changelog-sub{ color: rgba(245,243,255,.62); font-size: .92rem; }
 .changelog-action{ min-width: unset; white-space: nowrap; }
 
-.changelog-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
+.changelog-actions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
-.change{
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(167, 139, 250, 0.18);
-  background: rgba(18, 8, 40, 0.35);
-  padding: 10px 12px;
-}
-.change-k{ font-weight: 950; margin-bottom: 2px; }
-.change-v{ color: var(--text-muted); font-size: .95rem; }
 
 .release-badge{
   display: inline-flex;
@@ -465,13 +450,6 @@ button.trust-chip{
   font-weight: 950;
   font-size: .92rem;
   vertical-align: middle;
-}
-
-.changelog-actions{
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
 }
 
 /* MVZ panel */
@@ -522,12 +500,9 @@ button.trust-chip{
   color: var(--text-muted);
 }
 .install-mini-list li{ margin: 6px 0; }
-.install-mini-link{
-  width: 100%;
-  justify-content: center;
-}
+.install-mini-link{ width: 100%; justify-content: center; }
 
-/* Release notes from GitHub release body */
+/* Release notes (body релиза) */
 .release-notes{
   border-radius: var(--radius-lg);
   border: 1px solid rgba(167, 139, 250, 0.22);
@@ -543,13 +518,9 @@ button.trust-chip{
   margin: 0 0 0 18px;
   color: var(--text-muted);
 }
-.release-notes li{
-  margin: 6px 0;
-}
-.notes-empty{
-  color: var(--text-muted);
-  font-size: .95rem;
-}
+.release-notes li{ margin: 6px 0; }
+.notes-empty{ color: var(--text-muted); font-size: .95rem; }
+
 .notes-skeleton{
   height: 12px;
   border-radius: 999px;
@@ -575,7 +546,7 @@ button.trust-chip{
   text-decoration: underline;
 }
 
-/* Telegram (2 окна как было) */
+/* Telegram: 2 окна как было */
 .tg-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 420px));
@@ -600,28 +571,6 @@ button.trust-chip{
   margin-top: 16px;
   display: flex;
   justify-content: center;
-}
-
-/* (Оставил) dots styles, если где-то используются */
-.tg-dots{
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-.tg-dot{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(167, 139, 250, 0.28);
-  background: rgba(18, 8, 40, 0.45);
-  opacity: .55;
-  cursor: pointer;
-  padding: 0;
-}
-.tg-dot.is-active{
-  opacity: 1;
-  background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(236,72,153,.75));
-  box-shadow: 0 10px 26px rgba(124, 58, 237, 0.45);
 }
 
 /* Contacts */
@@ -665,7 +614,7 @@ button.trust-chip{
   transform: translateY(0);
 }
 
-/* Modal (centered + scroll-safe) */
+/* Modal */
 body.modal-open{ overflow: hidden; }
 
 .modal{
@@ -719,7 +668,7 @@ body.modal-open{ overflow: hidden; }
 .modal-list li{ margin: 7px 0; }
 .modal-actions{ display: flex; flex-wrap: wrap; gap: 10px; }
 
-/* FAQ rows reused inside modal */
+/* FAQ */
 .faq-list{ display: grid; gap: 10px; }
 .faq-row{
   padding: 12px 12px;
