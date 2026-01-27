@@ -91,8 +91,6 @@ section{ scroll-margin-top: 92px; }
   align-items: center;
   gap: 18px;
 }
-
-/* Links + button-link (for disclaimer) */
 .nav-menu a,
 .nav-menu button{
   text-decoration: none;
@@ -291,10 +289,7 @@ section{ scroll-margin-top: 92px; }
   text-decoration: none;
   user-select: none;
 }
-button.trust-chip{
-  appearance: none;
-  font-family: inherit;
-}
+button.trust-chip{ appearance: none; font-family: inherit; }
 .trust-chip.action{
   cursor: pointer;
   border-color: rgba(167, 139, 250, 0.36);
@@ -384,7 +379,7 @@ button.trust-chip{
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
   gap: 22px;
-  align-items: stretch; /* to keep both panels same visual height */
+  align-items: stretch;
 }
 .glass{
   background: rgba(18, 8, 40, 0.62);
@@ -412,11 +407,8 @@ button.trust-chip{
   border: 1px solid rgba(167, 139, 250, 0.28);
 }
 
-/* FAQ CTA button row inside left panel */
-.faq-cta{
-  margin-top: 12px;
-  display: flex;
-}
+/* FAQ CTA */
+.faq-cta{ margin-top: 12px; display: flex; }
 
 /* Changelog */
 .changelog{
@@ -438,19 +430,27 @@ button.trust-chip{
 .changelog-title{ font-weight: 950; font-size: 1.1rem; }
 .changelog-sub{ color: rgba(245,243,255,.62); font-size: .92rem; }
 .changelog-action{ min-width: unset; white-space: nowrap; }
-.changelog-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
+
+.changelog-actions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
-.change{
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(167, 139, 250, 0.18);
-  background: rgba(18, 8, 40, 0.35);
-  padding: 10px 12px;
+
+.release-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(167, 139, 250, 0.28);
+  background: rgba(18, 8, 40, 0.40);
+  color: rgba(167, 139, 250, 0.95);
+  font-weight: 950;
+  font-size: .92rem;
+  vertical-align: middle;
 }
-.change-k{ font-weight: 950; margin-bottom: 2px; }
-.change-v{ color: var(--text-muted); font-size: .95rem; }
 
 /* MVZ panel */
 .mvz-panel-header{
@@ -500,12 +500,53 @@ button.trust-chip{
   color: var(--text-muted);
 }
 .install-mini-list li{ margin: 6px 0; }
-.install-mini-link{
-  width: 100%;
-  justify-content: center;
+.install-mini-link{ width: 100%; justify-content: center; }
+
+/* Release notes (body релиза) */
+.release-notes{
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(167, 139, 250, 0.22);
+  background: rgba(18, 8, 40, 0.45);
+  box-shadow: var(--shadow-soft);
+  padding: 12px 14px;
+}
+.release-notes.compact{
+  box-shadow: none;
+  background: rgba(18, 8, 40, 0.35);
+}
+.release-notes ul{
+  margin: 0 0 0 18px;
+  color: var(--text-muted);
+}
+.release-notes li{ margin: 6px 0; }
+.notes-empty{ color: var(--text-muted); font-size: .95rem; }
+
+.notes-skeleton{
+  height: 12px;
+  border-radius: 999px;
+  margin: 10px 0;
+  background: linear-gradient(90deg,
+    rgba(18, 8, 40, 0.25),
+    rgba(18, 8, 40, 0.60),
+    rgba(18, 8, 40, 0.25)
+  );
+  background-size: 200% 100%;
+  animation: notesShimmer 1.2s ease-in-out infinite;
+}
+@keyframes notesShimmer{
+  from{ background-position: 0% 0; }
+  to{ background-position: 200% 0; }
+}
+.mini-link{
+  color: rgba(167,139,250,.95);
+  text-decoration: none;
+}
+.mini-link:hover{
+  color: rgba(236,72,153,.95);
+  text-decoration: underline;
 }
 
-/* Telegram */
+/* Telegram: 2 окна как было */
 .tg-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 420px));
@@ -573,7 +614,7 @@ button.trust-chip{
   transform: translateY(0);
 }
 
-/* Modal (centered + scroll-safe) */
+/* Modal */
 body.modal-open{ overflow: hidden; }
 
 .modal{
@@ -627,7 +668,7 @@ body.modal-open{ overflow: hidden; }
 .modal-list li{ margin: 7px 0; }
 .modal-actions{ display: flex; flex-wrap: wrap; gap: 10px; }
 
-/* FAQ rows reused inside modal */
+/* FAQ */
 .faq-list{ display: grid; gap: 10px; }
 .faq-row{
   padding: 12px 12px;
@@ -643,6 +684,7 @@ body.modal-open{ overflow: hidden; }
   .grid-2{ grid-template-columns: 1fr; }
   .strip-sep{ display: none; }
   .changelog-head{ grid-template-columns: 1fr; }
+  .changelog-actions{ justify-content: flex-start; }
 }
 @media (max-width: 640px){
   .nav-menu{ display: none; }
