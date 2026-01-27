@@ -631,3 +631,36 @@ body.modal-open{ overflow: hidden; }
 
   .modal{ padding: 16px; }
 }
+/* NEW: Hero small actions row */
+.hero-aux{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn.tiny{
+  padding: 9px 12px;
+  font-size: .92rem;
+  min-width: unset;
+  opacity: .86;
+}
+.btn.tiny:hover{ opacity: 1; }
+
+/* NEW: modal long-text formatting */
+.modal-body{
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: .96rem;
+  line-height: 1.65;
+}
+.modal-body ol{
+  margin-left: 18px;
+}
+.modal-body li{
+  margin: 10px 0;
+}
+.modal-body b{
+  color: rgba(245, 243, 255, 0.92);
+}
