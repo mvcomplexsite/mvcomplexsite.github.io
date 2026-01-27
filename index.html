@@ -65,9 +65,9 @@
         <div class="hero-trust" aria-label="Trust bar">
           <span class="trust-chip">Windows 10/11</span>
 
-          <a class="trust-chip action" id="release-link-latest"
+          <a class="trust-chip action js-release-link"
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
-             target="_blank" rel="noopener">Последний релиз</a>
+             target="_blank" rel="noopener">Страница релиза</a>
 
           <button class="trust-chip action" type="button" data-modal-open="mvz-changelog">
             Changelog
@@ -155,8 +155,7 @@
                 <span class="release-badge" id="release-version-2">MVZ 1.4</span>
               </div>
               <div class="changelog-sub">
-                Дата релиза: <span id="release-date-2">—</span>.
-                Полный список — в Changelog (авто подтягивается).
+                Дата релиза: <span id="release-date-2">—</span>
               </div>
             </div>
 
@@ -165,25 +164,17 @@
                 Открыть Changelog
               </button>
 
-              <a class="btn ghost small changelog-action" id="release-link-latest-2"
+              <a class="btn ghost small changelog-action js-release-link"
                  href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
-                 target="_blank" rel="noopener">Открыть релиз</a>
+                 target="_blank" rel="noopener">Страница релиза</a>
             </div>
           </div>
 
-          <div class="changelog-grid">
-            <div class="change">
-              <div class="change-k">Автообновление</div>
-              <div class="change-v">Приложение само проверяет новые версии и обновляется.</div>
-            </div>
-            <div class="change">
-              <div class="change-k">UI/UX</div>
-              <div class="change-v">Доводки интерфейса, мелочи, аккуратность.</div>
-            </div>
-            <div class="change">
-              <div class="change-k">Стабильность</div>
-              <div class="change-v">Фиксы и улучшения совместимости под Windows.</div>
-            </div>
+          <!-- Здесь автозаполнение из body релиза -->
+          <div class="release-notes compact" id="release-notes-preview">
+            <div class="notes-skeleton"></div>
+            <div class="notes-skeleton"></div>
+            <div class="notes-skeleton"></div>
           </div>
         </div>
 
@@ -258,25 +249,26 @@
       </div>
     </section>
 
-    <!-- TELEGRAM POSTS -->
+    <!-- TELEGRAM POSTS (как было: 2 окна, без автосмены) -->
     <section id="news" class="section">
       <div class="container reveal">
         <h2 class="section-title">Новости (Telegram)</h2>
-        <p class="section-subtitle">2 поста на экране + пролистывание без дерганья страницы.</p>
+        <p class="section-subtitle">Апдейты MVZ и анонсы — прямо из Telegram‑канала.</p>
 
-        <div class="tg-slider">
-          <div class="tg-slider-head">
-            <button class="tg-nav" type="button" id="tg-prev" aria-label="Предыдущие посты">←</button>
-            <div class="tg-slider-title">Лента</div>
-            <button class="tg-nav" type="button" id="tg-next" aria-label="Следующие посты">→</button>
+        <div class="tg-grid">
+          <div class="tg-card">
+            <script async src="https://telegram.org/js/telegram-widget.js?22"
+                    data-telegram-post="motyait2/55"
+                    data-width="100%"
+                    data-userpic="true"></script>
           </div>
 
-          <div class="tg-grid tg-grid-2" id="tg-grid">
-            <div class="tg-card tg-slot" id="tg-slot-0" aria-label="Telegram post slot 1"></div>
-            <div class="tg-card tg-slot" id="tg-slot-1" aria-label="Telegram post slot 2"></div>
+          <div class="tg-card">
+            <script async src="https://telegram.org/js/telegram-widget.js?22"
+                    data-telegram-post="motyait2/57"
+                    data-width="100%"
+                    data-userpic="true"></script>
           </div>
-
-          <div class="tg-dots" id="tg-dots" aria-label="Telegram post dots"></div>
         </div>
 
         <div class="tg-more">
@@ -337,7 +329,7 @@
     </div>
   </div>
 
-  <!-- Modal: Changelog (auto) -->
+  <!-- Modal: Changelog (body из GitHub релиза) -->
   <div class="modal" id="mvz-changelog" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -352,21 +344,17 @@
       </p>
 
       <div class="modal-actions" style="margin-bottom: 10px;">
-        <a class="btn primary small" id="release-link-latest-3"
+        <a class="btn primary small js-release-link"
            href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
            target="_blank" rel="noopener">Открыть релиз</a>
         <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
       </div>
 
-      <div class="changelog-list" id="changelog-list">
-        <div class="change">
-          <div class="change-k">MVZ 1.4</div>
-          <div class="change-v">Автообновление + доводка UI + фиксы стабильности.</div>
-        </div>
-      </div>
-
-      <div class="changelog-foot">
-        <span class="changelog-foot-text">Changelog обновляется автоматически по релизам GitHub.</span>
+      <div class="release-notes" id="release-notes-full">
+        <div class="notes-skeleton"></div>
+        <div class="notes-skeleton"></div>
+        <div class="notes-skeleton"></div>
+        <div class="notes-skeleton"></div>
       </div>
     </div>
   </div>
@@ -406,7 +394,7 @@
     </div>
   </div>
 
-  <!-- Modal: Disclaimer (FULL, not shortened) -->
+  <!-- Modal: Disclaimer (полный, без сокращений) -->
   <div class="modal" id="mvz-disclaimer" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -508,7 +496,7 @@
       });
     })();
 
-    // Modal open/close (with focus trap)
+    // Modal open/close (with focus restore)
     (function(){
       const body = document.body;
       let lastActive = null;
@@ -588,9 +576,15 @@
       });
     })();
 
-    // Auto version/date + links from GitHub "latest release" endpoint [web:190]
+    // GitHub Release: version/date/link + body notes (tag MVZ) [web:190]
     (function(){
-      const API_LATEST = 'https://api.github.com/repos/mvcomplexsite/mvcomplexsite.github.io/releases/latest';
+      const OWNER = 'mvcomplexsite';
+      const REPO = 'mvcomplexsite.github.io';
+      const TAG = 'MVZ';
+
+      const API_BY_TAG = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${TAG}`;
+
+      const releaseLinks = Array.from(document.querySelectorAll('.js-release-link'));
 
       const v1 = document.getElementById('release-version');
       const v2 = document.getElementById('release-version-2');
@@ -600,9 +594,8 @@
       const d2 = document.getElementById('release-date-2');
       const d3 = document.getElementById('release-date-3');
 
-      const l1 = document.getElementById('release-link-latest');
-      const l2 = document.getElementById('release-link-latest-2');
-      const l3 = document.getElementById('release-link-latest-3');
+      const notesPreview = document.getElementById('release-notes-preview');
+      const notesFull = document.getElementById('release-notes-full');
 
       function fmtDate(iso){
         try{
@@ -614,7 +607,63 @@
         }catch(_){ return '—'; }
       }
 
-      fetch(API_LATEST)
+      function escapeHtml(s){
+        return String(s)
+          .replaceAll('&','&amp;')
+          .replaceAll('<','&lt;')
+          .replaceAll('>','&gt;')
+          .replaceAll('"','&quot;')
+          .replaceAll("'","&#039;");
+      }
+
+      function stripMd(s){
+        if (!s) return '';
+        let t = String(s);
+
+        // links: [text](url) -> text
+        t = t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+
+        // headings (#, ##, etc)
+        t = t.replace(/^\s{0,3}#{1,6}\s+/gm, '');
+
+        // bold/italic/code markers (light strip)
+        t = t.replace(/[*_`]/g, '');
+
+        return t.trim();
+      }
+
+      function bodyToItems(body, maxItems){
+        const t = stripMd(body);
+        const lines = t.split('\n').map(x => x.trim()).filter(Boolean);
+
+        // если есть буллеты — используем их
+        const bullet = lines
+          .map(x => x.replace(/^[-•*]\s+/, '').trim())
+          .filter(Boolean);
+
+        const arr = (bullet.length ? bullet : lines).slice(0, maxItems);
+        return arr;
+      }
+
+      function renderNotes(targetEl, items, compact){
+        if (!targetEl) return;
+
+        if (!items || !items.length){
+          targetEl.innerHTML = `<div class="notes-empty">Описание релиза не заполнено.</div>`;
+          return;
+        }
+
+        if (compact){
+          const li = items.slice(0, 4).map(x => `<li>${escapeHtml(x)}</li>`).join('');
+          targetEl.innerHTML = `<ul>${li}</ul>`;
+          return;
+        }
+
+        const li = items.map(x => `<li>${escapeHtml(x)}</li>`).join('');
+        targetEl.innerHTML = `<ul>${li}</ul>`;
+      }
+
+      fetch(API_BY_TAG)
         .then(r => r.ok ? r.json() : Promise.reject(r))
         .then(rel => {
           const version = (rel.name && String(rel.name).trim()) || rel.tag_name || 'MVZ';
@@ -628,165 +677,17 @@
           if (d2) d2.textContent = date;
           if (d3) d3.textContent = date;
 
-          if (rel.html_url) {
-            if (l1) l1.href = rel.html_url;
-            if (l2) l2.href = rel.html_url;
-            if (l3) l3.href = rel.html_url;
+          if (rel.html_url){
+            releaseLinks.forEach(a => a.setAttribute('href', rel.html_url));
           }
+
+          const items = bodyToItems(rel.body || '', 12);
+          renderNotes(notesPreview, items, true);
+          renderNotes(notesFull, items, false);
         })
-        .catch(() => {});
-    })();
-
-    // Auto changelog list from GitHub releases list [web:193]
-    (function(){
-      const API_LIST = 'https://api.github.com/repos/mvcomplexsite/mvcomplexsite.github.io/releases?per_page=8';
-      const box = document.getElementById('changelog-list');
-      if (!box) return;
-
-      function fmtDate(iso){
-        try{
-          const dt = new Date(iso);
-          const dd = String(dt.getDate()).padStart(2,'0');
-          const mm = String(dt.getMonth()+1).padStart(2,'0');
-          const yy = dt.getFullYear();
-          return `${dd}.${mm}.${yy}`;
-        }catch(_){ return '—'; }
-      }
-
-      fetch(API_LIST)
-        .then(r => r.ok ? r.json() : Promise.reject(r))
-        .then(list => {
-          if (!Array.isArray(list) || !list.length) return;
-
-          box.innerHTML = '';
-          list
-            .filter(x => x && !x.draft)
-            .slice(0, 8)
-            .forEach(rel => {
-              const title = (rel.name && String(rel.name).trim()) || rel.tag_name || 'Release';
-              const date = rel.published_at ? fmtDate(rel.published_at) : '—';
-              const url = rel.html_url || '#';
-
-              const row = document.createElement('div');
-              row.className = 'change';
-              row.innerHTML = `
-                <div class="change-k">${title}</div>
-                <div class="change-v">
-                  ${date} · <a class="mini-link" href="${url}" target="_blank" rel="noopener">Открыть релиз</a>
-                </div>
-              `;
-              box.appendChild(row);
-            });
-        })
-        .catch(() => {});
-    })();
-
-    // Telegram: 2 slots + cache in DOM (без удаления, без прыжков) [web:185]
-    (function(){
-      const TG_POSTS = [
-        'motyait2/55',
-        'motyait2/57'
-        // добавляй сюда новые посты: 'motyait2/58'
-      ];
-
-      const slot0 = document.getElementById('tg-slot-0');
-      const slot1 = document.getElementById('tg-slot-1');
-      const dots = document.getElementById('tg-dots');
-      const btnPrev = document.getElementById('tg-prev');
-      const btnNext = document.getElementById('tg-next');
-
-      if (!slot0 || !slot1 || !dots || !btnPrev || !btnNext) return;
-
-      // Стартовый индекс (какая пара сейчас показана)
-      let start = 0;
-      let timer = null;
-
-      function buildSlot(slotEl, slotIndex){
-        slotEl.innerHTML = '';
-        slotEl.classList.add('tg-slot-ready');
-
-        TG_POSTS.forEach((post, i) => {
-          const frame = document.createElement('div');
-          frame.className = 'tg-frame';
-          frame.setAttribute('data-post-idx', String(i));
-
-          // Важно: Telegram виджет строится по data-telegram-post="channel/ID" [web:185]
-          const s = document.createElement('script');
-          s.async = true;
-          s.src = 'https://telegram.org/js/telegram-widget.js?22';
-          s.setAttribute('data-telegram-post', post);
-          s.setAttribute('data-width', '100%');
-          s.setAttribute('data-userpic', 'true');
-
-          frame.appendChild(s);
-          slotEl.appendChild(frame);
+        .catch(() => {
+          // если API отвалился — оставляем дефолты/скелетоны
         });
-      }
-
-      function setActive(){
-        const a = start % TG_POSTS.length;
-        const b = (start + 1) % TG_POSTS.length;
-
-        // slot 0 shows a
-        slot0.querySelectorAll('.tg-frame').forEach(fr => {
-          fr.classList.toggle('is-active', fr.getAttribute('data-post-idx') === String(a));
-        });
-
-        // slot 1 shows b
-        slot1.querySelectorAll('.tg-frame').forEach(fr => {
-          fr.classList.toggle('is-active', fr.getAttribute('data-post-idx') === String(b));
-        });
-
-        // dots indicate start
-        dots.querySelectorAll('.tg-dot').forEach((d, i) => {
-          d.classList.toggle('is-active', i === a);
-        });
-      }
-
-      function buildDots(){
-        dots.innerHTML = '';
-        TG_POSTS.forEach((_, i) => {
-          const b = document.createElement('button');
-          b.type = 'button';
-          b.className = 'tg-dot' + (i === 0 ? ' is-active' : '');
-          b.setAttribute('aria-label', `Пост ${i+1}`);
-          b.addEventListener('click', () => {
-            // по клику ставим этот пост первым в паре
-            start = i;
-            setActive();
-            restart();
-          });
-          dots.appendChild(b);
-        });
-      }
-
-      function restart(){
-        if (timer) clearInterval(timer);
-        timer = setInterval(() => {
-          start = (start + 1) % TG_POSTS.length; // сдвиг на 1: левый становится правым, правый — следующий
-          setActive();
-        }, 12000);
-      }
-
-      buildSlot(slot0, 0);
-      buildSlot(slot1, 1);
-      buildDots();
-
-      btnPrev.addEventListener('click', () => {
-        start = (start - 1 + TG_POSTS.length) % TG_POSTS.length;
-        setActive();
-        restart();
-      });
-
-      btnNext.addEventListener('click', () => {
-        start = (start + 1) % TG_POSTS.length;
-        setActive();
-        restart();
-      });
-
-      // Первый показ
-      setActive();
-      restart();
     })();
   </script>
 </body>
