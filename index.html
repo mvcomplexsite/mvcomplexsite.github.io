@@ -34,6 +34,8 @@
   <!-- Sticky mini CTA (появляется после hero) -->
   <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
     <div class="sticky-cta-inner container">
+      <button class="sticky-close" type="button" aria-label="Закрыть" title="Закрыть">×</button>
+
       <div class="sticky-cta-left">
         <div class="sticky-cta-title">MVZ</div>
         <div class="sticky-cta-meta">
@@ -150,7 +152,10 @@
           <div class="details-body">
             <div class="cards compact">
               <article class="card featured">
-                <h3>MVZ</h3>
+                <h3 class="card-title">
+                  <img class="card-mini-logo" src="assets/logo-mvz.jpg" alt="MVZ logo" />
+                  <span>MVZ</span>
+                </h3>
                 <p>Оптимизация через DNS‑серверы. Windows‑клиент с автообновлением и темами.</p>
                 <a href="#mvz" class="card-link">Перейти к описанию →</a>
               </article>
@@ -592,21 +597,43 @@
       });
     })();
 
-    // Sticky CTA show/hide
+    // Sticky CTA show/hide + dismiss
     (function(){
       const bar = document.getElementById('sticky-cta');
       const hero = document.getElementById('hero-sentinel');
       if (!bar || !hero) return;
 
-      const obs = new IntersectionObserver((entries) => {
-        const isHeroVisible = entries[0]?.isIntersecting;
-        if (isHeroVisible) {
-          bar.classList.remove('is-visible');
-          bar.setAttribute('aria-hidden', 'true');
-        } else {
+      const closeBtn = bar.querySelector('.sticky-close');
+      const STORAGE_KEY = 'mvz_sticky_dismissed_v1';
+
+      function setVisible(on){
+        if (on) {
           bar.classList.add('is-visible');
           bar.setAttribute('aria-hidden', 'false');
+        } else {
+          bar.classList.remove('is-visible');
+          bar.setAttribute('aria-hidden', 'true');
         }
+      }
+
+      try{
+        if (localStorage.getItem(STORAGE_KEY) === '1') {
+          setVisible(false);
+          return;
+        }
+      }catch(_){}
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          setVisible(false);
+          try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(_){}
+        });
+      }
+
+      const obs = new IntersectionObserver((entries) => {
+        const isHeroVisible = entries[0]?.isIntersecting;
+        if (isHeroVisible) setVisible(false);
+        else setVisible(true);
       }, { threshold: 0.2 });
 
       obs.observe(hero);
