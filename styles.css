@@ -875,3 +875,6 @@ body.modal-open{ overflow: hidden; }
   box-shadow: 0 10px 28px rgba(0,0,0,.25);
   flex: 0 0 auto;
 }
+
+.nav{ justify-content: flex-start; }
+.nav-menu{ margin-left: auto; }
