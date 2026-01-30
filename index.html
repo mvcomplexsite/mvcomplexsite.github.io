@@ -31,6 +31,32 @@
     </div>
   </header>
 
+  <!-- Sticky mini CTA (появляется после hero) -->
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <div class="sticky-cta-inner container">
+      <div class="sticky-cta-left">
+        <div class="sticky-cta-title">MVZ</div>
+        <div class="sticky-cta-meta">
+          <span class="sticky-pill">Windows 10/11</span>
+          <span class="sticky-sep">•</span>
+          <span class="sticky-meta">Версия: <b id="release-version-cta">MVZ</b></span>
+          <span class="sticky-sep">•</span>
+          <span class="sticky-meta">Дата: <b id="release-date-cta">—</b></span>
+        </div>
+      </div>
+
+      <div class="sticky-cta-right">
+        <a class="btn primary small js-download"
+           href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
+           target="_blank" rel="noopener">Скачать</a>
+
+        <button class="btn ghost small" type="button" data-modal-open="mvz-changelog">
+          Changelog
+        </button>
+      </div>
+    </div>
+  </div>
+
   <main>
     <!-- HERO -->
     <section id="home" class="hero">
@@ -40,7 +66,7 @@
         <div class="blob b3"></div>
       </div>
 
-      <div class="container hero-inner reveal">
+      <div class="container hero-inner reveal" id="hero-sentinel">
         <div class="hero-top">
           <img class="hero-logo" src="assets/logo-mvz.jpg" alt="MVZ logo" />
           <div class="hero-title-wrap">
@@ -112,27 +138,30 @@
             <div class="strip-v">Windows</div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="container reveal">
-        <h2 class="section-title">Проекты</h2>
-        <p class="section-subtitle">Сейчас основной фокус — MVZ.</p>
+        <!-- Projects (свернули, чтобы не повторялось в лоб) -->
+        <details class="details-card" id="projects">
+          <summary class="details-summary">
+            <span class="details-title">Проекты</span>
+            <span class="details-subtitle">Сейчас основной фокус — MVZ.</span>
+            <span class="details-chevron" aria-hidden="true">▾</span>
+          </summary>
 
-        <div class="cards compact">
-          <article class="card featured">
-            <h3>MVZ</h3>
-            <p>Оптимизация через DNS‑серверы. Windows‑клиент с автообновлением и темами.</p>
-            <a href="#mvz" class="card-link">Перейти к описанию →</a>
-          </article>
+          <div class="details-body">
+            <div class="cards compact">
+              <article class="card featured">
+                <h3>MVZ</h3>
+                <p>Оптимизация через DNS‑серверы. Windows‑клиент с автообновлением и темами.</p>
+                <a href="#mvz" class="card-link">Перейти к описанию →</a>
+              </article>
 
-          <article class="card muted">
-            <h3>Другие продукты MV</h3>
-            <p>В разработке.</p>
-          </article>
-        </div>
+              <article class="card muted">
+                <h3>Другие продукты MV</h3>
+                <p>В разработке.</p>
+              </article>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -170,7 +199,6 @@
             </div>
           </div>
 
-          <!-- сюда грузится body релиза -->
           <div class="release-notes compact" id="release-notes-preview">
             <div class="notes-skeleton"></div>
             <div class="notes-skeleton"></div>
@@ -244,10 +272,13 @@
             </div>
           </div>
         </div>
+
+        <!-- Product “divider” -->
+        <div class="section-divider reveal" aria-hidden="true"></div>
       </div>
     </section>
 
-    <!-- TELEGRAM POSTS (2 окна, как было) -->
+    <!-- TELEGRAM -->
     <section id="news" class="section">
       <div class="container reveal">
         <h2 class="section-title">Новости (Telegram)</h2>
@@ -561,8 +592,27 @@
       });
     })();
 
+    // Sticky CTA show/hide
+    (function(){
+      const bar = document.getElementById('sticky-cta');
+      const hero = document.getElementById('hero-sentinel');
+      if (!bar || !hero) return;
+
+      const obs = new IntersectionObserver((entries) => {
+        const isHeroVisible = entries[0]?.isIntersecting;
+        if (isHeroVisible) {
+          bar.classList.remove('is-visible');
+          bar.setAttribute('aria-hidden', 'true');
+        } else {
+          bar.classList.add('is-visible');
+          bar.setAttribute('aria-hidden', 'false');
+        }
+      }, { threshold: 0.2 });
+
+      obs.observe(hero);
+    })();
+
     // GitHub release (tag MVZ): version/date/link + body -> список
-    // Endpoint: /repos/{owner}/{repo}/releases/tags/{tag} [web:185]
     (function(){
       const OWNER = 'mvcomplexsite';
       const REPO = 'mvcomplexsite.github.io';
@@ -573,9 +623,12 @@
       const v1 = document.getElementById('release-version');
       const v2 = document.getElementById('release-version-2');
       const v3 = document.getElementById('release-version-3');
+      const v4 = document.getElementById('release-version-cta');
+
       const d1 = document.getElementById('release-date');
       const d2 = document.getElementById('release-date-2');
       const d3 = document.getElementById('release-date-3');
+      const d4 = document.getElementById('release-date-cta');
 
       const notesPreview = document.getElementById('release-notes-preview');
       const notesFull = document.getElementById('release-notes-full');
@@ -602,7 +655,7 @@
       function stripMd(s){
         if (!s) return '';
         let t = String(s);
-        t = t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'); // [txt](url) -> txt
+        t = t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
         t = t.replace(/^\s{0,3}#{1,6}\s+/gm, '');
         t = t.replace(/[*_`]/g, '');
         return t.trim();
@@ -634,10 +687,12 @@
           if (v1) v1.textContent = version;
           if (v2) v2.textContent = version;
           if (v3) v3.textContent = version;
+          if (v4) v4.textContent = version;
 
           if (d1) d1.textContent = date;
           if (d2) d2.textContent = date;
           if (d3) d3.textContent = date;
+          if (d4) d4.textContent = date;
 
           if (rel.html_url){
             releaseLinks.forEach(a => a.setAttribute('href', rel.html_url));
