@@ -7,21 +7,17 @@
   <title>MVComplex — MVZ</title>
   <meta name="description" content="MVZ — GUI приложение для смены DNS-серверов. Удобный аналог DNS Jumper в виде .exe-приложения для Windows." />
 
-  <!-- GitHub release config (можно менять без правки JS) -->
+  <!-- GitHub release config -->
   <meta name="gh-owner" content="mvcomplexsite" />
   <meta name="gh-repo" content="mvcomplexsite.github.io" />
   <meta name="gh-tag" content="MVZ" />
-  <!-- подсказка для авто-поиска установщика в assets релиза -->
   <meta name="gh-asset-hint" content="setup" />
 
-  <!-- Theme / social -->
   <meta name="theme-color" content="#05060b" />
   <meta property="og:title" content="MVZ — DNS клиент для Windows" />
-  <meta property="og:description" content="Оптимизация через DNS‑серверы. Автообновление, темы UI, быстрые профили." />
+  <meta property="og:description" content="Оптимизация через DNS‑серверы. Автообновление, профили, темы UI." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mvcomplexsite.github.io/" />
-  <!-- Если добавишь картинку: assets/og.png -->
-  <!-- <meta property="og:image" content="https://mvcomplexsite.github.io/assets/og.png" /> -->
 
   <link rel="preconnect" href="https://api.github.com" crossorigin />
   <link rel="preconnect" href="https://telegram.org" crossorigin />
@@ -39,6 +35,7 @@
       <nav class="nav-menu" aria-label="Навигация">
         <a href="#home">Главная</a>
         <a href="#mvz">MVZ</a>
+        <a href="#vpn">VPN</a>
         <a href="#news">Новости</a>
 
         <button class="nav-disclaimer" type="button" data-modal-open="mvz-disclaimer">
@@ -63,7 +60,7 @@
         <div class="drawer-head">
           <div class="drawer-brand">
             <div class="drawer-title">MVComplex</div>
-            <div class="drawer-sub">MVZ / новости / контакты</div>
+            <div class="drawer-sub">MVZ / VPN / новости / контакты</div>
           </div>
 
           <button class="drawer-close" type="button" aria-label="Закрыть меню" data-drawer-close>×</button>
@@ -72,6 +69,7 @@
         <div class="drawer-body">
           <a class="drawer-link" href="#home" data-drawer-close>Главная</a>
           <a class="drawer-link" href="#mvz" data-drawer-close>MVZ</a>
+          <a class="drawer-link" href="#vpn" data-drawer-close>VPN</a>
           <a class="drawer-link" href="#news" data-drawer-close>Новости</a>
           <a class="drawer-link" href="#contact" data-drawer-close>Контакты</a>
 
@@ -88,9 +86,15 @@
               <span class="drawer-mini-k">Дата</span>
               <b class="drawer-mini-v" id="release-date-drawer">—</b>
             </div>
+            <div class="drawer-mini-row">
+              <span class="drawer-mini-k">Размер</span>
+              <b class="drawer-mini-v" id="release-size-drawer">—</b>
+            </div>
           </div>
 
-          <a class="btn primary js-download drawer-download" href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe" target="_blank" rel="noopener">
+          <a class="btn primary js-download drawer-download"
+             href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
+             target="_blank" rel="noopener">
             Скачать для Windows (.exe)
           </a>
 
@@ -103,7 +107,7 @@
     </div>
   </header>
 
-  <!-- Sticky mini CTA (появляется после hero) -->
+  <!-- Sticky mini CTA -->
   <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
     <div class="sticky-cta-inner container">
       <button class="sticky-close" type="button" aria-label="Закрыть" title="Закрыть">×</button>
@@ -159,7 +163,7 @@
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
              target="_blank" rel="noopener">Скачать для Windows (.exe)</a>
 
-          <button class="btn ghost" type="button" data-modal-open="mvz-help">Если не работает</button>
+          <a class="btn ghost" href="#mvz">Описание</a>
         </div>
 
         <div class="hero-trust" aria-label="Быстрые действия">
@@ -183,6 +187,7 @@
           <span class="pill">Профили</span>
           <span class="pill">Автообновление</span>
           <span class="pill">Темы UI</span>
+          <span class="pill">VPN (v1.6)</span>
         </div>
 
         <div class="kpi-grid" aria-label="Информация о релизе">
@@ -293,19 +298,19 @@
 
             <div class="feature-grid" aria-label="Коротко по делу">
               <div class="feature">
-                <div class="feature-ico" aria-hidden="true">⚡</div>
+                <div class="feature-ico" aria-hidden="true"><span class="ico"></span></div>
                 <div class="feature-t">Быстрый старт</div>
                 <div class="feature-d">Скачать → запустить → выбрать профиль → включить.</div>
               </div>
               <div class="feature">
-                <div class="feature-ico" aria-hidden="true">🧩</div>
+                <div class="feature-ico" aria-hidden="true"><span class="ico alt"></span></div>
                 <div class="feature-t">Профили DNS</div>
                 <div class="feature-d">Под разные игры/провайдеров, переключение в пару кликов.</div>
               </div>
               <div class="feature">
-                <div class="feature-ico" aria-hidden="true">🛡️</div>
+                <div class="feature-ico" aria-hidden="true"><span class="ico warn"></span></div>
                 <div class="feature-t">Прозрачность</div>
-                <div class="feature-d">Это не VPN (оптимизация через DNS‑серверы).</div>
+                <div class="feature-d">MVZ — не VPN (оптимизация через DNS‑серверы).</div>
               </div>
             </div>
 
@@ -366,6 +371,170 @@
         </div>
 
         <div class="section-divider reveal" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- VPN (анонс) -->
+    <section id="vpn" class="section">
+      <div class="container reveal">
+        <div class="section-head">
+          <h2 class="section-title">VPN (в разработке, версия 1.6)</h2>
+          <p class="section-subtitle">
+            Скоро добавим VPN‑модуль в MVZ 1.6: упор на удобство, приватность и безопасное подключение в публичных сетях.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card glass">
+            <h3>Что будет</h3>
+            <ul class="list">
+              <li>Включение/выключение в один клик</li>
+              <li>Быстрый выбор локаций/профилей (если будет доступно)</li>
+              <li>Статус, лог и диагностика соединения</li>
+            </ul>
+          </article>
+
+          <article class="card glass">
+            <h3>Важно</h3>
+            <p>
+              VPN‑модуль будет выпускаться отдельно по мере готовности.
+              Используй любые сетевые инструменты законно и ответственно — детали и условия будут уточняться в релизе.
+            </p>
+            <div class="vpn-actions">
+              <a class="btn ghost" href="#roadmap">Посмотреть roadmap</a>
+              <a class="btn ghost" href="https://t.me/motyait2" target="_blank" rel="noopener">Следить в Telegram</a>
+            </div>
+          </article>
+
+          <article class="card glass">
+            <h3>Ранний доступ</h3>
+            <p>Если хочешь тестировать 1.6 раньше — пиши в Telegram, добавим в список.</p>
+            <a class="btn primary" href="https://t.me/motyait2" target="_blank" rel="noopener">Написать</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section">
+      <div class="container reveal">
+        <h2 class="section-title">Как работает MVZ</h2>
+        <p class="section-subtitle">Коротко: выбираешь DNS‑профиль → MVZ применяет настройки → ты проверяешь пинг.</p>
+
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-n">01</div>
+            <div class="t-b">
+              <div class="t-t">Скачай и установи</div>
+              <div class="t-d">Официальный установщик берётся из GitHub Releases.</div>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="t-n">02</div>
+            <div class="t-b">
+              <div class="t-t">Выбери профиль</div>
+              <div class="t-d">Под игру/провайдера, переключение в пару кликов.</div>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="t-n">03</div>
+            <div class="t-b">
+              <div class="t-t">Включи MVZ</div>
+              <div class="t-d">Применение DNS, быстрый откат при необходимости.</div>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="t-n">04</div>
+            <div class="t-b">
+              <div class="t-t">Проверь результат</div>
+              <div class="t-d">Сравни стабильность и задержку до/после.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOADS -->
+    <section id="downloads" class="section">
+      <div class="container reveal">
+        <h2 class="section-title">Скачать</h2>
+        <p class="section-subtitle">Официальная сборка — из GitHub Releases.</p>
+
+        <div class="cards">
+          <article class="card glass">
+            <h3>Stable</h3>
+            <p>Рекомендуемый релиз для большинства.</p>
+            <a class="btn primary js-download" href="#" target="_blank" rel="noopener">Скачать .exe</a>
+          </article>
+
+          <article class="card glass">
+            <h3>Changelog</h3>
+            <p>Полный список изменений по версиям.</p>
+            <button class="btn ghost" type="button" data-modal-open="mvz-changelog">Открыть</button>
+          </article>
+
+          <article class="card glass">
+            <h3>Roadmap / планы</h3>
+            <p>Что делаем дальше, без лишних обещаний.</p>
+            <a class="btn ghost" href="#roadmap">Перейти</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="section">
+      <div class="container reveal">
+        <h2 class="section-title">Roadmap</h2>
+        <p class="section-subtitle">План развития — по готовности и по фидбеку.</p>
+
+        <div class="roadmap">
+          <div class="rm-item done">
+            <div class="rm-dot"></div>
+            <div>
+              <div class="rm-t">Релизы, сайт и changelog</div>
+              <div class="rm-d">Автоподтягивание версии/заметок релиза, удобные ссылки.</div>
+            </div>
+          </div>
+
+          <div class="rm-item">
+            <div class="rm-dot"></div>
+            <div>
+              <div class="rm-t">Библиотека DNS‑профилей</div>
+              <div class="rm-d">Каталог профилей и быстрые рекомендации.</div>
+            </div>
+          </div>
+
+          <div class="rm-item">
+            <div class="rm-dot"></div>
+            <div>
+              <div class="rm-t">VPN‑модуль (цель: 1.6)</div>
+              <div class="rm-d">Отдельный модуль: подключение, статус, лог и диагностика.</div>
+            </div>
+          </div>
+
+          <div class="rm-item">
+            <div class="rm-dot"></div>
+            <div>
+              <div class="rm-t">Диагностика “почему не работает”</div>
+              <div class="rm-d">Проверки прав, защиты, конфликтов и быстрые решения.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+      <div class="container reveal">
+        <h2 class="section-title">Интерфейс</h2>
+        <p class="section-subtitle">Добавь свои картинки в assets/ (ui-1.jpg, ui-2.jpg, ui-3.jpg).</p>
+
+        <div class="gallery">
+          <div class="g-card"><div class="g-ph">assets/ui-1.jpg</div></div>
+          <div class="g-card"><div class="g-ph">assets/ui-2.jpg</div></div>
+          <div class="g-card"><div class="g-ph">assets/ui-3.jpg</div></div>
+        </div>
       </div>
     </section>
 
@@ -490,6 +659,11 @@
         </div>
 
         <div class="faq-row">
+          <div class="faq-q">Когда будет VPN?</div>
+          <div class="faq-a">Планируем добавить VPN‑модуль в версии 1.6. Детали будут в релизе и в Telegram.</div>
+        </div>
+
+        <div class="faq-row">
           <div class="faq-q">MVZ — это Zapret?</div>
           <div class="faq-a">Нет, это аналог DNS Jumper в виде удобного .exe под Windows.</div>
         </div>
@@ -562,7 +736,6 @@
   </div>
 
   <script>
-    // Helpers
     const $ = (sel, root=document) => root.querySelector(sel);
     const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
@@ -579,6 +752,15 @@
         });
       }, { threshold: 0.12 });
       items.forEach(i => io.observe(i));
+    })();
+
+    // Header scrolled state
+    (function(){
+      const header = document.querySelector('.nav-outer');
+      if (!header) return;
+      const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
     })();
 
     // Scrollspy (desktop nav)
@@ -727,14 +909,38 @@
       });
     })();
 
-    // Sticky CTA show/hide + dismiss
+    // Sticky CTA show/hide + dismiss (cooldown)
     (function(){
       const bar = $('#sticky-cta');
       const hero = $('#hero-sentinel');
       if (!bar || !hero) return;
 
       const closeBtn = bar.querySelector('.sticky-close');
-      const STORAGE_KEY = 'mvz_sticky_dismissed_v2';
+
+      // Настройка: через сколько минут можно снова показать CTA
+      const COOLDOWN_MIN = 10; // <-- поменяй на 5 / 10 / 30
+      const COOLDOWN_MS = COOLDOWN_MIN * 60 * 1000;
+
+      const STORAGE_KEY = 'mvz_sticky_cooldown_until_v1';
+
+      function now(){ return Date.now(); }
+
+      function getCooldownUntil(){
+        try{
+          const v = Number(localStorage.getItem(STORAGE_KEY) || 0);
+          return Number.isFinite(v) ? v : 0;
+        }catch(_){ return 0; }
+      }
+
+      function setCooldown(){
+        try{
+          localStorage.setItem(STORAGE_KEY, String(now() + COOLDOWN_MS));
+        }catch(_){}
+      }
+
+      function cooldownPassed(){
+        return now() >= getCooldownUntil();
+      }
 
       function setVisible(on){
         if (on) {
@@ -746,30 +952,35 @@
         }
       }
 
-      try{
-        if (localStorage.getItem(STORAGE_KEY) === '1') {
-          setVisible(false);
-          return;
-        }
-      }catch(_){}
+      function updateByState(isHeroVisible){
+        if (isHeroVisible) { setVisible(false); return; }
+        if (!cooldownPassed()) { setVisible(false); return; }
+        setVisible(true);
+      }
 
       if (closeBtn) {
         closeBtn.addEventListener('click', () => {
           setVisible(false);
-          try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(_){}
+          setCooldown();
         });
       }
 
       const obs = new IntersectionObserver((entries) => {
         const isHeroVisible = entries[0]?.isIntersecting;
-        if (isHeroVisible) setVisible(false);
-        else setVisible(true);
+        updateByState(!!isHeroVisible);
       }, { threshold: 0.2 });
 
       obs.observe(hero);
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState !== 'visible') return;
+        const r = hero.getBoundingClientRect();
+        const isHeroVisible = r.bottom > 0 && r.top < window.innerHeight;
+        updateByState(isHeroVisible);
+      });
     })();
 
-    // GitHub release (tag): version/date/link + body -> список + download asset (.exe)
+    // GitHub release (tag): version/date/link + body -> список + auto installer asset + size
     (function(){
       const owner = $('meta[name="gh-owner"]')?.content || 'mvcomplexsite';
       const repo  = $('meta[name="gh-repo"]')?.content  || 'mvcomplexsite.github.io';
@@ -798,7 +1009,10 @@
         $('#release-date-drawer'),
       ].filter(Boolean);
 
-      const sizeEl = $('#release-size');
+      const sizeEls = [
+        $('#release-size'),
+        $('#release-size-drawer'),
+      ].filter(Boolean);
 
       const notesPreview = $('#release-notes-preview');
       const notesFull = $('#release-notes-full');
@@ -909,9 +1123,9 @@
         const asset = pickInstallerAsset(rel.assets || []);
         if (asset?.browser_download_url) {
           downloadLinks.forEach(a => a.setAttribute('href', asset.browser_download_url));
-          if (sizeEl) sizeEl.textContent = fmtBytes(asset.size);
+          sizeEls.forEach(el => el.textContent = fmtBytes(asset.size));
         } else {
-          if (sizeEl) sizeEl.textContent = '—';
+          sizeEls.forEach(el => el.textContent = '—');
         }
       }
 
