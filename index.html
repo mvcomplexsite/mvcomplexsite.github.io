@@ -2,18 +2,41 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>MVComplex — MVZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="MVZ — GUI DPI приложение с сменой DNS-серверов. Качественный аналог DNS Zapret в виде .exe-приложения для Windows." />
+
+  <title>MVComplex — MVZ</title>
+  <meta name="description" content="MVZ — GUI приложение для смены DNS-серверов. Удобный аналог DNS Jumper в виде .exe-приложения для Windows." />
+
+  <!-- GitHub release config (можно менять без правки JS) -->
+  <meta name="gh-owner" content="mvcomplexsite" />
+  <meta name="gh-repo" content="mvcomplexsite.github.io" />
+  <meta name="gh-tag" content="MVZ" />
+  <!-- подсказка для авто-поиска установщика в assets релиза -->
+  <meta name="gh-asset-hint" content="setup" />
+
+  <!-- Theme / social -->
+  <meta name="theme-color" content="#05060b" />
+  <meta property="og:title" content="MVZ — DNS клиент для Windows" />
+  <meta property="og:description" content="Оптимизация через DNS‑серверы. Автообновление, темы UI, быстрые профили." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mvcomplexsite.github.io/" />
+  <!-- Если добавишь картинку: assets/og.png -->
+  <!-- <meta property="og:image" content="https://mvcomplexsite.github.io/assets/og.png" /> -->
+
+  <link rel="preconnect" href="https://api.github.com" crossorigin />
+  <link rel="preconnect" href="https://telegram.org" crossorigin />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
   <header class="nav-outer">
     <div class="nav container">
-      <a class="nav-logo" href="#home">MVComplex</a>
+      <a class="nav-logo" href="#home" aria-label="MVComplex — на главную">MVComplex</a>
 
-      <nav class="nav-menu">
+      <nav class="nav-menu" aria-label="Навигация">
         <a href="#home">Главная</a>
         <a href="#mvz">MVZ</a>
         <a href="#news">Новости</a>
@@ -25,6 +48,58 @@
         <a href="#contact">Контакты</a>
       </nav>
 
+      <button class="nav-burger" type="button"
+              aria-label="Открыть меню" aria-controls="nav-drawer" aria-expanded="false"
+              data-drawer-open>
+        <span class="nav-burger-lines" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="drawer" id="nav-drawer" aria-hidden="true">
+      <div class="drawer-overlay" data-drawer-close></div>
+
+      <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Меню">
+        <div class="drawer-head">
+          <div class="drawer-brand">
+            <div class="drawer-title">MVComplex</div>
+            <div class="drawer-sub">MVZ / новости / контакты</div>
+          </div>
+
+          <button class="drawer-close" type="button" aria-label="Закрыть меню" data-drawer-close>×</button>
+        </div>
+
+        <div class="drawer-body">
+          <a class="drawer-link" href="#home" data-drawer-close>Главная</a>
+          <a class="drawer-link" href="#mvz" data-drawer-close>MVZ</a>
+          <a class="drawer-link" href="#news" data-drawer-close>Новости</a>
+          <a class="drawer-link" href="#contact" data-drawer-close>Контакты</a>
+
+          <button class="btn ghost drawer-disclaimer" type="button" data-modal-open="mvz-disclaimer" data-drawer-close>
+            Дисклеймер
+          </button>
+
+          <div class="drawer-mini">
+            <div class="drawer-mini-row">
+              <span class="drawer-mini-k">Версия</span>
+              <b class="drawer-mini-v" id="release-version-drawer">MVZ</b>
+            </div>
+            <div class="drawer-mini-row">
+              <span class="drawer-mini-k">Дата</span>
+              <b class="drawer-mini-v" id="release-date-drawer">—</b>
+            </div>
+          </div>
+
+          <a class="btn primary js-download drawer-download" href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe" target="_blank" rel="noopener">
+            Скачать для Windows (.exe)
+          </a>
+
+          <div class="drawer-actions">
+            <button class="btn ghost small" type="button" data-modal-open="mvz-changelog" data-drawer-close>Changelog</button>
+            <button class="btn ghost small" type="button" data-modal-open="mvz-help" data-drawer-close>Подсказки</button>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -56,7 +131,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main">
     <!-- HERO -->
     <section id="home" class="hero">
       <div class="hero-blobs" aria-hidden="true">
@@ -84,10 +159,10 @@
              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
              target="_blank" rel="noopener">Скачать для Windows (.exe)</a>
 
-          <a class="btn ghost" href="#mvz">Описание</a>
+          <button class="btn ghost" type="button" data-modal-open="mvz-help">Если не работает</button>
         </div>
 
-        <div class="hero-trust" aria-label="Trust bar">
+        <div class="hero-trust" aria-label="Быстрые действия">
           <span class="trust-chip">Windows 10/11</span>
 
           <a class="trust-chip action js-release-link"
@@ -98,47 +173,38 @@
             Changelog
           </button>
 
-          <button class="trust-chip action" type="button" data-modal-open="mvz-help">
-            Подсказки
+          <button class="trust-chip action" type="button" data-modal-open="mvz-disclaimer">
+            Дисклеймер
           </button>
         </div>
 
-        <div class="hero-pills">
+        <div class="hero-pills" aria-label="Ключевые фичи">
           <span class="pill">DNS Servers</span>
-          <span class="pill">Windows</span>
+          <span class="pill">Профили</span>
           <span class="pill">Автообновление</span>
           <span class="pill">Темы UI</span>
         </div>
 
-        <div class="hero-strip">
-          <div class="strip-item">
-            <div class="strip-k">Текущая версия</div>
-            <div class="strip-v" id="release-version">MVZ</div>
+        <div class="kpi-grid" aria-label="Информация о релизе">
+          <div class="kpi-card">
+            <div class="kpi-k">Текущая версия</div>
+            <div class="kpi-v" id="release-version">MVZ</div>
           </div>
-
-          <div class="strip-sep"></div>
-
-          <div class="strip-item">
-            <div class="strip-k">Дата релиза</div>
-            <div class="strip-v" id="release-date">—</div>
+          <div class="kpi-card">
+            <div class="kpi-k">Дата релиза</div>
+            <div class="kpi-v" id="release-date">—</div>
           </div>
-
-          <div class="strip-sep"></div>
-
-          <div class="strip-item">
-            <div class="strip-k">Канал</div>
-            <a class="strip-v link" href="https://t.me/motyait2" target="_blank" rel="noopener">t.me/motyait2</a>
+          <div class="kpi-card">
+            <div class="kpi-k">Размер установщика</div>
+            <div class="kpi-v" id="release-size">—</div>
           </div>
-
-          <div class="strip-sep"></div>
-
-          <div class="strip-item">
-            <div class="strip-k">Платформа</div>
-            <div class="strip-v">Windows</div>
+          <div class="kpi-card">
+            <div class="kpi-k">Канал</div>
+            <a class="kpi-v link" href="https://t.me/motyait2" target="_blank" rel="noopener">t.me/motyait2</a>
           </div>
         </div>
 
-        <!-- Projects (свернули, чтобы не повторялось в лоб) -->
+        <!-- Projects -->
         <details class="details-card" id="projects">
           <summary class="details-summary">
             <span class="details-title">Проекты</span>
@@ -177,7 +243,7 @@
           </p>
         </div>
 
-        <!-- CHANGELOG PREVIEW -->
+        <!-- Changelog preview -->
         <div class="changelog reveal">
           <div class="changelog-head">
             <div class="changelog-text">
@@ -219,9 +285,27 @@
             </ul>
 
             <div class="callout">
-              <div class="callout-title">Важно при переходе с 1.4.1</div>
+              <div class="callout-title">Важно</div>
               <div class="callout-text">
-                Если MVZ 1.4.1 ставили инсталлятором — скачайте новый установщик чтобы установить MVZ 1.5.
+                Если после установки что-то не работает — открой “Подсказки” и проверь запуск от администратора / защитник / DNS‑профиль.
+              </div>
+            </div>
+
+            <div class="feature-grid" aria-label="Коротко по делу">
+              <div class="feature">
+                <div class="feature-ico" aria-hidden="true">⚡</div>
+                <div class="feature-t">Быстрый старт</div>
+                <div class="feature-d">Скачать → запустить → выбрать профиль → включить.</div>
+              </div>
+              <div class="feature">
+                <div class="feature-ico" aria-hidden="true">🧩</div>
+                <div class="feature-t">Профили DNS</div>
+                <div class="feature-d">Под разные игры/провайдеров, переключение в пару кликов.</div>
+              </div>
+              <div class="feature">
+                <div class="feature-ico" aria-hidden="true">🛡️</div>
+                <div class="feature-t">Прозрачность</div>
+                <div class="feature-d">Это не VPN (оптимизация через DNS‑серверы).</div>
               </div>
             </div>
 
@@ -271,11 +355,16 @@
                   Если не заработало →
                 </button>
               </div>
+
+              <div class="mini-safety">
+                <button class="mini-safety-link" type="button" data-modal-open="mvz-disclaimer">
+                  Прочитать отказ от ответственности
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Product “divider” -->
         <div class="section-divider reveal" aria-hidden="true"></div>
       </div>
     </section>
@@ -287,14 +376,14 @@
         <p class="section-subtitle">Посты из Telegram‑канала.</p>
 
         <div class="tg-grid">
-          <div class="tg-card">
+          <div class="tg-card tg-skeleton">
             <script async src="https://telegram.org/js/telegram-widget.js?22"
                     data-telegram-post="motyait2/66"
                     data-width="100%"
                     data-userpic="true"></script>
           </div>
 
-          <div class="tg-card">
+          <div class="tg-card tg-skeleton">
             <script async src="https://telegram.org/js/telegram-widget.js?22"
                     data-telegram-post="motyait2/77"
                     data-width="100%"
@@ -412,7 +501,7 @@
     </div>
   </div>
 
-  <!-- Modal: Disclaimer -->
+  <!-- Modal: Disclaimer (НЕ ТРОГАЛ) -->
   <div class="modal" id="mvz-disclaimer" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -473,21 +562,28 @@
   </div>
 
   <script>
-    // Reveal
-    const items = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    items.forEach(i => io.observe(i));
+    // Helpers
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
-    // Scrollspy
+    // Reveal
     (function(){
-      const links = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
+      const items = $$('.reveal');
+      if (!items.length) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(i => io.observe(i));
+    })();
+
+    // Scrollspy (desktop nav)
+    (function(){
+      const links = $$('.nav-menu a[href^="#"]');
       const map = new Map();
       links.forEach(a => {
         const id = a.getAttribute('href').slice(1);
@@ -501,7 +597,6 @@
           .filter(e => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (!visible) return;
-
         const id = visible.target.id;
         links.forEach(a => a.classList.remove('is-active'));
         const active = map.get(id);
@@ -594,14 +689,52 @@
       });
     })();
 
+    // Drawer (mobile menu)
+    (function(){
+      const drawer = $('#nav-drawer');
+      const openBtn = $('[data-drawer-open]');
+      if (!drawer || !openBtn) return;
+
+      const body = document.body;
+      const closeAll = () => {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        openBtn.setAttribute('aria-expanded', 'false');
+        body.classList.remove('drawer-open');
+      };
+
+      const open = () => {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        openBtn.setAttribute('aria-expanded', 'true');
+        body.classList.add('drawer-open');
+        const first = drawer.querySelector('a,button');
+        if (first) first.focus();
+      };
+
+      openBtn.addEventListener('click', () => {
+        const expanded = openBtn.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeAll();
+        else open();
+      });
+
+      drawer.addEventListener('click', (e) => {
+        if (e.target.closest('[data-drawer-close]')) closeAll();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll();
+      });
+    })();
+
     // Sticky CTA show/hide + dismiss
     (function(){
-      const bar = document.getElementById('sticky-cta');
-      const hero = document.getElementById('hero-sentinel');
+      const bar = $('#sticky-cta');
+      const hero = $('#hero-sentinel');
       if (!bar || !hero) return;
 
       const closeBtn = bar.querySelector('.sticky-close');
-      const STORAGE_KEY = 'mvz_sticky_dismissed_v1';
+      const STORAGE_KEY = 'mvz_sticky_dismissed_v2';
 
       function setVisible(on){
         if (on) {
@@ -636,26 +769,39 @@
       obs.observe(hero);
     })();
 
-    // GitHub release (tag MVZ): version/date/link + body -> список
+    // GitHub release (tag): version/date/link + body -> список + download asset (.exe)
     (function(){
-      const OWNER = 'mvcomplexsite';
-      const REPO = 'mvcomplexsite.github.io';
-      const TAG = 'MVZ';
-      const API_BY_TAG = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${TAG}`;
+      const owner = $('meta[name="gh-owner"]')?.content || 'mvcomplexsite';
+      const repo  = $('meta[name="gh-repo"]')?.content  || 'mvcomplexsite.github.io';
+      const tag   = $('meta[name="gh-tag"]')?.content   || 'MVZ';
+      const hint  = ($('meta[name="gh-asset-hint"]')?.content || 'setup').toLowerCase();
 
-      const releaseLinks = Array.from(document.querySelectorAll('.js-release-link'));
-      const v1 = document.getElementById('release-version');
-      const v2 = document.getElementById('release-version-2');
-      const v3 = document.getElementById('release-version-3');
-      const v4 = document.getElementById('release-version-cta');
+      const API_BY_TAG = `https://api.github.com/repos/${owner}/${repo}/releases/tags/${encodeURIComponent(tag)}`;
+      const API_LATEST = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
 
-      const d1 = document.getElementById('release-date');
-      const d2 = document.getElementById('release-date-2');
-      const d3 = document.getElementById('release-date-3');
-      const d4 = document.getElementById('release-date-cta');
+      const releaseLinks = $$('.js-release-link');
+      const downloadLinks = $$('.js-download');
 
-      const notesPreview = document.getElementById('release-notes-preview');
-      const notesFull = document.getElementById('release-notes-full');
+      const vEls = [
+        $('#release-version'),
+        $('#release-version-2'),
+        $('#release-version-3'),
+        $('#release-version-cta'),
+        $('#release-version-drawer'),
+      ].filter(Boolean);
+
+      const dEls = [
+        $('#release-date'),
+        $('#release-date-2'),
+        $('#release-date-3'),
+        $('#release-date-cta'),
+        $('#release-date-drawer'),
+      ].filter(Boolean);
+
+      const sizeEl = $('#release-size');
+
+      const notesPreview = $('#release-notes-preview');
+      const notesFull = $('#release-notes-full');
 
       function fmtDate(iso){
         try{
@@ -702,31 +848,99 @@
         targetEl.innerHTML = `<ul>${li}</ul>`;
       }
 
+      function fmtBytes(bytes){
+        if (!Number.isFinite(bytes) || bytes <= 0) return '—';
+        const units = ['B','KB','MB','GB'];
+        let i = 0;
+        let v = bytes;
+        while (v >= 1024 && i < units.length - 1) { v /= 1024; i++; }
+        const digits = (i === 0) ? 0 : (i === 1 ? 0 : 1);
+        return `${v.toFixed(digits)} ${units[i]}`;
+      }
+
+      function pickInstallerAsset(assets){
+        if (!Array.isArray(assets) || !assets.length) return null;
+        const exe = assets.filter(a => (a?.name || '').toLowerCase().endsWith('.exe'));
+        const scored = exe.map(a => {
+          const n = (a.name || '').toLowerCase();
+          const score =
+            (n.includes(hint) ? 50 : 0) +
+            (n.includes('install') ? 25 : 0) +
+            (n.includes('setup') ? 20 : 0) +
+            (n.includes('x64') ? 5 : 0);
+          return { a, score };
+        }).sort((x,y) => y.score - x.score);
+        return scored[0]?.a || exe[0] || null;
+      }
+
+      const CACHE_KEY = `mvz_rel_cache_${owner}_${repo}_${tag}`;
+      const CACHE_TTL_MS = 60 * 60 * 1000;
+
+      function loadCache(){
+        try{
+          const raw = localStorage.getItem(CACHE_KEY);
+          if (!raw) return null;
+          const obj = JSON.parse(raw);
+          if (!obj?.ts || !obj?.data) return null;
+          if (Date.now() - obj.ts > CACHE_TTL_MS) return null;
+          return obj.data;
+        }catch(_){ return null; }
+      }
+
+      function saveCache(data){
+        try{
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data }));
+        }catch(_){}
+      }
+
+      function applyRelease(rel){
+        const version = (rel.name && String(rel.name).trim()) || rel.tag_name || tag || 'MVZ';
+        const date = rel.published_at ? fmtDate(rel.published_at) : '—';
+
+        vEls.forEach(el => el.textContent = version);
+        dEls.forEach(el => el.textContent = date);
+
+        if (rel.html_url) releaseLinks.forEach(a => a.setAttribute('href', rel.html_url));
+
+        const items = bodyToItems(rel.body || '', 16);
+        renderNotes(notesPreview, items, true);
+        renderNotes(notesFull, items, false);
+
+        const asset = pickInstallerAsset(rel.assets || []);
+        if (asset?.browser_download_url) {
+          downloadLinks.forEach(a => a.setAttribute('href', asset.browser_download_url));
+          if (sizeEl) sizeEl.textContent = fmtBytes(asset.size);
+        } else {
+          if (sizeEl) sizeEl.textContent = '—';
+        }
+      }
+
+      const cached = loadCache();
+      if (cached) applyRelease(cached);
+
       fetch(API_BY_TAG)
         .then(r => r.ok ? r.json() : Promise.reject(r))
+        .catch(() => fetch(API_LATEST).then(r => r.ok ? r.json() : Promise.reject(r)))
         .then(rel => {
-          const version = (rel.name && String(rel.name).trim()) || rel.tag_name || 'MVZ';
-          const date = rel.published_at ? fmtDate(rel.published_at) : '—';
-
-          if (v1) v1.textContent = version;
-          if (v2) v2.textContent = version;
-          if (v3) v3.textContent = version;
-          if (v4) v4.textContent = version;
-
-          if (d1) d1.textContent = date;
-          if (d2) d2.textContent = date;
-          if (d3) d3.textContent = date;
-          if (d4) d4.textContent = date;
-
-          if (rel.html_url){
-            releaseLinks.forEach(a => a.setAttribute('href', rel.html_url));
-          }
-
-          const items = bodyToItems(rel.body || '', 16);
-          renderNotes(notesPreview, items, true);
-          renderNotes(notesFull, items, false);
+          if (!rel) return;
+          saveCache(rel);
+          applyRelease(rel);
         })
         .catch(() => {});
+    })();
+
+    // Telegram skeleton remove when iframes appear
+    (function(){
+      const cards = $$('.tg-card');
+      if (!cards.length) return;
+      const obs = new MutationObserver(() => {
+        cards.forEach(c => {
+          const iframe = c.querySelector('iframe');
+          if (iframe) c.classList.remove('tg-skeleton');
+        });
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+      setTimeout(() => obs.disconnect(), 15000);
     })();
   </script>
 </body>
