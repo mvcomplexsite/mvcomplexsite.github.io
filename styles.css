@@ -31,7 +31,7 @@
 
 *{ box-sizing:border-box; margin:0; padding:0; }
 html, body{ height:100%; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; background: var(--bg0); }
 img{ display:block; max-width:100%; }
 button{ font-family:inherit; }
 section{ scroll-margin-top: 92px; }
@@ -69,7 +69,11 @@ body{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, sans-serif;
   color: var(--text);
   line-height: 1.6;
-  overflow-x:hidden;
+
+  /* анти-1px “вылеты” */
+  overflow-x: hidden;
+  overflow-x: clip;
+  background-color: var(--bg0);
 
   background:
     radial-gradient(1200px 780px at 10% 15%, rgba(0,255,208,.10), transparent 62%),
@@ -78,11 +82,14 @@ body{
     linear-gradient(180deg, var(--bg2), var(--bg0));
 }
 
-/* aurora film */
+/* aurora film (FIX: no seams) */
 body::before{
   content:"";
   position: fixed;
-  inset: -28%;
+
+  /* было: inset:-28%; из-за blur появлялись швы при скролле */
+  inset: -80vmax;
+
   pointer-events:none;
   z-index:-1;
 
@@ -91,11 +98,12 @@ body::before{
     radial-gradient(980px 720px at 55% 20%, rgba(124,77,255,.18), transparent 64%),
     radial-gradient(980px 720px at 78% 72%, rgba(255,61,129,.14), transparent 66%),
     radial-gradient(820px 620px at 35% 82%, rgba(0,255,208,.10), transparent 66%);
+  background-repeat: no-repeat;
 
-  filter: blur(60px) saturate(1.10) contrast(1.04);
+  filter: blur(74px) saturate(1.10) contrast(1.04);
   opacity: .90;
 
-  transform: translateZ(0);
+  transform: translate3d(0,0,0);
   will-change: transform, filter, opacity;
   animation: mvzAuroraMove 12s ease-in-out infinite alternate, mvzAuroraTone 18s ease-in-out infinite;
 }
@@ -105,9 +113,9 @@ body::before{
   to{   transform: translate3d( 1.1%,  0.6%, 0) scale(1.10); }
 }
 @keyframes mvzAuroraTone{
-  0%   { filter: blur(60px) saturate(1.10) contrast(1.04) hue-rotate(0deg); opacity: .86; }
-  50%  { filter: blur(62px) saturate(1.18) contrast(1.06) hue-rotate(8deg); opacity: .95; }
-  100% { filter: blur(60px) saturate(1.12) contrast(1.04) hue-rotate(0deg); opacity: .90; }
+  0%   { filter: blur(74px) saturate(1.10) contrast(1.04) hue-rotate(0deg); opacity: .86; }
+  50%  { filter: blur(76px) saturate(1.18) contrast(1.06) hue-rotate(8deg); opacity: .95; }
+  100% { filter: blur(74px) saturate(1.12) contrast(1.04) hue-rotate(0deg); opacity: .90; }
 }
 
 /* vignette */
