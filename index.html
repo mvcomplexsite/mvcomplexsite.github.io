@@ -16,44 +16,57 @@
   <meta name="gh-tag" content="MVZ" />
   <meta name="gh-asset-hint" content="setup" />
 
-  <meta name="theme-color" content="#070a15" />
+  <meta name="theme-color" content="#05070d" />
   <meta property="og:title" content="MVZ 1.6 — VPN клиент и тестирование профилей" />
   <meta
     property="og:description"
-    content="Реальный интерфейс MVZ 1.6: VPN клиент, тестирование профилей, релизы и переход в бот."
+    content="Реальный интерфейс MVZ 1.6: VPN клиент, сверхбыстрое тестирование профилей и VPN через Telegram-бота."
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mvcomplexsite.github.io/" />
 
   <link rel="preconnect" href="https://api.github.com" crossorigin />
   <link rel="preconnect" href="https://telegram.org" crossorigin />
-
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
 
+  <!-- =========================================================
+       GLOBAL BACKGROUND
+       Без повторяющейся картинки, только бесшовный layered background
+       ========================================================= -->
   <div class="site-bg" aria-hidden="true">
     <div class="bg-aurora aurora-a"></div>
     <div class="bg-aurora aurora-b"></div>
     <div class="bg-aurora aurora-c"></div>
     <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
     <div class="bg-vignette"></div>
   </div>
 
-  <!--
-    Папка assets и имена файлов:
-    assets/mvz-screen-testing-main.jpg  -> основной скрин тестирования
-    assets/mvz-screen-home.jpg          -> главный экран MVZapret
-    assets/mvz-screen-testing-neon.jpg  -> второй скрин тестирования
-    assets/mvz-screen-vpn.jpg           -> экран VPN
-    assets/mvz-fun-clown.png            -> опционально, НЕ используется в главной вёрстке
-  -->
+  <!-- =========================================================
+       ASSETS NAMING
+       Переименуй и положи в /assets так:
 
-  <header class="nav-outer" id="top">
+       assets/mvz-screen-home.jpg
+       assets/mvz-screen-testing-main.jpg
+       assets/mvz-screen-testing-purple.jpg
+       assets/mvz-screen-vpn.jpg
+
+       Опционально, если потом захочешь отдельный логотип:
+       assets/logo-mvz.png
+
+       Клоунский файл сюда специально НЕ вставляю,
+       чтобы не ломать тон главной страницы.
+       ========================================================= -->
+
+  <header class="nav-outer">
     <div class="container nav-shell">
       <a class="brand" href="#home" aria-label="MVZapret — на главную">
         <span class="brand-mark">MVZ</span>
+
         <span class="brand-copy">
           <span class="brand-title">MVZapret</span>
           <span class="brand-sub">release 1.6</span>
@@ -62,12 +75,14 @@
 
       <nav class="nav-menu" aria-label="Навигация">
         <a href="#home">Главная</a>
-        <a href="#features">Возможности</a>
-        <a href="#screens">Скрины</a>
-        <a href="#bot">Бот</a>
+        <a href="#mvz">MVZ 1.6</a>
+        <a href="#testing">Testing</a>
+        <a href="#vpn">VPN</a>
+        <a href="#visuals">Визуал</a>
         <a href="#news">Telegram</a>
         <a href="#contact">Контакты</a>
-        <button type="button" class="nav-disclaimer" data-modal-open="mvz-disclaimer">
+
+        <button class="nav-disclaimer" type="button" data-modal-open="mvz-disclaimer">
           Дисклеймер
         </button>
       </nav>
@@ -104,6 +119,9 @@
       </div>
     </div>
 
+    <!-- =========================================================
+         MOBILE DRAWER
+         ========================================================= -->
     <div class="drawer" id="nav-drawer" aria-hidden="true">
       <div class="drawer-overlay" data-drawer-close></div>
 
@@ -111,7 +129,7 @@
         <div class="drawer-head">
           <div class="drawer-brand">
             <div class="drawer-title">MVZapret</div>
-            <div class="drawer-sub">MVZ 1.6 / VPN / testing / bot</div>
+            <div class="drawer-sub">MVZ 1.6 / VPN / testing / Telegram</div>
           </div>
 
           <button
@@ -126,14 +144,15 @@
 
         <div class="drawer-body">
           <a class="drawer-link" href="#home" data-drawer-close>Главная</a>
-          <a class="drawer-link" href="#features" data-drawer-close>Возможности</a>
-          <a class="drawer-link" href="#screens" data-drawer-close>Скрины</a>
-          <a class="drawer-link" href="#bot" data-drawer-close>Бот</a>
+          <a class="drawer-link" href="#mvz" data-drawer-close>MVZ 1.6</a>
+          <a class="drawer-link" href="#testing" data-drawer-close>Testing</a>
+          <a class="drawer-link" href="#vpn" data-drawer-close>VPN</a>
+          <a class="drawer-link" href="#visuals" data-drawer-close>Визуал</a>
           <a class="drawer-link" href="#news" data-drawer-close>Telegram</a>
           <a class="drawer-link" href="#contact" data-drawer-close>Контакты</a>
 
           <button
-            class="btn ghost"
+            class="btn ghost drawer-disclaimer"
             type="button"
             data-modal-open="mvz-disclaimer"
             data-drawer-close
@@ -143,21 +162,23 @@
 
           <div class="drawer-meta">
             <div class="drawer-meta-row">
-              <span>Версия</span>
-              <b id="release-version-drawer">MVZ</b>
+              <span class="drawer-meta-k">Версия</span>
+              <b class="drawer-meta-v" id="release-version-drawer">MVZ</b>
             </div>
+
             <div class="drawer-meta-row">
-              <span>Дата</span>
-              <b id="release-date-drawer">—</b>
+              <span class="drawer-meta-k">Дата</span>
+              <b class="drawer-meta-v" id="release-date-drawer">—</b>
             </div>
+
             <div class="drawer-meta-row">
-              <span>Размер</span>
-              <b id="release-size-drawer">—</b>
+              <span class="drawer-meta-k">Размер</span>
+              <b class="drawer-meta-v" id="release-size-drawer">—</b>
             </div>
           </div>
 
           <a
-            class="btn primary js-download"
+            class="btn primary js-download drawer-download"
             href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
             target="_blank"
             rel="noopener"
@@ -174,6 +195,7 @@
             >
               Changelog
             </button>
+
             <button
               class="btn ghost small"
               type="button"
@@ -188,18 +210,22 @@
     </div>
   </header>
 
+  <!-- =========================================================
+       STICKY CTA
+       ========================================================= -->
   <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
     <div class="container sticky-cta-inner">
       <button class="sticky-close" type="button" aria-label="Закрыть" title="Закрыть">×</button>
 
       <div class="sticky-copy">
         <div class="sticky-title">MVZ 1.6</div>
+
         <div class="sticky-meta">
           <span class="sticky-pill">Windows 10/11</span>
           <span class="sticky-sep">•</span>
-          <span>Версия: <b id="release-version-cta">MVZ</b></span>
+          <span class="sticky-meta-text">Версия: <b id="release-version-cta">MVZ</b></span>
           <span class="sticky-sep">•</span>
-          <span>Дата: <b id="release-date-cta">—</b></span>
+          <span class="sticky-meta-text">Дата: <b id="release-date-cta">—</b></span>
         </div>
       </div>
 
@@ -212,6 +238,7 @@
         >
           Скачать
         </a>
+
         <a
           class="btn ghost small"
           href="https://t.me/MVZapretBot"
@@ -220,6 +247,7 @@
         >
           VPN в боте
         </a>
+
         <button class="btn ghost small" type="button" data-modal-open="mvz-changelog">
           Changelog
         </button>
@@ -228,7 +256,16 @@
   </div>
 
   <main id="main">
-    <section class="hero section" id="home">
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+    <section id="home" class="hero">
+      <div class="hero-blobs" aria-hidden="true">
+        <div class="blob blob-a"></div>
+        <div class="blob blob-b"></div>
+        <div class="blob blob-c"></div>
+      </div>
+
       <div class="container hero-grid reveal" id="hero-sentinel">
         <div class="hero-copy">
           <div class="hero-topline">
@@ -237,15 +274,16 @@
           </div>
 
           <h1 class="hero-title">
-            MVZ 1.6 — реальный
-            <span>VPN клиент</span>
-            и сверхбыстрое тестирование профилей.
+            MVZ 1.6 —
+            <span>VPN клиент</span>,
+            сверхбыстрое тестирование профилей
+            и VPN через бота.
           </h1>
 
           <p class="hero-text">
-            Без фейковых блоков и выдуманных тем: в этой версии акцент только на том,
-            что реально есть в MVZ 1.6 — VPN клиент, быстрое тестирование профилей
-            и VPN через Telegram-бота.
+            Без выдуманной хуйни и фейковых функций. В лендинге оставлены только реальные
+            акценты текущей версии: VPN клиент, быстрое тестирование профилей,
+            Telegram-бот и реальные экраны самого MVZ.
           </p>
 
           <div class="hero-actions">
@@ -258,282 +296,148 @@
               Скачать для Windows
             </a>
 
-            <a class="btn ghost big" href="#screens">Смотреть скрины</a>
+            <a class="btn ghost big" href="#testing">Смотреть реальные экраны</a>
           </div>
 
-          <div class="hero-pills">
+          <div class="hero-trust" aria-label="Быстрые действия">
+            <span class="trust-chip">Windows 10/11</span>
+
+            <a
+              class="trust-chip action js-release-link"
+              href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ"
+              target="_blank"
+              rel="noopener"
+            >
+              Релиз
+            </a>
+
+            <button class="trust-chip action" type="button" data-modal-open="mvz-changelog">
+              Changelog
+            </button>
+
+            <a
+              class="trust-chip action"
+              href="https://t.me/MVZapretBot"
+              target="_blank"
+              rel="noopener"
+            >
+              @MVZapretBot
+            </a>
+          </div>
+
+          <div class="hero-pills" aria-label="Ключевые фичи">
             <span class="pill">VPN клиент</span>
             <span class="pill">Сверхбыстрое тестирование профилей</span>
-            <span class="pill">VPN через @MVZapretBot</span>
-            <span class="pill">Реальные скрины интерфейса</span>
+            <span class="pill">VPN через Telegram-бота</span>
+            <span class="pill">Реальные скриншоты MVZ</span>
           </div>
 
-          <div class="release-grid">
-            <article class="release-card">
-              <span class="release-k">Релиз</span>
-              <strong class="release-v" id="release-version">MVZ</strong>
-            </article>
+          <div class="kpi-grid" aria-label="Информация о релизе">
+            <div class="kpi-card">
+              <div class="kpi-k">Текущая версия</div>
+              <div class="kpi-v" id="release-version">MVZ</div>
+            </div>
 
-            <article class="release-card">
-              <span class="release-k">Дата</span>
-              <strong class="release-v" id="release-date">—</strong>
-            </article>
+            <div class="kpi-card">
+              <div class="kpi-k">Дата релиза</div>
+              <div class="kpi-v" id="release-date">—</div>
+            </div>
 
-            <article class="release-card">
-              <span class="release-k">Размер</span>
-              <strong class="release-v" id="release-size">—</strong>
-            </article>
+            <div class="kpi-card">
+              <div class="kpi-k">Размер установщика</div>
+              <div class="kpi-v" id="release-size">—</div>
+            </div>
 
-            <article class="release-card">
-              <span class="release-k">VPN</span>
+            <div class="kpi-card">
+              <div class="kpi-k">VPN</div>
               <a
-                class="release-v link"
+                class="kpi-v link"
                 href="https://t.me/MVZapretBot"
                 target="_blank"
                 rel="noopener"
               >
-                через бот
+                через бота
               </a>
-            </article>
+            </div>
           </div>
         </div>
 
         <div class="hero-media">
-          <div class="hero-shot frame">
-            <!-- assets/mvz-screen-home.jpg -->
-            <img
-              src="assets/mvz-screen-home.jpg"
-              alt="Главный экран MVZapret 1.6"
-              loading="eager"
-            />
+          <div class="hero-window frame">
+            <div class="hero-window-top">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="hero-window-title">MVZ 1.6 / main screen</span>
+            </div>
+
+            <div class="hero-window-body">
+              <!-- assets/mvz-screen-home.jpg -->
+              <img
+                src="assets/mvz-screen-home.jpg"
+                alt="Главный экран MVZapret 1.6"
+                loading="eager"
+              />
+
+              <div class="floating-chip fc-1">Основной экран MVZ</div>
+              <div class="floating-chip fc-2">VPN inside 1.6</div>
+              <div class="floating-chip fc-3">real app screen</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- =========================================================
+         LAUNCH STRIP
+         ========================================================= -->
     <section class="section section-tight">
       <div class="container">
         <div class="launch-strip reveal">
-          <div>
+          <div class="launch-copy">
             <div class="section-label">core update</div>
-            <h2 class="section-title small">Что реально есть в MVZ 1.6</h2>
+            <h2 class="section-title small">Главные реальные точки MVZ 1.6</h2>
           </div>
 
           <div class="launch-tags">
             <span>VPN клиент</span>
             <span>Profile testing</span>
-            <span>VPN через бот</span>
-            <span>Windows app</span>
+            <span>Bot funnel</span>
+            <span>Real screenshots</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="features">
+    <!-- =========================================================
+         MVZ OVERVIEW
+         ========================================================= -->
+    <section id="mvz" class="section">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-label">возможности</div>
-          <h2 class="section-title">Только реальные акценты релиза</h2>
+          <div class="section-label">mvz 1.6</div>
+          <h2 class="section-title">Большой релиз без фальшивых блоков</h2>
           <p class="section-subtitle">
-            Убрал фейковую “витрину тем” и рандомные UI-блоки: ниже только то, что
-            считывается из настоящих экранов MVZ 1.6.
+            Здесь не рисуется липовый интерфейс. Вместо этого структура страницы собирается
+            вокруг настоящих экранов приложения, релиза, changelog и нормального маршрута
+            в бот.
           </p>
         </div>
 
-        <div class="feature-grid reveal">
-          <article class="feature-card">
-            <div class="feature-icon"></div>
-            <h3>VPN клиент</h3>
-            <p>
-              Отдельный экран VPN и понятный маршрут в экосистему MVZ без
-              абстрактных обещаний.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon alt"></div>
-            <h3>Сверхбыстрое тестирование профилей</h3>
-            <p>
-              Настоящий упор на тестирование профилей и сетевых сервисов,
-              а не декоративная псевдо-панель.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon pink"></div>
-            <h3>VPN через бота</h3>
-            <p>
-              Бот встроен как нормальная точка входа, а не случайная ссылка
-              где-то внизу страницы.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="screens">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="section-label">реальные скрины</div>
-          <h2 class="section-title">Интерфейс MVZ 1.6</h2>
-          <p class="section-subtitle">
-            Скрины встроены как часть лендинга, а не как случайная свалка картинок.
-          </p>
-        </div>
-
-        <div class="screens-grid reveal">
-          <article class="screen-card screen-wide">
-            <div class="screen-copy">
-              <span class="screen-kicker">Главный экран</span>
-              <h3>Главное окно MVZapret</h3>
-              <p>
-                Хорошо работает как главный визуал под hero или как первый основной
-                скрин внутри галереи.
-              </p>
-              <div class="asset-tag">assets/mvz-screen-home.jpg</div>
-            </div>
-
-            <div class="frame">
-              <!-- assets/mvz-screen-home.jpg -->
-              <img
-                src="assets/mvz-screen-home.jpg"
-                alt="Главный экран MVZapret"
-                loading="lazy"
-              />
-            </div>
-          </article>
-
-          <article class="screen-card">
-            <div class="screen-copy">
-              <span class="screen-kicker">Testing</span>
-              <h3>Основное тестирование</h3>
-              <div class="asset-tag">assets/mvz-screen-testing-main.jpg</div>
-            </div>
-
-            <div class="frame">
-              <!-- assets/mvz-screen-testing-main.jpg -->
-              <img
-                src="assets/mvz-screen-testing-main.jpg"
-                alt="Экран тестирования профилей в MVZ"
-                loading="lazy"
-              />
-            </div>
-          </article>
-
-          <article class="screen-card">
-            <div class="screen-copy">
-              <span class="screen-kicker">Testing alt</span>
-              <h3>Второй экран тестирования</h3>
-              <div class="asset-tag">assets/mvz-screen-testing-neon.jpg</div>
-            </div>
-
-            <div class="frame">
-              <!-- assets/mvz-screen-testing-neon.jpg -->
-              <img
-                src="assets/mvz-screen-testing-neon.jpg"
-                alt="Альтернативный экран тестирования профилей в MVZ"
-                loading="lazy"
-              />
-            </div>
-          </article>
-
-          <article class="screen-card screen-wide">
-            <div class="screen-copy">
-              <span class="screen-kicker">VPN screen</span>
-              <h3>Экран VPN</h3>
-              <p>
-                Этот блок логично ставить отдельным крупным акцентом, потому что VPN
-                в 1.6 — одна из основных реальных фич.
-              </p>
-              <div class="asset-tag">assets/mvz-screen-vpn.jpg</div>
-            </div>
-
-            <div class="frame">
-              <!-- assets/mvz-screen-vpn.jpg -->
-              <img
-                src="assets/mvz-screen-vpn.jpg"
-                alt="Экран VPN клиента в MVZ"
-                loading="lazy"
-              />
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="bot">
-      <div class="container">
-        <div class="bot-grid reveal">
-          <article class="bot-card">
-            <div class="section-label">bot funnel</div>
-            <h2 class="section-title small">VPN через @MVZapretBot</h2>
-            <p class="section-subtitle left">
-              Бот встроен в лендинг как нормальное продолжение пути: увидел MVZ 1.6,
-              понял ценность VPN, перешёл в бота.
-            </p>
-
-            <ul class="simple-list">
-              <li>Сайт прогревает на реальный релиз 1.6.</li>
-              <li>Пользователь видит, что VPN — часть экосистемы.</li>
-              <li>Следующий шаг — переход в @MVZapretBot.</li>
-            </ul>
-
-            <div class="bot-actions">
-              <a
-                class="btn primary"
-                href="https://t.me/MVZapretBot"
-                target="_blank"
-                rel="noopener"
-              >
-                Открыть @MVZapretBot
-              </a>
-              <button class="btn ghost" type="button" data-modal-open="mvz-support">
-                Поддержка
-              </button>
-            </div>
-          </article>
-
-          <article class="bot-card bot-side">
-            <div class="bot-flow">
-              <div class="bot-step">
-                <span>01</span>
-                <div>
-                  <b>MVZ 1.6</b>
-                  <p>Пользователь заходит на страницу релиза.</p>
-                </div>
+        <div class="changelog reveal">
+          <div class="changelog-head">
+            <div class="changelog-copy">
+              <div class="changelog-title">
+                Текущий релиз
+                <span class="release-badge" id="release-version-2">MVZ</span>
               </div>
 
-              <div class="bot-step">
-                <span>02</span>
-                <div>
-                  <b>VPN + testing</b>
-                  <p>Считывает реальные экраны и ключевые возможности.</p>
-                </div>
-              </div>
-
-              <div class="bot-step">
-                <span>03</span>
-                <div>
-                  <b>Переход в бот</b>
-                  <p>Открывает @MVZapretBot и идёт дальше по VPN.</p>
-                </div>
+              <div class="changelog-sub">
+                Дата: <span id="release-date-2">—</span>
               </div>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section class="section" id="release">
-      <div class="container">
-        <div class="release-box reveal">
-          <div class="release-box-top">
-            <div>
-              <div class="section-label">release / changelog</div>
-              <h2 class="section-title small">Текущий релиз MVZ</h2>
-            </div>
-
-            <div class="release-box-actions">
+            <div class="changelog-actions">
               <a
                 class="btn primary small js-download"
                 href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
@@ -542,7 +446,12 @@
               >
                 Скачать .exe
               </a>
-              <button class="btn ghost small" type="button" data-modal-open="mvz-changelog">
+
+              <button
+                class="btn ghost small"
+                type="button"
+                data-modal-open="mvz-changelog"
+              >
                 Открыть changelog
               </button>
             </div>
@@ -554,16 +463,386 @@
             <div class="notes-skeleton"></div>
           </div>
         </div>
+
+        <div class="grid-2 reveal">
+          <article class="card glass">
+            <h3>Что реально подсвечиваем в лендинге</h3>
+
+            <ul class="list">
+              <li>VPN клиент в составе MVZ 1.6.</li>
+              <li>Сверхбыстрое тестирование профилей и сетевых сервисов.</li>
+              <li>VPN через Telegram-бота как отдельную точку входа.</li>
+              <li>Реальные скрины приложения вместо фейковых декоративных панелей.</li>
+              <li>GitHub release, changelog и понятный путь к скачиванию.</li>
+            </ul>
+
+            <div class="callout">
+              <div class="callout-title">Важно</div>
+              <div class="callout-text">
+                Секция с “темами” здесь переосмыслена: не выдуманные названия тем,
+                а нормальный визуальный разбор реальных экранов MVZ 1.6.
+              </div>
+            </div>
+
+            <div class="feature-grid">
+              <div class="feature">
+                <div class="feature-ico" aria-hidden="true"><span class="ico"></span></div>
+                <div class="feature-t">Реальная подача</div>
+                <div class="feature-d">Страница опирается на реальные экраны MVZ, а не на заглушки.</div>
+              </div>
+
+              <div class="feature">
+                <div class="feature-ico" aria-hidden="true"><span class="ico alt"></span></div>
+                <div class="feature-t">Бот встроен логично</div>
+                <div class="feature-d">VPN через @MVZapretBot стоит как продолжение пути пользователя.</div>
+              </div>
+
+              <div class="feature">
+                <div class="feature-ico" aria-hidden="true"><span class="ico pink"></span></div>
+                <div class="feature-t">Telegram не сломан</div>
+                <div class="feature-d">Оставлены живые Telegram widgets, а не кривые псевдокарточки.</div>
+              </div>
+            </div>
+
+            <div class="faq-cta">
+              <button class="btn ghost small" type="button" data-modal-open="mvz-faq">
+                Открыть FAQ
+              </button>
+            </div>
+          </article>
+
+          <article class="card glass panel-shot">
+            <div class="panel-shot-head">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="panel-shot-title">MVZ 1.6 / reference screen</span>
+            </div>
+
+            <div class="panel-shot-body">
+              <!-- assets/mvz-screen-home.jpg -->
+              <img
+                src="assets/mvz-screen-home.jpg"
+                alt="Референсный экран MVZ 1.6"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="panel-shot-foot">
+              Используй этот экран как основной визуальный якорь страницы.
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="news">
+    <!-- =========================================================
+         TESTING SECTION
+         ========================================================= -->
+    <section id="testing" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">testing</div>
+          <h2 class="section-title">Сверхбыстрое тестирование профилей</h2>
+          <p class="section-subtitle">
+            Это один из основных реальных акцентов MVZ 1.6, поэтому секция сделана
+            крупной, с двумя разными экранами тестирования, а не одной абстрактной карточкой.
+          </p>
+        </div>
+
+        <div class="testing-layout reveal">
+          <article class="testing-main">
+            <div class="testing-copy">
+              <span class="screen-kicker">Основной экран тестирования</span>
+              <h3>Главная сцена для блока testing</h3>
+              <p>
+                Этот скрин лучше всего работает как центральный акцент: он сразу показывает,
+                что в приложении реально есть отдельный режим тестирования профилей
+                и сетевых сервисов.
+              </p>
+
+              <div class="asset-line">assets/mvz-screen-testing-main.jpg</div>
+            </div>
+
+            <div class="frame testing-frame">
+              <!-- assets/mvz-screen-testing-main.jpg -->
+              <img
+                src="assets/mvz-screen-testing-main.jpg"
+                alt="Основной экран тестирования профилей в MVZ"
+                loading="lazy"
+              />
+            </div>
+          </article>
+
+          <aside class="testing-side">
+            <article class="mini-card">
+              <h3>Что здесь подаём текстом</h3>
+              <ul class="list compact">
+                <li>Проверка профилей и сетевых сервисов.</li>
+                <li>Лог тестирования в реальном времени.</li>
+                <li>Лучший найденный профиль.</li>
+                <li>Нормальная подача вместо кривой псевдо-менюшки.</li>
+              </ul>
+            </article>
+
+            <article class="mini-card visual-mini">
+              <div class="visual-mini-top">
+                <span class="screen-kicker">Дополнительный testing screen</span>
+                <div class="asset-line">assets/mvz-screen-testing-purple.jpg</div>
+              </div>
+
+              <div class="frame">
+                <!-- assets/mvz-screen-testing-purple.jpg -->
+                <img
+                  src="assets/mvz-screen-testing-purple.jpg"
+                  alt="Второй экран тестирования профилей в MVZ"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VPN SECTION
+         ========================================================= -->
+    <section id="vpn" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">vpn</div>
+          <h2 class="section-title">VPN клиент как часть MVZ 1.6</h2>
+          <p class="section-subtitle">
+            Здесь уже не “VPN в разработке”, а нормальная секция под реальный экран VPN,
+            связку с ботом и понятный CTA без мусорной вёрстки.
+          </p>
+        </div>
+
+        <div class="vpn-layout reveal">
+          <article class="vpn-shot card glass">
+            <div class="vpn-shot-copy">
+              <span class="screen-kicker">Экран VPN</span>
+              <h3>Большой реальный визуал</h3>
+              <p>
+                Вставляй именно этот экран как основной VPN-визуал, потому что он сам по себе
+                уже выглядит как сильный продуктовый блок.
+              </p>
+              <div class="asset-line">assets/mvz-screen-vpn.jpg</div>
+            </div>
+
+            <div class="frame vpn-frame">
+              <!-- assets/mvz-screen-vpn.jpg -->
+              <img
+                src="assets/mvz-screen-vpn.jpg"
+                alt="Экран VPN клиента в MVZ 1.6"
+                loading="lazy"
+              />
+            </div>
+          </article>
+
+          <div class="vpn-side">
+            <article class="card glass">
+              <h3>Что акцентировать рядом</h3>
+
+              <ul class="list">
+                <li>VPN клиент внутри MVZ 1.6.</li>
+                <li>Список серверов и подключение в пару кликов.</li>
+                <li>Нормальный визуальный маршрут к @MVZapretBot.</li>
+                <li>Связка приложения, VPN и Telegram-бота в одной экосистеме.</li>
+              </ul>
+
+              <div class="vpn-actions">
+                <a
+                  class="btn primary"
+                  href="https://t.me/MVZapretBot"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Открыть @MVZapretBot
+                </a>
+
+                <button class="btn ghost" type="button" data-modal-open="mvz-support">
+                  Поддержка
+                </button>
+              </div>
+            </article>
+
+            <article class="card glass">
+              <h3>Как это лучше формулировать</h3>
+
+              <div class="note-stack">
+                <div class="note-item">
+                  <b>Хорошо:</b>
+                  <span>VPN клиент в MVZ 1.6, VPN через бота, тестирование профилей.</span>
+                </div>
+
+                <div class="note-item">
+                  <b>Плохо:</b>
+                  <span>Выдуманные протоколы, несуществующие темы и абстрактные обещания.</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VISUAL STYLE / THEMES REWORK
+         Вместо фейковых тем — реальный визуальный разбор экранов
+         ========================================================= -->
+    <section id="visuals" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">visual style</div>
+          <h2 class="section-title">Визуальный стиль MVZ 1.6</h2>
+          <p class="section-subtitle">
+            Отдел с темами здесь переработан: не фальшивые карточки “тем”, а реальный набор
+            экранов и то, как они выглядят в разных состояниях интерфейса.
+          </p>
+        </div>
+
+        <div class="visual-grid reveal">
+          <article class="visual-card">
+            <div class="visual-head">
+              <span class="visual-title">Основной интерфейс</span>
+              <div class="asset-line">assets/mvz-screen-home.jpg</div>
+            </div>
+
+            <div class="frame visual-frame">
+              <img
+                src="assets/mvz-screen-home.jpg"
+                alt="Основной интерфейс MVZ 1.6"
+                loading="lazy"
+              />
+            </div>
+
+            <p class="visual-text">
+              База для hero, overview и общего образа приложения.
+            </p>
+          </article>
+
+          <article class="visual-card">
+            <div class="visual-head">
+              <span class="visual-title">Testing — blue</span>
+              <div class="asset-line">assets/mvz-screen-testing-main.jpg</div>
+            </div>
+
+            <div class="frame visual-frame">
+              <img
+                src="assets/mvz-screen-testing-main.jpg"
+                alt="Синий экран testing в MVZ"
+                loading="lazy"
+              />
+            </div>
+
+            <p class="visual-text">
+              Подходит для смыслового блока про логи, проверку профилей и живой output.
+            </p>
+          </article>
+
+          <article class="visual-card">
+            <div class="visual-head">
+              <span class="visual-title">Testing — purple</span>
+              <div class="asset-line">assets/mvz-screen-testing-purple.jpg</div>
+            </div>
+
+            <div class="frame visual-frame">
+              <img
+                src="assets/mvz-screen-testing-purple.jpg"
+                alt="Фиолетовый экран testing в MVZ"
+                loading="lazy"
+              />
+            </div>
+
+            <p class="visual-text">
+              Лучше использовать как второй supporting visual, а не как главный hero.
+            </p>
+          </article>
+
+          <article class="visual-card">
+            <div class="visual-head">
+              <span class="visual-title">VPN screen</span>
+              <div class="asset-line">assets/mvz-screen-vpn.jpg</div>
+            </div>
+
+            <div class="frame visual-frame">
+              <img
+                src="assets/mvz-screen-vpn.jpg"
+                alt="VPN экран MVZ 1.6"
+                loading="lazy"
+              />
+            </div>
+
+            <p class="visual-text">
+              Лучший акцент для отдельной большой VPN-секции и перехода в Telegram-бота.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         HOW IT WORKS
+         ========================================================= -->
+    <section id="how" class="section">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="section-label">flow</div>
+          <h2 class="section-title">Как подавать путь пользователя</h2>
+          <p class="section-subtitle">
+            Это можно оставить как аккуратный funnel без лишней вычурности.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-n">01</div>
+            <div class="t-b">
+              <div class="t-t">Открывает страницу MVZ 1.6</div>
+              <div class="t-d">Видит реальный продукт, а не декоративную фейк-страницу.</div>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-n">02</div>
+            <div class="t-b">
+              <div class="t-t">Смотрит реальные экраны</div>
+              <div class="t-d">Главный экран, testing и VPN блоки встроены прямо в лендинг.</div>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-n">03</div>
+            <div class="t-b">
+              <div class="t-t">Считывает ключевые смыслы</div>
+              <div class="t-d">VPN клиент, тестирование профилей и путь в Telegram-бота.</div>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-n">04</div>
+            <div class="t-b">
+              <div class="t-t">Переходит дальше</div>
+              <div class="t-d">Скачивает .exe, открывает релиз или идёт в @MVZapretBot.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TELEGRAM
+         ========================================================= -->
+    <section id="news" class="section">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-label">telegram</div>
           <h2 class="section-title">Посты из Telegram</h2>
           <p class="section-subtitle">
-            Вернул нормальный блок под Telegram widget без кривой фейковой витрины.
+            Блок постов оставлен живым через Telegram widget, чтобы не ломать реальный контент
+            кривыми текстовыми карточками.
           </p>
         </div>
 
@@ -591,37 +870,100 @@
 
         <div class="tg-more reveal">
           <a class="btn ghost" href="https://t.me/motyait2" target="_blank" rel="noopener">
-            Открыть Telegram
+            Открыть Telegram-канал
           </a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <!-- =========================================================
+         CONTACT
+         ========================================================= -->
+    <section id="contact" class="section">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-label">контакты</div>
           <h2 class="section-title">Контакты и точки входа</h2>
-          <p class="section-subtitle">Всё важное без визуального мусора.</p>
+          <p class="section-subtitle">Всё важное в одном месте.</p>
         </div>
 
-        <div class="contacts reveal">
-          <a href="https://t.me/MVZapretBot" target="_blank" rel="noopener">@MVZapretBot</a>
-          <a href="https://t.me/motyait2" target="_blank" rel="noopener">Telegram канал</a>
-          <a href="https://github.com/MVComplex" target="_blank" rel="noopener">GitHub</a>
-          <a href="mailto:MVComplexsite@gmail.com">MVComplexsite@gmail.com</a>
-          <button type="button" data-modal-open="mvz-support">Поддержка</button>
+        <div class="contacts-grid reveal">
+          <article class="contact-card">
+            <h3>Бот</h3>
+            <p>Основной быстрый вход по VPN.</p>
+            <a href="https://t.me/MVZapretBot" target="_blank" rel="noopener">@MVZapretBot</a>
+          </article>
+
+          <article class="contact-card">
+            <h3>Telegram</h3>
+            <p>Канал, посты и новости по релизам.</p>
+            <a href="https://t.me/motyait2" target="_blank" rel="noopener">t.me/motyait2</a>
+          </article>
+
+          <article class="contact-card">
+            <h3>GitHub</h3>
+            <p>Релизы и страница проекта.</p>
+            <a href="https://github.com/MVComplex" target="_blank" rel="noopener">github.com/MVComplex</a>
+          </article>
+
+          <article class="contact-card">
+            <h3>Почта</h3>
+            <p>Для связи и вопросов.</p>
+            <a href="mailto:MVComplexsite@gmail.com">MVComplexsite@gmail.com</a>
+          </article>
+        </div>
+
+        <div class="contact-actions reveal">
+          <button class="btn ghost" type="button" data-modal-open="mvz-support">
+            Поддержка
+          </button>
+
+          <button class="btn ghost" type="button" data-modal-open="mvz-disclaimer">
+            Дисклеймер
+          </button>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
+    <div class="footer-inner container">
       <span>MVZapret / MVZ 1.6 / 2026</span>
     </div>
   </footer>
 
+  <!-- =========================================================
+       MODAL: HELP
+       ========================================================= -->
+  <div class="modal" id="mvz-help" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mvz-help-title">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+
+      <h3 class="modal-title" id="mvz-help-title">Подсказки</h3>
+      <p class="modal-sub">
+        Если что-то не работает, сначала проверь скачивание актуального релиза, запуск
+        и дальнейший путь в нужный раздел MVZ или в Telegram-бота.
+      </p>
+
+      <div class="modal-actions">
+        <button class="btn ghost small" type="button" data-modal-close">Закрыть</button>
+        <a
+          class="btn primary small js-download"
+          href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/download/MVZ/MVZ_Setup.exe"
+          target="_blank"
+          rel="noopener"
+        >
+          Скачать .exe
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL: CHANGELOG
+       ========================================================= -->
   <div class="modal" id="mvz-changelog" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -630,12 +972,12 @@
 
       <h3 class="modal-title" id="mvz-changelog-title">
         Changelog
-        <span class="modal-badge" id="release-version-2">MVZ</span>
+        <span class="modal-badge" id="release-version-3">MVZ</span>
       </h3>
 
       <p class="modal-sub">
         Дата релиза:
-        <span id="release-date-2">—</span>
+        <span id="release-date-3">—</span>
       </p>
 
       <div class="modal-actions">
@@ -660,6 +1002,49 @@
     </div>
   </div>
 
+  <!-- =========================================================
+       MODAL: FAQ
+       ========================================================= -->
+  <div class="modal" id="mvz-faq" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mvz-faq-title">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+
+      <h3 class="modal-title" id="mvz-faq-title">FAQ</h3>
+      <p class="modal-sub">Короткие ответы по MVZ 1.6.</p>
+
+      <div class="faq-list">
+        <div class="faq-row">
+          <div class="faq-q">Что главное в MVZ 1.6?</div>
+          <div class="faq-a">VPN клиент, тестирование профилей и связка с Telegram-ботом.</div>
+        </div>
+
+        <div class="faq-row">
+          <div class="faq-q">Почему здесь реальные скрины, а не мокапы?</div>
+          <div class="faq-a">Чтобы страница выглядела как подача настоящего продукта, а не как фейковая витрина.</div>
+        </div>
+
+        <div class="faq-row">
+          <div class="faq-q">Что делать с темами?</div>
+          <div class="faq-a">Не рисовать несуществующие темы, а использовать реальные визуальные состояния приложения.</div>
+        </div>
+
+        <div class="faq-row">
+          <div class="faq-q">Куда вести по VPN?</div>
+          <div class="faq-a">На @MVZapretBot как на нормальную точку входа.</div>
+        </div>
+      </div>
+
+      <div class="modal-actions" style="margin-top:12px;">
+        <button class="btn ghost small" type="button" data-modal-close">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL: DISCLAIMER
+       ========================================================= -->
   <div class="modal" id="mvz-disclaimer" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -671,16 +1056,15 @@
       <ol class="modal-list">
         <li>
           <b>Информация на сайте.</b><br />
-          Описания и структура страницы могут обновляться вместе с релизами MVZ.
+          Секции и формулировки могут обновляться вместе с релизами MVZ.
         </li>
         <li>
           <b>Функции продукта.</b><br />
-          На лендинге показаны только реальные блоки, подтверждённые текущими экранами
-          и релизом MVZ 1.6.
+          На странице должны использоваться только реальные элементы и акценты текущей версии MVZ 1.6.
         </li>
         <li>
           <b>VPN и бот.</b><br />
-          Путь по VPN продолжается через Telegram-бота.
+          VPN-подписка и дальнейший путь пользователя ведутся через Telegram-бота.
         </li>
         <li>
           <b>As is.</b><br />
@@ -694,6 +1078,9 @@
     </div>
   </div>
 
+  <!-- =========================================================
+       MODAL: SUPPORT
+       ========================================================= -->
   <div class="modal" id="mvz-support" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
 
@@ -701,7 +1088,7 @@
       <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">×</button>
 
       <h3 class="modal-title" id="mvz-support-title">Поддержка</h3>
-      <p class="modal-sub">Основные точки входа — Telegram и почта.</p>
+      <p class="modal-sub">Основной быстрый вход — через Telegram-бота или почту.</p>
 
       <div class="modal-actions">
         <a
@@ -724,7 +1111,9 @@
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-    // reveal
+    /* =========================================================
+       Reveal on scroll
+       ========================================================= */
     (() => {
       const items = $$('.reveal');
       if (!items.length) return;
@@ -738,62 +1127,62 @@
         });
       }, { threshold: 0.12 });
 
-      items.forEach((el) => io.observe(el));
+      items.forEach((item) => io.observe(item));
     })();
 
-    // header scrolled
+    /* =========================================================
+       Header scrolled state
+       ========================================================= */
     (() => {
       const header = $('.nav-outer');
       if (!header) return;
 
-      const onScroll = () => {
-        header.classList.toggle('is-scrolled', window.scrollY > 10);
-      };
-
+      const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
 
-    // drawer
+    /* =========================================================
+       Scrollspy
+       ========================================================= */
     (() => {
-      const drawer = $('#nav-drawer');
-      const openBtn = $('[data-drawer-open]');
-      if (!drawer || !openBtn) return;
+      const links = $$('.nav-menu a[href^="#"]');
+      const map = new Map();
 
-      const body = document.body;
-
-      const closeAll = () => {
-        drawer.classList.remove('is-open');
-        drawer.setAttribute('aria-hidden', 'true');
-        openBtn.setAttribute('aria-expanded', 'false');
-        body.classList.remove('drawer-open');
-      };
-
-      const open = () => {
-        drawer.classList.add('is-open');
-        drawer.setAttribute('aria-hidden', 'false');
-        openBtn.setAttribute('aria-expanded', 'true');
-        body.classList.add('drawer-open');
-
-        const first = drawer.querySelector('a, button');
-        if (first) first.focus();
-      };
-
-      openBtn.addEventListener('click', () => {
-        const expanded = openBtn.getAttribute('aria-expanded') === 'true';
-        expanded ? closeAll() : open();
+      links.forEach((a) => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) map.set(id, a);
       });
 
-      drawer.addEventListener('click', (e) => {
-        if (e.target.closest('[data-drawer-close]')) closeAll();
+      if (!map.size) return;
+
+      const spy = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+
+        const id = visible.target.id;
+        links.forEach((a) => a.classList.remove('is-active'));
+
+        const active = map.get(id);
+        if (active) active.classList.add('is-active');
+      }, {
+        rootMargin: '-45% 0px -50% 0px',
+        threshold: [0.06, 0.12, 0.2, 0.35]
       });
 
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeAll();
+      map.forEach((_, id) => {
+        const el = document.getElementById(id);
+        if (el) spy.observe(el);
       });
     })();
 
-    // modals
+    /* =========================================================
+       Modal open / close
+       ========================================================= */
     (() => {
       const body = document.body;
       let lastActive = null;
@@ -809,12 +1198,13 @@
         if (!modal) return;
 
         lastActive = document.activeElement;
+
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         body.classList.add('modal-open');
 
-        const focusable = getFocusable(modal);
-        (focusable[0] || modal).focus();
+        const focusables = getFocusable(modal);
+        (focusables[0] || modal).focus();
 
         const onKey = (e) => {
           if (e.key === 'Escape') closeModal(modal);
@@ -875,35 +1265,85 @@
       });
     })();
 
-    // sticky CTA
+    /* =========================================================
+       Drawer
+       ========================================================= */
+    (() => {
+      const drawer = $('#nav-drawer');
+      const openBtn = $('[data-drawer-open]');
+      if (!drawer || !openBtn) return;
+
+      const body = document.body;
+
+      const closeAll = () => {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        openBtn.setAttribute('aria-expanded', 'false');
+        body.classList.remove('drawer-open');
+      };
+
+      const open = () => {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        openBtn.setAttribute('aria-expanded', 'true');
+        body.classList.add('drawer-open');
+
+        const first = drawer.querySelector('a,button');
+        if (first) first.focus();
+      };
+
+      openBtn.addEventListener('click', () => {
+        const expanded = openBtn.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeAll();
+        else open();
+      });
+
+      drawer.addEventListener('click', (e) => {
+        if (e.target.closest('[data-drawer-close]')) closeAll();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll();
+      });
+    })();
+
+    /* =========================================================
+       Sticky CTA
+       ========================================================= */
     (() => {
       const bar = $('#sticky-cta');
       const hero = $('#hero-sentinel');
       if (!bar || !hero) return;
 
       const closeBtn = $('.sticky-close', bar);
-      const STORAGE_KEY = 'mvz_sticky_cooldown_v2';
-      const COOLDOWN_MS = 10 * 60 * 1000;
+      const COOLDOWN_MIN = 10;
+      const COOLDOWN_MS = COOLDOWN_MIN * 60 * 1000;
+      const STORAGE_KEY = 'mvz_sticky_cooldown_until_v2';
 
-      const now = () => Date.now();
+      function now() {
+        return Date.now();
+      }
 
-      const getCooldown = () => {
+      function getCooldownUntil() {
         try {
-          return Number(localStorage.getItem(STORAGE_KEY) || 0);
+          const v = Number(localStorage.getItem(STORAGE_KEY) || 0);
+          return Number.isFinite(v) ? v : 0;
         } catch (_) {
           return 0;
         }
-      };
+      }
 
-      const setCooldown = () => {
+      function setCooldown() {
         try {
           localStorage.setItem(STORAGE_KEY, String(now() + COOLDOWN_MS));
         } catch (_) {}
-      };
+      }
 
-      const canShow = () => now() >= getCooldown();
+      function cooldownPassed() {
+        return now() >= getCooldownUntil();
+      }
 
-      const setVisible = (on) => {
+      function setVisible(on) {
         if (on) {
           bar.classList.add('is-visible');
           bar.setAttribute('aria-hidden', 'false');
@@ -911,15 +1351,21 @@
           bar.classList.remove('is-visible');
           bar.setAttribute('aria-hidden', 'true');
         }
-      };
+      }
 
-      const update = (heroVisible) => {
-        if (heroVisible || !canShow()) {
+      function updateByState(isHeroVisible) {
+        if (isHeroVisible) {
           setVisible(false);
           return;
         }
+
+        if (!cooldownPassed()) {
+          setVisible(false);
+          return;
+        }
+
         setVisible(true);
-      };
+      }
 
       if (closeBtn) {
         closeBtn.addEventListener('click', () => {
@@ -928,15 +1374,25 @@
         });
       }
 
-      const io = new IntersectionObserver((entries) => {
-        const heroVisible = entries[0]?.isIntersecting;
-        update(!!heroVisible);
-      }, { threshold: 0.22 });
+      const obs = new IntersectionObserver((entries) => {
+        const isHeroVisible = entries[0]?.isIntersecting;
+        updateByState(!!isHeroVisible);
+      }, { threshold: 0.2 });
 
-      io.observe(hero);
+      obs.observe(hero);
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState !== 'visible') return;
+        const r = hero.getBoundingClientRect();
+        const isHeroVisible = r.bottom > 0 && r.top < window.innerHeight;
+        updateByState(isHeroVisible);
+      });
     })();
 
-    // GitHub release
+    /* =========================================================
+       GitHub release sync
+       version / date / release notes / installer size / links
+       ========================================================= */
     (() => {
       const owner = $('meta[name="gh-owner"]')?.content || 'mvcomplexsite';
       const repo = $('meta[name="gh-repo"]')?.content || 'mvcomplexsite.github.io';
@@ -952,6 +1408,7 @@
       const vEls = [
         $('#release-version'),
         $('#release-version-2'),
+        $('#release-version-3'),
         $('#release-version-cta'),
         $('#release-version-drawer')
       ].filter(Boolean);
@@ -959,6 +1416,7 @@
       const dEls = [
         $('#release-date'),
         $('#release-date-2'),
+        $('#release-date-3'),
         $('#release-date-cta'),
         $('#release-date-drawer')
       ].filter(Boolean);
@@ -1003,9 +1461,9 @@
 
       function bodyToItems(body, maxItems) {
         const t = stripMd(body);
-        const lines = t.split('\n').map((x) => x.trim()).filter(Boolean);
-        const clean = lines.map((x) => x.replace(/^[-•*]\s+/, '').trim()).filter(Boolean);
-        return (clean.length ? clean : lines).slice(0, maxItems);
+        const lines = t.split('\n').map(x => x.trim()).filter(Boolean);
+        const bullet = lines.map(x => x.replace(/^[-•*]\s+/, '').trim()).filter(Boolean);
+        return (bullet.length ? bullet : lines).slice(0, maxItems);
       }
 
       function renderNotes(targetEl, items, compact) {
@@ -1017,7 +1475,7 @@
         }
 
         const li = (compact ? items.slice(0, 4) : items)
-          .map((item) => `<li>${escapeHtml(item)}</li>`)
+          .map(x => `<li>${escapeHtml(x)}</li>`)
           .join('');
 
         targetEl.innerHTML = `<ul>${li}</ul>`;
@@ -1027,24 +1485,24 @@
         if (!Number.isFinite(bytes) || bytes <= 0) return '—';
         const units = ['B', 'KB', 'MB', 'GB'];
         let i = 0;
-        let value = bytes;
+        let v = bytes;
 
-        while (value >= 1024 && i < units.length - 1) {
-          value /= 1024;
+        while (v >= 1024 && i < units.length - 1) {
+          v /= 1024;
           i++;
         }
 
         const digits = i === 0 ? 0 : i === 1 ? 0 : 1;
-        return `${value.toFixed(digits)} ${units[i]}`;
+        return `${v.toFixed(digits)} ${units[i]}`;
       }
 
       function pickInstallerAsset(assets) {
         if (!Array.isArray(assets) || !assets.length) return null;
 
-        const exe = assets.filter((a) => String(a?.name || '').toLowerCase().endsWith('.exe'));
+        const exe = assets.filter(a => String(a?.name || '').toLowerCase().endsWith('.exe'));
         if (!exe.length) return null;
 
-        const scored = exe.map((a) => {
+        const scored = exe.map(a => {
           const n = String(a.name || '').toLowerCase();
           let score = 0;
           if (n.includes(hint)) score += 50;
@@ -1061,11 +1519,11 @@
         const version = rel.name ? String(rel.name).trim() : (rel.tag_name || tag || 'MVZ');
         const date = rel.published_at ? fmtDate(rel.published_at) : '—';
 
-        vEls.forEach((el) => { el.textContent = version; });
-        dEls.forEach((el) => { el.textContent = date; });
+        vEls.forEach(el => el.textContent = version);
+        dEls.forEach(el => el.textContent = date);
 
         if (rel.html_url) {
-          releaseLinks.forEach((a) => a.setAttribute('href', rel.html_url));
+          releaseLinks.forEach(a => a.setAttribute('href', rel.html_url));
         }
 
         const items = bodyToItems(rel.body || '', 16);
@@ -1074,30 +1532,61 @@
 
         const asset = pickInstallerAsset(rel.assets || []);
         if (asset?.browser_download_url) {
-          downloadLinks.forEach((a) => a.setAttribute('href', asset.browser_download_url));
-          sizeEls.forEach((el) => { el.textContent = fmtBytes(asset.size); });
+          downloadLinks.forEach(a => a.setAttribute('href', asset.browser_download_url));
+          sizeEls.forEach(el => el.textContent = fmtBytes(asset.size));
         } else {
-          sizeEls.forEach((el) => { el.textContent = '—'; });
+          sizeEls.forEach(el => el.textContent = '—');
         }
       }
 
+      const CACHE_KEY = `mvz_rel_cache_${owner}_${repo}_${tag}`;
+      const CACHE_TTL_MS = 60 * 60 * 1000;
+
+      function loadCache() {
+        try {
+          const raw = localStorage.getItem(CACHE_KEY);
+          if (!raw) return null;
+          const obj = JSON.parse(raw);
+          if (!obj?.ts || !obj?.data) return null;
+          if (Date.now() - obj.ts > CACHE_TTL_MS) return null;
+          return obj.data;
+        } catch (_) {
+          return null;
+        }
+      }
+
+      function saveCache(data) {
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({
+            ts: Date.now(),
+            data
+          }));
+        } catch (_) {}
+      }
+
+      const cached = loadCache();
+      if (cached) applyRelease(cached);
+
       fetch(API_BY_TAG)
-        .then((r) => r.ok ? r.json() : Promise.reject(r))
-        .catch(() => fetch(API_LATEST).then((r) => r.ok ? r.json() : Promise.reject(r)))
-        .then((rel) => {
+        .then(r => r.ok ? r.json() : Promise.reject(r))
+        .catch(() => fetch(API_LATEST).then(r => r.ok ? r.json() : Promise.reject(r)))
+        .then(rel => {
           if (!rel) return;
+          saveCache(rel);
           applyRelease(rel);
         })
         .catch(() => {});
     })();
 
-    // Telegram skeleton
+    /* =========================================================
+       Telegram widget skeleton
+       ========================================================= */
     (() => {
       const cards = $$('.tg-card');
       if (!cards.length) return;
 
       const obs = new MutationObserver(() => {
-        cards.forEach((card) => {
+        cards.forEach(card => {
           const iframe = card.querySelector('iframe');
           if (iframe) card.classList.remove('tg-skeleton');
         });
