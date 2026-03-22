@@ -553,11 +553,9 @@
           <article class="testing-main">
             <div class="testing-copy">
               <span class="screen-kicker">Основной экран тестирования</span>
-              <h3>Центральный визуал testing-блока</h3>
+              <h3>Главный экран testing</h3>
               <p>
-                Этот экран хорошо раскрывает основную идею MVZ:
-                быстро проверить профиль, увидеть ход теста и понять,
-                какой вариант показывает лучший результат.
+                Экран показывает testing по делу: проверка профилей, ход теста и лучший результат.
               </p>
 
               <div class="asset-line">assets/mvz-screen-testing-main.jpg</div>
@@ -575,18 +573,18 @@
 
           <aside class="testing-side">
             <article class="mini-card">
-              <h3>Что подчёркиваем в тексте</h3>
+              <h3>Что важно</h3>
               <ul class="list compact">
-                <li>Быстрая проверка профилей и сетевых вариантов.</li>
-                <li>Логи тестирования в понятной форме.</li>
-                <li>Выделение лучшего найденного результата.</li>
-                <li>Нормальный рабочий интерфейс без лишней сложности.</li>
+                <li>Быстрая проверка профилей.</li>
+                <li>Понятные логи.</li>
+                <li>Лучший результат виден сразу.</li>
+                <li>Ничего лишнего в интерфейсе.</li>
               </ul>
             </article>
 
             <article class="mini-card visual-mini">
               <div class="visual-mini-top">
-                <span class="screen-kicker">Дополнительный testing screen</span>
+                <span class="screen-kicker">Дополнительный экран</span>
                 <div class="asset-line">assets/mvz-screen-testing-purple.jpg</div>
               </div>
 
@@ -720,13 +718,13 @@
             </div>
 
             <p class="visual-text">
-              Главный экран лучше всего работает в hero и обзорных секциях.
+              Главный экран хорошо работает в hero и обзорных блоках.
             </p>
           </article>
 
           <article class="visual-card">
             <div class="visual-head">
-              <span class="visual-title">Testing — blue</span>
+              <span class="visual-title">Testing — основной</span>
               <div class="asset-line">assets/mvz-screen-testing-main.jpg</div>
             </div>
 
@@ -745,7 +743,7 @@
 
           <article class="visual-card">
             <div class="visual-head">
-              <span class="visual-title">Testing — purple</span>
+              <span class="visual-title">Testing — доп. экран</span>
               <div class="asset-line">assets/mvz-screen-testing-purple.jpg</div>
             </div>
 
@@ -758,13 +756,13 @@
             </div>
 
             <p class="visual-text">
-              Подходит как дополнительный supporting visual для блока testing.
+              Дополняет основной testing-экран.
             </p>
           </article>
 
           <article class="visual-card">
             <div class="visual-head">
-              <span class="visual-title">VPN screen</span>
+              <span class="visual-title">VPN</span>
               <div class="asset-line">assets/mvz-screen-vpn.jpg</div>
             </div>
 
@@ -777,7 +775,7 @@
             </div>
 
             <p class="visual-text">
-              Лучший акцент для отдельной VPN-секции и перехода к боту.
+              Хороший акцент для VPN-блока и перехода в бота.
             </p>
           </article>
         </div>
@@ -1347,11 +1345,27 @@
         if (first) first.focus();
       }
 
-      openBtn.addEventListener('click', () => {
+      let touchHandled = false;
+
+      function toggleDrawer() {
         const expanded = openBtn.getAttribute('aria-expanded') === 'true';
         if (expanded) closeDrawer();
         else openDrawer();
+      }
+
+      openBtn.addEventListener('click', () => {
+        if (touchHandled) {
+          touchHandled = false;
+          return;
+        }
+        toggleDrawer();
       });
+
+      openBtn.addEventListener('touchstart', (e) => {
+        touchHandled = true;
+        e.preventDefault();
+        toggleDrawer();
+      }, { passive: false });
 
       drawer.addEventListener('click', (e) => {
         if (e.target.closest('[data-drawer-close]')) closeDrawer();
@@ -1413,8 +1427,9 @@
       }
 
       const observer = new IntersectionObserver((entries) => {
-        const isHeroVisible = entries[0]?.isIntersecting;
-        updateByState(!!isHeroVisible);
+        const firstEntry = entries[0];
+        const isHeroVisible = !!(firstEntry && firstEntry.isIntersecting);
+        updateByState(isHeroVisible);
       }, { threshold: 0.2 });
 
       observer.observe(hero);
@@ -1429,10 +1444,15 @@
 
     // GitHub release info
     (() => {
-      const owner = $('meta[name="gh-owner"]')?.content || 'mvcomplexsite';
-      const repo = $('meta[name="gh-repo"]')?.content || 'mvcomplexsite.github.io';
-      const tag = $('meta[name="gh-tag"]')?.content || 'MVZ';
-      const hint = ($('meta[name="gh-asset-hint"]')?.content || 'setup').toLowerCase();
+      function metaContent(name, fallback) {
+        const el = document.querySelector('meta[name="' + name + '"]');
+        return el && el.content ? el.content : fallback;
+      }
+
+      const owner = metaContent('gh-owner', 'mvcomplexsite');
+      const repo = metaContent('gh-repo', 'mvcomplexsite.github.io');
+      const tag = metaContent('gh-tag', 'MVZ');
+      const hint = metaContent('gh-asset-hint', 'setup').toLowerCase();
 
       const API_BY_TAG = `https://api.github.com/repos/${owner}/${repo}/releases/tags/${encodeURIComponent(tag)}`;
       const API_LATEST = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
@@ -1490,11 +1510,11 @@
 
       function escapeHtml(str) {
         return String(str)
-          .replaceAll('&', '&amp;')
-          .replaceAll('<', '&lt;')
-          .replaceAll('>', '&gt;')
-          .replaceAll('"', '&quot;')
-          .replaceAll("'", '&#039;');
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
       }
 
       function stripMd(str) {
@@ -1556,8 +1576,8 @@
         const published = release.published_at || release.created_at || '';
         const releaseUrl = release.html_url || `https://github.com/${owner}/${repo}/releases/tag/${encodeURIComponent(tag)}`;
         const asset = pickAsset(release.assets || []);
-        const downloadUrl = asset?.browser_download_url || `https://github.com/${owner}/${repo}/releases/download/${encodeURIComponent(tag)}/MVZ_Setup.exe`;
-        const size = fmtSize(asset?.size || 0);
+        const downloadUrl = (asset && asset.browser_download_url) || `https://github.com/${owner}/${repo}/releases/download/${encodeURIComponent(tag)}/MVZ_Setup.exe`;
+        const size = fmtSize((asset && asset.size) || 0);
         const items = bodyToItems(release.body || '', 12);
 
         versionEls.forEach((el) => el.textContent = version);
