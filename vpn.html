@@ -1,1 +1,488 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MVZ VPN — Telegram VPN Access</title>
+  <meta name="description" content="Отдельная страница MVZ VPN: Telegram-бот, VPN-доступ, сценарии подключения и связь с MVZapret." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="icon" type="image/jpeg" href="assets/logo-mvz.jpg" />
+  <link rel="shortcut icon" type="image/jpeg" href="assets/logo-mvz.jpg" />
+  <link rel="apple-touch-icon" href="assets/logo-mvz.jpg" />
+  <link rel="preconnect" href="https://telegram.org" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к контенту</a>
 
+  <div class="site-bg" aria-hidden="true">
+    <div class="bg-aurora aurora-a"></div>
+    <div class="bg-aurora aurora-b"></div>
+    <div class="bg-aurora aurora-c"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <header class="nav-outer">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html" aria-label="MVZ VPN">
+        <span class="brand-mark">
+          <img src="assets/logo-mvz.jpg" alt="MVZ VPN" loading="eager" />
+        </span>
+        <span class="brand-copy">
+          <span class="brand-title">MVZ VPN</span>
+          <span class="brand-sub">Telegram VPN product page</span>
+        </span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="mvz.html">MVZapret</a>
+        <a href="vpn.html" class="is-active">MVZ VPN</a>
+        <a href="#news">Telegram</a>
+        <a href="#contact">Контакты</a>
+        <button class="nav-disclaimer" type="button" data-modal-open="vpn-disclaimer">Disclaimer</button>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn ghost small" href="mvz.html">MVZapret</a>
+        <a class="btn primary small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">Открыть бота</a>
+        <button class="nav-burger" type="button" aria-label="Открыть меню" aria-controls="nav-drawer" aria-expanded="false" data-drawer-open>
+          <span class="nav-burger-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="drawer" id="nav-drawer" aria-hidden="true">
+      <div class="drawer-overlay" data-drawer-close></div>
+      <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Мобильное меню">
+        <div class="drawer-head">
+          <div class="drawer-brand">
+            <div class="drawer-title">MVZ VPN</div>
+            <div class="drawer-sub">Telegram, bot access, VPN flow</div>
+          </div>
+          <button class="drawer-close" type="button" aria-label="Закрыть меню" data-drawer-close>✕</button>
+        </div>
+
+        <div class="drawer-body">
+          <a class="drawer-link" href="index.html" data-drawer-close>Главная</a>
+          <a class="drawer-link" href="mvz.html" data-drawer-close>MVZapret</a>
+          <a class="drawer-link" href="#vpn" data-drawer-close>VPN</a>
+          <a class="drawer-link" href="#flow" data-drawer-close>Как подключиться</a>
+          <a class="drawer-link" href="#news" data-drawer-close>Telegram</a>
+          <a class="drawer-link" href="#contact" data-drawer-close>Контакты</a>
+          <button class="btn ghost drawer-disclaimer" type="button" data-modal-open="vpn-disclaimer" data-drawer-close>Disclaimer</button>
+
+          <div class="drawer-meta">
+            <div class="drawer-meta-row"><span class="drawer-meta-k">Формат</span><b class="drawer-meta-v">Telegram bot</b></div>
+            <div class="drawer-meta-row"><span class="drawer-meta-k">Сценарий</span><b class="drawer-meta-v">VPN access</b></div>
+            <div class="drawer-meta-row"><span class="drawer-meta-k">Связка</span><b class="drawer-meta-v">Работает с MVZapret</b></div>
+          </div>
+
+          <div class="drawer-buttons">
+            <a class="btn primary small drawer-download" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">MVZapretBot</a>
+            <a class="btn ghost small" href="mvz.html">MVZapret</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="hero-blobs" aria-hidden="true">
+        <div class="blob blob-a"></div>
+        <div class="blob blob-b"></div>
+        <div class="blob blob-c"></div>
+      </div>
+
+      <div class="container hero-grid reveal" id="hero-sentinel">
+        <div class="hero-copy">
+          <div class="hero-topline">
+            <span class="eyebrow">mvz vpn</span>
+            <span class="hero-badge">отдельная Telegram/VPN-страница</span>
+          </div>
+
+          <h1 class="hero-title">MVZ VPN — доступ через <span>Telegram</span> без лишнего шума вокруг релизной части.</h1>
+          <p class="hero-text">Эта страница отвечает только за VPN-сценарий: бот, подключение, объяснение потока и связь с MVZapret. Здесь нет перегруза changelog-блоками и релизной Windows-логикой.</p>
+
+          <div class="hero-actions">
+            <a class="btn primary big" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">Открыть MVZapretBot</a>
+            <a class="btn ghost big" href="mvz.html">Перейти в MVZapret</a>
+          </div>
+
+          <div class="hero-trust" aria-label="Быстрые факты">
+            <span class="trust-chip">Telegram bot</span>
+            <span class="trust-chip">VPN access</span>
+            <button class="trust-chip action" type="button" data-modal-open="vpn-faq">FAQ</button>
+            <a class="trust-chip action" href="https://t.me/motyait2" target="_blank" rel="noopener noreferrer">Telegram channel</a>
+          </div>
+
+          <div class="hero-pills" aria-label="Теги">
+            <span class="pill">MVZ VPN</span>
+            <span class="pill">Telegram</span>
+            <span class="pill">Bot access</span>
+            <span class="pill">MVZapret</span>
+          </div>
+
+          <div class="kpi-grid" aria-label="Краткая сводка">
+            <div class="kpi-card">
+              <div class="kpi-k">Вход</div>
+              <div class="kpi-v">MVZapretBot</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-k">Формат</div>
+              <div class="kpi-v">Telegram</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-k">Связка</div>
+              <div class="kpi-v">С MVZapret</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-k">Страница</div>
+              <a class="kpi-v link" href="mvz.html">Windows product</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-window frame">
+            <div class="hero-window-top">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="hero-window-title">MVZ VPN screen</span>
+            </div>
+            <div class="hero-window-body">
+              <img src="assets/mvz-screen-vpn.jpg" alt="Экран MVZ VPN" loading="eager" />
+              <div class="floating-chip fc-1">Telegram</div>
+              <div class="floating-chip fc-2">VPN access</div>
+              <div class="floating-chip fc-3">bot flow</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tight">
+      <div class="container">
+        <div class="launch-strip reveal">
+          <div class="launch-copy">
+            <div class="section-label">telegram product</div>
+            <h2 class="section-title small">VPN-часть вынесена в отдельную продуктовую страницу</h2>
+          </div>
+          <div class="launch-tags">
+            <span>Bot-first</span>
+            <span>VPN-only context</span>
+            <span>Связка с MVZapret</span>
+            <span>Чистый flow</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vpn" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">vpn</div>
+          <h2 class="section-title">Что даёт MVZ VPN</h2>
+          <p class="section-subtitle">Страница собрана вокруг одного понятного сценария — открыть бота, получить VPN-доступ и при необходимости связаться с остальной экосистемой MVZ.</p>
+        </div>
+
+        <div class="vpn-layout reveal">
+          <article class="vpn-shot card glass">
+            <div class="vpn-shot-copy">
+              <span class="screen-kicker">vpn</span>
+              <h3>VPN-сценарий без перегруза</h3>
+              <p>Пользователь попадает сразу туда, где нужен бот, подключение и Telegram-логика, а не релизные карточки и changelog Windows-клиента.</p>
+            </div>
+            <div class="frame vpn-frame">
+              <img src="assets/mvz-screen-vpn.jpg" alt="VPN экран MVZ" loading="lazy" />
+            </div>
+          </article>
+
+          <div class="vpn-side">
+            <article class="card glass">
+              <h3>Что есть на странице</h3>
+              <ul class="list">
+                <li>Главный CTA в MVZapretBot.</li>
+                <li>Отдельный VPN hero и объяснение сценария.</li>
+                <li>Блоки про подключение и связку с MVZapret.</li>
+                <li>Telegram и support без лишнего релизного шума.</li>
+              </ul>
+              <div class="vpn-actions">
+                <a class="btn primary" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">MVZapretBot</a>
+                <button class="btn ghost" type="button" data-modal-open="vpn-support">Поддержка</button>
+              </div>
+            </article>
+
+            <article class="card glass">
+              <h3>MVZ ecosystem</h3>
+              <div class="note-stack">
+                <div class="note-item">
+                  <b>MVZ VPN</b>
+                  <span>Telegram/VPN-направление со своим отдельным продуктовым потоком.</span>
+                </div>
+                <div class="note-item">
+                  <b>MVZapret</b>
+                  <span>Если нужен Windows-клиент, релиз и testing — на это есть отдельная страница.</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow" class="section">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="section-label">flow</div>
+          <h2 class="section-title">Как подключиться</h2>
+          <p class="section-subtitle">Сценарий сделан максимально прямым: вход в бота, получение маршрута, использование VPN и переход в MVZapret только если нужен Windows-продукт.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-n">01</div>
+            <div class="t-b">
+              <div class="t-t">Открываешь MVZapretBot</div>
+              <div class="t-d">Страница ведёт прямо в Telegram-бота как в основную точку входа в MVZ VPN.</div>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="t-n">02</div>
+            <div class="t-b">
+              <div class="t-t">Получаешь VPN-сценарий</div>
+              <div class="t-d">Пользователь остаётся внутри Telegram/VPN-контекста и не отвлекается на нерелевантный Windows-контент.</div>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="t-n">03</div>
+            <div class="t-b">
+              <div class="t-t">Используешь MVZ VPN</div>
+              <div class="t-d">Вся страница собрана вокруг доступа, поддержки и понятных переходов без лишней нагрузки.</div>
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="t-n">04</div>
+            <div class="t-b">
+              <div class="t-t">Нужен Windows-клиент — идёшь в MVZapret</div>
+              <div class="t-d">Если нужен отдельный релиз, changelog и testing, переход на MVZapret уже встроен в структуру страницы.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="linked" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">linked product</div>
+          <h2 class="section-title">Как MVZ VPN связан с MVZapret</h2>
+          <p class="section-subtitle">Страницы разделены, но связь между продуктами сохранена намеренно, чтобы пользователь не терялся внутри экосистемы.</p>
+        </div>
+
+        <div class="grid-2 reveal">
+          <article class="card glass">
+            <h3>Когда нужен MVZapret</h3>
+            <p>Если задача уже не про VPN, а про Windows-клиент, релизную сборку, testing и продуктовую Windows-страницу — для этого есть отдельный MVZapret.</p>
+            <ul class="list">
+              <li>Скачивание .exe и GitHub release.</li>
+              <li>Testing-блоки и визуалы под Windows.</li>
+              <li>Более глубокая продуктовая страница для MVZ 1.6.</li>
+            </ul>
+            <div class="hero-actions" style="margin-top:16px;">
+              <a class="btn primary" href="mvz.html">Открыть MVZapret</a>
+              <a class="btn ghost" href="https://github.com/mvcomplexsite/mvcomplexsite.github.io/releases/tag/MVZ" target="_blank" rel="noopener noreferrer">GitHub release</a>
+            </div>
+          </article>
+
+          <article class="card glass panel-shot">
+            <div class="panel-shot-head">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="panel-shot-title">Связанный MVZapret screen</span>
+            </div>
+            <div class="panel-shot-body">
+              <img src="assets/mvz-screen-home.jpg" alt="Связанный экран MVZapret" loading="lazy" />
+            </div>
+            <div class="panel-shot-foot">MVZapret остаётся отдельной продуктовой страницей, но доступен отсюда в один клик.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">telegram</div>
+          <h2 class="section-title">Telegram-новости</h2>
+          <p class="section-subtitle">Telegram остаётся главным каналом для быстрых обновлений, связи и публичных постов по проекту.</p>
+        </div>
+
+        <div class="tg-grid reveal">
+          <div class="tg-card tg-skeleton">
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="motyait/287" data-width="100%" data-userpic="true"></script>
+          </div>
+          <div class="tg-card tg-skeleton">
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="motyait/288" data-width="100%" data-userpic="true"></script>
+          </div>
+        </div>
+
+        <div class="tg-more reveal">
+          <a class="btn ghost" href="https://t.me/motyait2" target="_blank" rel="noopener noreferrer">Открыть Telegram-канал</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">contact</div>
+          <h2 class="section-title">Контакты и входы</h2>
+          <p class="section-subtitle">Здесь оставлены только релевантные точки входа для VPN-потока и перехода в связанный Windows-продукт.</p>
+        </div>
+
+        <div class="contacts-grid reveal">
+          <article class="contact-card">
+            <h3>MVZapretBot</h3>
+            <p>Основной вход в MVZ VPN через Telegram-бота.</p>
+            <a href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">Открыть бота</a>
+          </article>
+          <article class="contact-card">
+            <h3>Telegram</h3>
+            <p>Новости, апдейты и коммуникация по проекту.</p>
+            <a href="https://t.me/motyait2" target="_blank" rel="noopener noreferrer">t.me/motyait2</a>
+          </article>
+          <article class="contact-card">
+            <h3>MVZapret</h3>
+            <p>Если нужен Windows-клиент, релиз и testing — переходи на отдельную страницу.</p>
+            <a href="mvz.html">mvz.html</a>
+          </article>
+          <article class="contact-card">
+            <h3>Поддержка</h3>
+            <p>Помощь по маршруту внутри экосистемы MVZ.</p>
+            <a href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">Написать в бот</a>
+          </article>
+        </div>
+
+        <div class="contact-actions reveal">
+          <a class="btn primary" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">Открыть MVZapretBot</a>
+          <a class="btn ghost" href="mvz.html">Перейти в MVZapret</a>
+          <button class="btn ghost" type="button" data-modal-open="vpn-support">Поддержка</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner container">
+      <span>MVZ VPN — Telegram product page — 2026</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="vpn-faq" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="vpn-faq-title" tabindex="-1">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">✕</button>
+      <h3 class="modal-title" id="vpn-faq-title">FAQ</h3>
+      <p class="modal-sub">Коротко про новую отдельную страницу MVZ VPN.</p>
+      <div class="faq-list">
+        <div class="faq-row">
+          <div class="faq-q">Почему VPN вынесен отдельно?</div>
+          <div class="faq-a">Чтобы Telegram/VPN-сценарий не тонул в релизной и Windows-логике MVZapret.</div>
+        </div>
+        <div class="faq-row">
+          <div class="faq-q">Где теперь Windows-клиент?</div>
+          <div class="faq-a">На отдельной странице MVZapret, куда отсюда есть прямой переход.</div>
+        </div>
+        <div class="faq-row">
+          <div class="faq-q">Что здесь главное?</div>
+          <div class="faq-a">Бот, VPN-доступ, Telegram-поток и связка с остальной экосистемой MVZ.</div>
+        </div>
+      </div>
+      <div class="modal-actions" style="margin-top:12px;">
+        <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="vpn-disclaimer" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="vpn-disclaimer-title" tabindex="-1">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">✕</button>
+      <h3 class="modal-title" id="vpn-disclaimer-title">Disclaimer</h3>
+      <ol class="modal-list">
+        <li><b>MVZ VPN.</b><br />Это отдельная страница для Telegram/VPN-сценария.</li>
+        <li><b>MVZapret.</b><br />Windows-релиз и testing вынесены на отдельную продуктовую страницу.</li>
+        <li><b>Связка.</b><br />Оба направления остаются частью одной экосистемы MVZ.</li>
+        <li><b>Формат.</b><br />Материалы на странице даны как продуктовая навигация по VPN-потоку.</li>
+      </ol>
+      <div class="modal-actions">
+        <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="vpn-support" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="vpn-support-title" tabindex="-1">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">✕</button>
+      <h3 class="modal-title" id="vpn-support-title">Поддержка</h3>
+      <p class="modal-sub">Если тебе нужен именно VPN-сценарий — оставайся на этой странице и иди в бота. Если нужен Windows-клиент — переходи в MVZapret.</p>
+      <div class="faq-list">
+        <div class="faq-row">
+          <div class="faq-q">Нужен VPN</div>
+          <div class="faq-a">Основной маршрут — MVZapretBot, именно он является главным CTA этой страницы.</div>
+        </div>
+        <div class="faq-row">
+          <div class="faq-q">Нужен релиз MVZ для Windows</div>
+          <div class="faq-a">Для этого есть отдельная страница MVZapret с download и changelog.</div>
+        </div>
+      </div>
+      <div class="modal-actions" style="margin-top:12px;">
+        <a class="btn primary small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">MVZapretBot</a>
+        <a class="btn ghost small" href="mvz.html">MVZapret</a>
+        <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+      const body = document.body;
+
+      const revealItems = $$('.reveal');
+      if (revealItems.length) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.12 });
+        revealItems.forEach((item) => revealObserver.observe(item));
+      }
+
+      const header = $('.nav-outer');
+      if (header) {
+        const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+
+      let lastActive = null;
+      const getFocusable = (root) => Array.from(root.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'));
+
+      const closeModal = (modal) => {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        body.classList.remove('modal-open');
+        if (modal._onKey) {
+          document.removeEventListener('keydown', modal._onKodal._onK
