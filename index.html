@@ -213,42 +213,50 @@
       <div class="container">
         <div class="playoff-promo reveal">
           <div class="playoff-copy">
-            <div class="section-label">промоблок</div>
+            <div class="section-label">спецблок</div>
             <h2 class="section-title small">Путь Ак Барса в плей-офф</h2>
             <p class="section-subtitle playoff-subtitle">
-              Небольшой интерактивный стенд в духе реальной стойки с шайбами. После каждой победы можно
-              вручную добавить ещё одну шайбу — без сложной админки и лишней возни с кодом по всему сайту.
+              Аккуратный стенд побед в духе реальной таблички с шайбами. После каждой победы просто меняй одно
+              число в коде — и на табло автоматически появится новая шайба.
             </p>
 
             <div class="playoff-status">
               <span class="playoff-status-pill">Сейчас: <b id="playoff-wins-label">6 / 16</b></span>
-              <span class="playoff-status-note">Чтобы обновить блок, достаточно поменять одно число в коде: <code>data-wins="6"</code>.</span>
+              <span class="playoff-status-pill soft">До следующей отметки: <b id="playoff-next-label">10 мест</b></span>
             </div>
 
-            <div class="playoff-points">
-              <div class="note-item">
-                <b>Простой ручной сценарий</b>
-                <span>Победил Ак Барс — увеличил число побед на 1, и на стенде появилась новая шайба.</span>
-              </div>
-              <div class="note-item">
-                <b>Понятно для посетителя</b>
-                <span>Блок сразу показывает прогресс: сколько побед уже есть и сколько мест ещё осталось.</span>
-              </div>
-              <div class="note-item">
-                <b>Легко стилизовать дальше</b>
-                <span>При желании потом можно заменить простые шайбы на изображения, анимации или фирменные акценты.</span>
-              </div>
+            <div class="playoff-copy-note">
+              Для обновления достаточно изменить <code>data-wins="6"</code> у блока стенда.
             </div>
           </div>
 
           <div class="playoff-board card glass" data-wins="6" data-total="16" aria-label="Стенд побед Ак Барса">
-            <div class="playoff-board-head">
-              <span class="screen-kicker">АК БАРС · ПЛЕЙ-ОФФ</span>
-              <div class="playoff-board-title">Шайбы побед</div>
-              <div class="playoff-board-meta">16 мест · по одной шайбе за каждую победу</div>
+            <div class="playoff-board-top">
+              <img class="playoff-akb-logo" src="HC_Ak_Bars_Logo.svg.png" alt="Логотип Ак Барса" loading="lazy" />
+              <div class="playoff-board-branding">
+                <div class="playoff-board-brand">Ак Барс</div>
+                <div class="playoff-board-season">16 шагов плей-офф</div>
+              </div>
             </div>
 
-            <div class="playoff-board-grid" id="playoff-board-grid" aria-live="polite"></div>
+            <div class="playoff-board-stage">
+              <div class="playoff-side playoff-side-left" id="playoff-left-grid" aria-hidden="true"></div>
+
+              <div class="playoff-centerpiece" aria-hidden="true">
+                <div class="playoff-trophy-glow"></div>
+                <div class="playoff-trophy">
+                  <div class="playoff-trophy-cap"></div>
+                  <div class="playoff-trophy-cup"></div>
+                  <div class="playoff-trophy-neck"></div>
+                  <div class="playoff-trophy-base"></div>
+                </div>
+                <div class="playoff-center-text">
+                  <span>шайбы побед</span>
+                </div>
+              </div>
+
+              <div class="playoff-side playoff-side-right" id="playoff-right-grid" aria-hidden="true"></div>
+            </div>
 
             <div class="playoff-board-foot">
               <span>Заполнено: <b id="playoff-board-count">6</b></span>
