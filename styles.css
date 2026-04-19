@@ -3085,3 +3085,120 @@ iframe {
     width: 74%;
   }
 }
+
+
+/* playoff fix v4 */
+.playoff-puck {
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 10%, transparent 18%),
+    radial-gradient(circle at 50% 46%, #121212 0%, #050505 66%, #000 100%) !important;
+  border: 1px solid rgba(255,255,255,0.03) !important;
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.04),
+    inset 0 -8px 12px rgba(0,0,0,0.62),
+    0 10px 18px rgba(0,0,0,0.38) !important;
+}
+.playoff-puck::after {
+  width: 22% !important;
+  height: 8% !important;
+  left: 22% !important;
+  top: 18% !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01)) !important;
+  opacity: .55 !important;
+}
+.playoff-slot.is-filled {
+  box-shadow:
+    inset 0 10px 18px rgba(255,255,255,0.04),
+    inset 0 -12px 18px rgba(0,0,0,0.46),
+    0 10px 20px rgba(0,0,0,0.22),
+    0 0 20px rgba(74, 255, 163, 0.10) !important;
+}
+.playoff-slot.is-filled::after {
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.03),
+    0 0 16px rgba(74, 255, 163, 0.12) !important;
+}
+.playoff-mobile-grid { display:none; }
+
+@media (max-width: 980px) {
+  .playoff-promo {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .playoff-copy {
+    padding: 20px;
+  }
+  .playoff-board {
+    padding: 18px 14px;
+    border-radius: 28px;
+  }
+  .playoff-board::after {
+    inset: 8px;
+    border-radius: 22px;
+  }
+  .playoff-board-head {
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .playoff-team-logo {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+  }
+  .playoff-board-brand {
+    font-size: 0.82rem;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+  .playoff-board-core {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .playoff-column {
+    display: none !important;
+  }
+  .playoff-centerpiece {
+    order: 0;
+    margin: 0 auto 4px;
+    padding-inline: 0;
+  }
+  .playoff-cup {
+    width: min(100%, 140px);
+    max-height: 220px;
+  }
+  .playoff-mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    order: 1;
+  }
+  .playoff-slot {
+    min-width: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+  .playoff-puck {
+    width: 78% !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .playoff-copy {
+    padding: 18px;
+  }
+  .playoff-board-head {
+    align-items: center;
+  }
+  .playoff-board-brand {
+    font-size: 0.7rem;
+  }
+  .playoff-mobile-grid {
+    gap: 8px;
+  }
+}
