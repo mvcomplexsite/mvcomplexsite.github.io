@@ -216,7 +216,7 @@
             <div class="section-label">спецблок плей-офф</div>
             <h2 class="section-title small">Путь Ак Барса в плей-офф</h2>
             <p class="section-subtitle playoff-subtitle">
-              После каждой победы на стенд добавляется ещё одна шайба. Всего — 16 мест. Обновление вручную: достаточно поменять одно число в коде.
+              Отдельный стенд побед: каждая новая шайба на табличке — ещё один шаг Ак Барса по сетке плей-офф. Всего на стенде 16 мест.
             </p>
             <div class="playoff-meta">
               <div class="playoff-stat">
@@ -228,14 +228,14 @@
                 <span class="playoff-stat-v"><span data-playoff-left>16</span></span>
               </div>
             </div>
-            <div class="playoff-note">Чтобы добавить новую шайбу, измени <code>data-wins</code> у блока ниже.</div>
+            <div class="playoff-note">После каждой победы меняй только значение <code>data-wins</code> — стенд обновится сам.</div>
           </div>
 
           <div class="playoff-board-wrap">
             <div class="playoff-board" data-wins="6" data-total="16">
               <div class="playoff-board-head">
                 <img class="playoff-team-logo" src="assets/akb_logo.png" alt="Логотип Ак Барса" loading="lazy" />
-                <div class="playoff-board-brand">Ак Барс · Плей-офф</div>
+                <div class="playoff-board-brand">Ак Барс · Шаг за шагом к трофею</div>
               </div>
 
               <div class="playoff-board-core">
@@ -702,13 +702,18 @@
       const currentEl = q('[data-playoff-current]');
       const leftEl = q('[data-playoff-left]');
 
-      const createSlot = (filled, index) => {
+      const leftPositions = [12, 13, 8, 9, 4, 5, 0, 1];
+      const rightPositions = [14, 15, 10, 11, 6, 7, 2, 3];
+
+      const createSlot = (absoluteIndex) => {
+        const filled = absoluteIndex < wins;
         const slot = document.createElement('div');
         slot.className = `playoff-slot${filled ? ' is-filled' : ''}`;
-        slot.setAttribute('aria-label', filled ? `Шайба ${index + 1}` : `Пустое место ${index + 1}`);
+        slot.setAttribute('aria-label', filled ? `Шайба ${absoluteIndex + 1}` : `Пустое место ${absoluteIndex + 1}`);
 
         const puck = document.createElement('span');
         puck.className = 'playoff-puck';
+        puck.innerHTML = '<span class="playoff-puck-core"></span>';
         slot.appendChild(puck);
         return slot;
       };
@@ -717,14 +722,13 @@
       leftGrid.innerHTML = '';
       rightGrid.innerHTML = '';
 
-      for (let i = 0; i < perSide; i += 1) {
-        leftGrid.appendChild(createSlot(i < Math.min(wins, perSide), i));
-      }
+      leftPositions.slice(0, perSide).forEach((absoluteIndex) => {
+        leftGrid.appendChild(createSlot(absoluteIndex));
+      });
 
-      for (let i = 0; i < perSide; i += 1) {
-        const absoluteIndex = i + perSide;
-        rightGrid.appendChild(createSlot(absoluteIndex < wins, absoluteIndex));
-      }
+      rightPositions.slice(0, perSide).forEach((absoluteIndex) => {
+        rightGrid.appendChild(createSlot(absoluteIndex));
+      });
 
       if (currentEl) currentEl.textContent = String(wins);
       if (leftEl) leftEl.textContent = String(total - wins);
