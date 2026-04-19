@@ -2961,3 +2961,70 @@ iframe {
     aspect-ratio: 1 / 0.6;
   }
 }
+
+/* Round face-view hockey pucks fix */
+.playoff-slot {
+  background:
+    radial-gradient(circle at 50% 32%, rgba(255,255,255,0.06), transparent 28%),
+    radial-gradient(circle at 50% 52%, rgba(0,0,0,0.18), rgba(0,0,0,0.52) 64%, rgba(0,0,0,0.78) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.34), rgba(0,0,0,0.58));
+}
+
+.playoff-slot::before {
+  inset: 10px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.playoff-puck {
+  width: 72%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.84);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.18), rgba(255,255,255,0.05) 12%, transparent 18%),
+    radial-gradient(circle at 50% 38%, rgba(255,255,255,0.06), transparent 34%),
+    radial-gradient(circle at 50% 58%, #1b1b1b 0%, #0c0c0c 58%, #030303 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,0.08),
+    inset 0 -8px 12px rgba(0,0,0,0.58),
+    0 10px 18px rgba(0,0,0,0.34);
+}
+
+.playoff-puck::before {
+  content: '';
+  position: absolute;
+  inset: 8% 8%;
+  border-radius: 50%;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-left: 1px solid rgba(255,255,255,0.03);
+  border-right: 1px solid rgba(0,0,0,0.28);
+  border-bottom: 1px solid rgba(0,0,0,0.42);
+}
+
+.playoff-puck::after {
+  content: '';
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: 16%;
+  height: 12%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+  filter: blur(0.4px);
+}
+
+.playoff-puck-core {
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.02),
+    inset 0 -8px 10px rgba(0,0,0,0.24);
+}
+
+.playoff-slot.is-filled .playoff-puck {
+  opacity: 1;
+  transform: scale(1);
+}
