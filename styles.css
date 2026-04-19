@@ -2605,3 +2605,37 @@ iframe {
     display: none;
   }
 }
+
+/* readability tweaks */
+.section-subtitle,
+.hero-text,
+.card p,
+.product-entry p,
+.visual-text,
+.note-item span,
+.faq-a,
+.modal-sub {
+  max-width: 68ch;
+}
+
+.contact-card p,
+.feature-d,
+.callout-text {
+  text-wrap: pretty;
+}
+
+.hero-title,
+.section-title,
+.product-entry h3,
+.showcase-copy h3,
+.bridge-copy h2,
+.pricing-head h2,
+.pricing-head h3 {
+  text-wrap: balance;
+}
+
+.list li,
+.modal-list li,
+.release-notes li {
+  padding-left: 2px;
+}
