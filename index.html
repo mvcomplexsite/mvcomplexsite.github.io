@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MV — MVZapret и MVZ VPN</title>
+  <title>Сайт команды MV</title>
   <meta
     name="description"
-    content="MV — сайт проекта с MVZapret для Windows, MVZ VPN, новостями, ссылками на бот и понятной навигацией по продуктам."
+    content="Сайт команды MV: MVZapret для Windows и MVZ VPN с подключением через Telegram-бота."
   />
   <meta name="theme-color" content="#05070d" />
   <link rel="icon" type="image/jpeg" href="assets/logo-mvz.jpg" />
@@ -72,8 +72,8 @@
     <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Меню сайта">
       <div class="drawer-head">
         <div class="drawer-brand">
-          <div class="drawer-title">MV</div>
-          <div class="drawer-sub">MVZapret, MVZ VPN и новости проекта</div>
+          <div class="drawer-title">Сайт команды MV</div>
+          <div class="drawer-sub">MVZapret / MVZ VPN / Новости проекта</div>
         </div>
         <button class="drawer-close" type="button" aria-label="Закрыть меню" data-drawer-close>✕</button>
       </div>
@@ -127,14 +127,15 @@
           </div>
 
           <h1 class="hero-title">
-            MV — проект с
+            Сайт команды MV
             <span>MVZapret</span>
             и MVZ VPN
           </h1>
 
           <p class="hero-text">
-            Здесь собраны два основных направления проекта: MVZapret для Windows и MVZ VPN с подключением
-            через Telegram-бота. Можно быстро понять, что выбрать, куда перейти и где получить доступ.
+            Сайт команды MV, где собраны наши основные продукты: MVZapret — усовершенствованный GUI-аналог
+            Zapret для Windows, и MVZ VPN — собственная VPN-подписка с удобным подключением через
+            Telegram-бота.
           </p>
 
           <div class="hero-actions">
@@ -157,8 +158,8 @@
             <span class="screen-kicker">навигация по проекту</span>
             <h2>С чего начать</h2>
             <p>
-              Нужен Windows-клиент с графическим интерфейсом — переходи в MVZapret. Нужна подписка,
-              подключение и выдача доступа через бота — открывай страницу MVZ VPN.
+              Если нужен Windows-клиент с GUI и встроенным VPN — открывай MVZ. Если нужен VPN-доступ и
+              подписка — переходи в MVZ VPN.
             </p>
           </div>
 
@@ -169,7 +170,7 @@
                 <span class="product-pill">Windows</span>
               </div>
               <h3>MVZapret (MVZ)</h3>
-              <p>Windows-приложение с графическим интерфейсом, встроенным VPN-клиентом, быстрым запуском и отдельной страницей с релизами.</p>
+              <p>GUI-аналог Zapret со встроенным VPN-клиентом, автозапуском, тестированием и более быстрой работой.</p>
               <div class="product-actions">
                 <a class="btn primary small" href="mvz.html">Открыть страницу MVZ</a>
               </div>
@@ -182,8 +183,8 @@
               </div>
               <h3>MVZ VPN</h3>
               <p>
-                VPN-подписка с понятным стартом: 3 дня пробного периода, подключение через бота и +5 дней
-                за каждого приглашённого пользователя.
+                VPN-подписка с обходом, 3 дня бесплатного периода и +5 дней за каждого приглашённого
+                реферала.
               </p>
               <div class="product-inline-list">
                 <span>3 дня бесплатно</span>
@@ -202,6 +203,57 @@
                 </a>
               </div>
             </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section section-tight" id="playoff-track">
+      <div class="container">
+        <div class="playoff-promo reveal">
+          <div class="playoff-copy">
+            <div class="section-label">промоблок</div>
+            <h2 class="section-title small">Путь Ак Барса в плей-офф</h2>
+            <p class="section-subtitle playoff-subtitle">
+              Небольшой интерактивный стенд в духе реальной стойки с шайбами. После каждой победы можно
+              вручную добавить ещё одну шайбу — без сложной админки и лишней возни с кодом по всему сайту.
+            </p>
+
+            <div class="playoff-status">
+              <span class="playoff-status-pill">Сейчас: <b id="playoff-wins-label">6 / 16</b></span>
+              <span class="playoff-status-note">Чтобы обновить блок, достаточно поменять одно число в коде: <code>data-wins="6"</code>.</span>
+            </div>
+
+            <div class="playoff-points">
+              <div class="note-item">
+                <b>Простой ручной сценарий</b>
+                <span>Победил Ак Барс — увеличил число побед на 1, и на стенде появилась новая шайба.</span>
+              </div>
+              <div class="note-item">
+                <b>Понятно для посетителя</b>
+                <span>Блок сразу показывает прогресс: сколько побед уже есть и сколько мест ещё осталось.</span>
+              </div>
+              <div class="note-item">
+                <b>Легко стилизовать дальше</b>
+                <span>При желании потом можно заменить простые шайбы на изображения, анимации или фирменные акценты.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="playoff-board card glass" data-wins="6" data-total="16" aria-label="Стенд побед Ак Барса">
+            <div class="playoff-board-head">
+              <span class="screen-kicker">АК БАРС · ПЛЕЙ-ОФФ</span>
+              <div class="playoff-board-title">Шайбы побед</div>
+              <div class="playoff-board-meta">16 мест · по одной шайбе за каждую победу</div>
+            </div>
+
+            <div class="playoff-board-grid" id="playoff-board-grid" aria-live="polite"></div>
+
+            <div class="playoff-board-foot">
+              <span>Заполнено: <b id="playoff-board-count">6</b></span>
+              <span>Осталось: <b id="playoff-board-left">10</b></span>
+            </div>
           </div>
         </div>
       </div>
@@ -230,8 +282,8 @@
           <div class="section-label">продукты</div>
           <h2 class="section-title">Что есть на сайте</h2>
           <p class="section-subtitle">
-            Главная страница помогает быстро выбрать нужный раздел: отдельно MVZapret, отдельно MVZ VPN,
-            без смешивания Windows-продукта, подписки, новостей и ссылок в одну длинную ленту.
+            Главная страница теперь ведёт по понятным направлениям: отдельно MVZapret, отдельно MVZ VPN,
+            чтобы не смешивать Windows-продукт, подписку, новости и Telegram в одну длинную ленту.
           </p>
         </div>
 
@@ -241,8 +293,8 @@
               <span class="screen-kicker">MVZapret</span>
               <h3>MVZ для Windows</h3>
               <p>
-                Отдельная страница для тех, кто хочет скачать MVZ на ПК, посмотреть скриншоты,
-                преимущества, актуальный релиз и изменения по версиям.
+                Отдельная страница для тех, кто хочет скачать MVZ на ПК, посмотреть скрины, преимущества,
+                testing и актуальный релиз.
               </p>
               <ul class="list">
                 <li>Усовершенствованный GUI-аналог Zapret.</li>
@@ -268,8 +320,8 @@
               <span class="screen-kicker">MVZ VPN</span>
               <h3>Подписка и подключение</h3>
               <p>
-                Отдельная страница со стоимостью, условиями, подключением через бота и понятным сценарием
-                для телефона и ПК.
+                Отдельная страница со стоимостью, условиями, вариантами подключения и заготовкой под будущую
+                оплату на сайте.
               </p>
               <ul class="list">
                 <li>60 рублей в месяц.</li>
@@ -307,8 +359,8 @@
           <div class="section-label">о проекте</div>
           <h2 class="section-title">Как ориентироваться по сайту</h2>
           <p class="section-subtitle">
-            Главная нужна как понятная точка входа: быстро увидеть продукты, перейти в нужный раздел и найти
-            новости без лишней путаницы.
+            Главная страница нужна как точка входа: быстро понять, что есть в проекте, куда переходить и где
+            смотреть новости без лишней путаницы.
           </p>
         </div>
 
@@ -317,7 +369,7 @@
             <div class="feature-ico" aria-hidden="true"><span class="ico"></span></div>
             <div class="feature-t">Понятная главная</div>
             <div class="feature-d">
-              На первом экране видно главное: продукты, новости и быстрые переходы в нужный раздел.
+              Главная страница показывает самое важное: продукты, новости проекта и основные переходы.
             </div>
           </article>
 
@@ -325,7 +377,7 @@
             <div class="feature-ico" aria-hidden="true"><span class="ico alt"></span></div>
             <div class="feature-t">Разделение по смыслу</div>
             <div class="feature-d">
-              MVZapret отвечает за Windows-приложение, а MVZ VPN — за подписку, подключение и выдачу доступа через бота.
+              MVZ Windows-продукт, а MVZ VPN — за подписку, подключение и работу через бота.
             </div>
           </article>
 
@@ -333,7 +385,7 @@
             <div class="feature-ico" aria-hidden="true"><span class="ico pink"></span></div>
             <div class="feature-t">Живые новости</div>
             <div class="feature-d">
-              На главной сразу видны актуальные посты из Telegram-канала, чтобы пользователь быстро понимал, что происходит в проекте.
+              На главной сразу видны актуальные посты из Telegram-канала без смены юзов и сломанных ссылок.
             </div>
           </article>
         </div>
@@ -387,8 +439,8 @@
           <div class="section-label">контакты</div>
           <h2 class="section-title">Куда писать</h2>
           <p class="section-subtitle">
-            Контакты разделены по задачам: бот для VPN и доступа, канал для новостей, GitHub для релизов и
-            почта для прямой связи.
+            Основные точки связи оставлены простыми: бот для VPN и доступа, канал для новостей, GitHub для
+            релизов и почта для прямой связи.
           </p>
         </div>
 
@@ -407,7 +459,7 @@
 
           <article class="contact-card">
             <h3>GitHub</h3>
-            <p>Релизы, история изменений и техническая часть по MVZ.</p>
+            <p>Релизы, changelog MVZ.</p>
             <a href="https://github.com/MVComplex" target="_blank" rel="noopener noreferrer">github.com/MVComplex</a>
           </article>
 
@@ -429,7 +481,7 @@
 
   <footer class="footer">
     <div class="footer-inner container">
-      <span>MV · MVZapret / MVZ VPN · 2026</span>
+      <span>MV — MVZapret / MVZ VPN · 2026</span>
     </div>
   </footer>
 
@@ -640,6 +692,47 @@
         }
       });
     })();
+
+    (() => {
+      const board = q(".playoff-board");
+      const grid = q("#playoff-board-grid");
+      const winsLabel = q("#playoff-wins-label");
+      const boardCount = q("#playoff-board-count");
+      const boardLeft = q("#playoff-board-left");
+
+      if (!board || !grid) return;
+
+      const total = Math.max(1, Number(board.dataset.total || 16));
+      const wins = Math.max(0, Math.min(total, Number(board.dataset.wins || 0)));
+
+      const render = () => {
+        grid.innerHTML = "";
+
+        for (let i = 0; i < total; i += 1) {
+          const filled = i < wins;
+          const item = document.createElement("div");
+          item.className = `playoff-slot${filled ? " is-filled" : ""}`;
+          item.setAttribute("role", "listitem");
+          item.setAttribute("aria-label", filled ? `Победа ${i + 1}` : `Свободное место ${i + 1}`);
+
+          item.innerHTML = `
+            <span class="playoff-slot-inner">
+              <span class="playoff-slot-number">${i + 1}</span>
+              <span class="playoff-puck" aria-hidden="true"></span>
+            </span>
+          `;
+
+          grid.appendChild(item);
+        }
+
+        if (winsLabel) winsLabel.innerHTML = `${wins} / ${total}`;
+        if (boardCount) boardCount.textContent = String(wins);
+        if (boardLeft) boardLeft.textContent = String(Math.max(0, total - wins));
+      };
+
+      render();
+    })();
+
   </script>
 </body>
 </html>
