@@ -213,54 +213,52 @@
       <div class="container">
         <div class="playoff-promo reveal">
           <div class="playoff-copy">
-            <div class="section-label">спецблок</div>
-            <h2 class="section-title small">Путь Ак Барса в плей-офф</h2>
+            <div class="section-label">ак барс · плей-офф</div>
+            <h2 class="section-title small">Путь Ак Барса к трофею</h2>
             <p class="section-subtitle playoff-subtitle">
-              Аккуратный стенд побед в духе реальной таблички с шайбами. После каждой победы просто меняй одно
-              число в коде — и на табло автоматически появится новая шайба.
+              После каждой победы на табло появляется ещё одна шайба. Блок обновляется вручную: достаточно
+              поменять только одно число в коде.
             </p>
 
             <div class="playoff-status">
-              <span class="playoff-status-pill">Сейчас: <b id="playoff-wins-label">6 / 16</b></span>
-              <span class="playoff-status-pill soft">До следующей отметки: <b id="playoff-next-label">10 мест</b></span>
+              <span class="playoff-status-pill">Побед: <b id="playoff-wins-label">6 / 16</b></span>
+              <span class="playoff-status-pill soft">Осталось закрыть: <b id="playoff-next-label">10 мест</b></span>
             </div>
 
             <div class="playoff-copy-note">
-              Для обновления достаточно изменить <code>data-wins="6"</code> у блока стенда.
+              Для обновления измени <code>data-wins="6"</code> у этого блока — остальное пересчитается само.
             </div>
           </div>
 
-          <div class="playoff-board card glass" data-wins="6" data-total="16" aria-label="Стенд побед Ак Барса">
+          <div class="playoff-board" data-wins="6" data-total="16" aria-label="Стенд побед Ак Барса">
             <div class="playoff-board-top">
-              <img class="playoff-akb-logo" src="HC_Ak_Bars_Logo.svg.png" alt="Логотип Ак Барса" loading="lazy" />
               <div class="playoff-board-branding">
-                <div class="playoff-board-brand">Ак Барс</div>
-                <div class="playoff-board-season">16 шагов плей-офф</div>
+                <img class="playoff-akb-logo" src="assets/akb_logo.png" alt="Логотип Ак Барса" loading="lazy" />
+                <div>
+                  <div class="playoff-board-brand">АК БАРС</div>
+                  <div class="playoff-board-season">16 шагов плей-офф</div>
+                </div>
               </div>
+              <div class="playoff-board-badge">сезон 2025/26</div>
             </div>
 
             <div class="playoff-board-stage">
-              <div class="playoff-side playoff-side-left" id="playoff-left-grid" aria-hidden="true"></div>
+              <div class="playoff-side" id="playoff-left-grid" aria-hidden="true"></div>
 
               <div class="playoff-centerpiece" aria-hidden="true">
-                <div class="playoff-trophy-glow"></div>
-                <div class="playoff-trophy">
-                  <div class="playoff-trophy-cap"></div>
-                  <div class="playoff-trophy-cup"></div>
-                  <div class="playoff-trophy-neck"></div>
-                  <div class="playoff-trophy-base"></div>
-                </div>
+                <div class="playoff-center-glow"></div>
+                <img class="playoff-cup-image" src="assets/cup.png" alt="Кубок" loading="lazy" />
                 <div class="playoff-center-text">
                   <span>шайбы побед</span>
                 </div>
               </div>
 
-              <div class="playoff-side playoff-side-right" id="playoff-right-grid" aria-hidden="true"></div>
+              <div class="playoff-side" id="playoff-right-grid" aria-hidden="true"></div>
             </div>
 
             <div class="playoff-board-foot">
               <span>Заполнено: <b id="playoff-board-count">6</b></span>
-              <span>Осталось: <b id="playoff-board-left">10</b></span>
+              <span>Свободно: <b id="playoff-board-left">10</b></span>
             </div>
           </div>
         </div>
@@ -703,42 +701,48 @@
 
     (() => {
       const board = q(".playoff-board");
-      const grid = q("#playoff-board-grid");
+      const leftGrid = q("#playoff-left-grid");
+      const rightGrid = q("#playoff-right-grid");
       const winsLabel = q("#playoff-wins-label");
+      const nextLabel = q("#playoff-next-label");
       const boardCount = q("#playoff-board-count");
       const boardLeft = q("#playoff-board-left");
 
-      if (!board || !grid) return;
+      if (!board || !leftGrid || !rightGrid) return;
 
       const total = Math.max(1, Number(board.dataset.total || 16));
       const wins = Math.max(0, Math.min(total, Number(board.dataset.wins || 0)));
+      const half = Math.ceil(total / 2);
 
-      const render = () => {
-        grid.innerHTML = "";
-
-        for (let i = 0; i < total; i += 1) {
-          const filled = i < wins;
-          const item = document.createElement("div");
-          item.className = `playoff-slot${filled ? " is-filled" : ""}`;
-          item.setAttribute("role", "listitem");
-          item.setAttribute("aria-label", filled ? `Победа ${i + 1}` : `Свободное место ${i + 1}`);
-
-          item.innerHTML = `
-            <span class="playoff-slot-inner">
-              <span class="playoff-slot-number">${i + 1}</span>
-              <span class="playoff-puck" aria-hidden="true"></span>
-            </span>
-          `;
-
-          grid.appendChild(item);
-        }
-
-        if (winsLabel) winsLabel.innerHTML = `${wins} / ${total}`;
-        if (boardCount) boardCount.textContent = String(wins);
-        if (boardLeft) boardLeft.textContent = String(Math.max(0, total - wins));
+      const buildSlot = (index, filled) => {
+        const item = document.createElement("div");
+        item.className = `playoff-slot${filled ? " is-filled" : ""}`;
+        item.setAttribute("role", "listitem");
+        item.setAttribute("aria-label", filled ? `Победа ${index + 1}` : `Свободное место ${index + 1}`);
+        item.innerHTML = `
+          <span class="playoff-slot-number">${index + 1}</span>
+          <span class="playoff-puck" aria-hidden="true"></span>
+        `;
+        return item;
       };
 
-      render();
+      leftGrid.innerHTML = "";
+      rightGrid.innerHTML = "";
+
+      for (let i = 0; i < half; i += 1) {
+        leftGrid.appendChild(buildSlot(i, i < wins));
+      }
+
+      for (let i = half; i < total; i += 1) {
+        rightGrid.appendChild(buildSlot(i, i < wins));
+      }
+
+      const left = Math.max(0, total - wins);
+      if (winsLabel) winsLabel.innerHTML = `${wins} / ${total}`;
+      if (nextLabel) nextLabel.innerHTML = `${left} мест`;
+      if (boardCount) boardCount.textContent = String(wins);
+      if (boardLeft) boardLeft.textContent = String(left);
+    })();
     })();
 
   </script>
