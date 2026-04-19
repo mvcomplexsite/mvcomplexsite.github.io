@@ -2608,51 +2608,52 @@ iframe {
 
 .playoff-promo {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr);
-  gap: 22px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 0.9fr) minmax(540px, 1.1fr);
+  gap: 24px;
+  align-items: center;
 }
 
 .playoff-copy {
-  display: grid;
-  align-content: start;
-}
-
-.playoff-copy .section-title,
-.playoff-copy .section-subtitle {
-  text-align: left;
-  margin-inline: 0;
+  max-width: 560px;
 }
 
 .playoff-subtitle {
-  max-width: 720px;
+  margin-inline: 0;
+  max-width: 100%;
 }
 
 .playoff-status {
-  display: grid;
-  gap: 10px;
   margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .playoff-status-pill {
   display: inline-flex;
   align-items: center;
-  width: fit-content;
-  min-height: 38px;
-  padding: 8px 14px;
+  min-height: 42px;
+  padding: 10px 14px;
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.92);
-  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-weight: 850;
+  background: linear-gradient(135deg, rgba(184, 23, 43, 0.88), rgba(110, 14, 29, 0.9));
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
 }
 
-.playoff-status-note {
+.playoff-status-pill.soft {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.playoff-copy-note {
+  margin-top: 14px;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.96rem;
 }
 
-.playoff-status-note code {
+.playoff-copy-note code {
   padding: 2px 8px;
   border-radius: 999px;
   color: #fff;
@@ -2660,138 +2661,248 @@ iframe {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.playoff-points {
-  margin-top: 18px;
-  display: grid;
-  gap: 10px;
-}
-
 .playoff-board {
-  border-radius: 30px;
-  padding: 22px;
+  border-radius: 34px;
+  padding: 22px 24px 20px;
   background:
-    radial-gradient(320px 220px at 50% 50%, rgba(255, 207, 104, 0.12), transparent 72%),
-    radial-gradient(380px 240px at 18% 12%, rgba(45, 226, 142, 0.12), transparent 72%),
-    radial-gradient(380px 240px at 88% 16%, rgba(89, 239, 255, 0.08), transparent 72%),
-    linear-gradient(180deg, rgba(32, 65, 44, 0.92), rgba(17, 41, 27, 0.94));
+    radial-gradient(340px 220px at 50% 48%, rgba(255, 214, 120, 0.18), transparent 72%),
+    radial-gradient(380px 240px at 18% 10%, rgba(255, 255, 255, 0.06), transparent 72%),
+    radial-gradient(380px 240px at 88% 16%, rgba(255, 255, 255, 0.06), transparent 72%),
+    linear-gradient(180deg, #244a31 0%, #163526 58%, #102a1e 100%);
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .playoff-board::before {
   background:
-    radial-gradient(360px 180px at 50% 10%, rgba(255, 255, 255, 0.08), transparent 64%),
-    radial-gradient(420px 220px at 10% 90%, rgba(255, 255, 255, 0.06), transparent 66%),
-    radial-gradient(420px 220px at 90% 90%, rgba(255, 255, 255, 0.06), transparent 66%);
+    radial-gradient(360px 160px at 50% 0%, rgba(255, 255, 255, 0.1), transparent 62%),
+    radial-gradient(440px 220px at 50% 100%, rgba(0, 0, 0, 0.18), transparent 68%);
+  opacity: 1;
 }
 
-.playoff-board-head,
-.playoff-board-grid,
+.playoff-board-top,
+.playoff-board-stage,
 .playoff-board-foot {
   position: relative;
   z-index: 1;
 }
 
-.playoff-board-head {
+.playoff-board-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
   text-align: center;
 }
 
-.playoff-board-title {
-  margin-top: 12px;
-  font-size: 1.55rem;
-  line-height: 1.1;
+.playoff-akb-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.28));
+}
+
+.playoff-board-brand {
+  font-size: 1.4rem;
+  line-height: 1.05;
   font-weight: 950;
   letter-spacing: -0.03em;
 }
 
-.playoff-board-meta {
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.95rem;
+.playoff-board-season {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.92rem;
 }
 
-.playoff-board-grid {
+.playoff-board-stage {
   margin-top: 18px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 220px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.playoff-side {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+  align-content: center;
+}
+
+.playoff-centerpiece {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+  padding: 10px 0;
+}
+
+.playoff-trophy-glow {
+  position: absolute;
+  inset: 18% 12% 16%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 214, 120, 0.3) 0%, rgba(255, 214, 120, 0.1) 34%, transparent 72%);
+  filter: blur(14px);
+}
+
+.playoff-trophy {
+  position: relative;
+  width: 118px;
+  height: 230px;
+  display: grid;
+  justify-items: center;
+}
+
+.playoff-trophy-cap {
+  width: 92px;
+  height: 28px;
+  border-radius: 22px 22px 14px 14px;
+  background: linear-gradient(180deg, #fff4c7 0%, #ffd773 42%, #d9a638 100%);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.45);
+}
+
+.playoff-trophy-cup {
+  width: 118px;
+  height: 108px;
+  margin-top: -4px;
+  clip-path: polygon(18% 0, 82% 0, 70% 68%, 58% 100%, 42% 100%, 30% 68%);
+  background: linear-gradient(180deg, #fff8dd 0%, #ffd773 38%, #ddab43 100%);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.42);
+}
+
+.playoff-trophy-cup::before,
+.playoff-trophy-cup::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  width: 34px;
+  height: 54px;
+  border: 9px solid rgba(255, 216, 115, 0.96);
+  border-bottom-color: transparent;
+  border-radius: 999px 999px 0 0;
+}
+
+.playoff-trophy-cup::before {
+  left: -18px;
+  transform: rotate(-28deg);
+}
+
+.playoff-trophy-cup::after {
+  right: -18px;
+  transform: rotate(28deg);
+}
+
+.playoff-trophy-neck {
+  width: 38px;
+  height: 40px;
+  margin-top: 6px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffe7a0 0%, #e0af41 100%);
+}
+
+.playoff-trophy-base {
+  width: 92px;
+  height: 42px;
+  margin-top: 8px;
+  clip-path: polygon(12% 0, 88% 0, 76% 100%, 24% 100%);
+  background: linear-gradient(180deg, #fff8dd 0%, #ffd773 38%, #d9a638 100%);
+}
+
+.playoff-center-text {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .playoff-slot {
   aspect-ratio: 1 / 1;
-  border-radius: 22px;
+  border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(5, 7, 13, 0.38);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 12px 24px rgba(0, 0, 0, 0.18);
-}
-
-.playoff-slot-inner {
   position: relative;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
+  background: radial-gradient(circle at 50% 42%, rgba(255,255,255,0.05), rgba(5, 10, 8, 0.32) 70%, rgba(0,0,0,0.4) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 16px 24px rgba(255,255,255,0.04), inset 0 -18px 28px rgba(0,0,0,0.26);
 }
 
 .playoff-slot-number {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  min-width: 28px;
-  min-height: 28px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.76rem;
-  font-weight: 900;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  inset: auto 0 50% 0;
+  transform: translateY(50%);
+  text-align: center;
+  color: rgba(255,255,255,0.88);
+  font-size: 1.02rem;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+
+.playoff-slot-ring {
+  width: 74%;
+  height: 74%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 40%, rgba(10,14,26,0.14), rgba(0,0,0,0.2) 72%);
 }
 
 .playoff-puck {
-  width: clamp(42px, 5vw, 58px);
-  height: clamp(42px, 5vw, 58px);
-  border-radius: 999px;
+  width: 64%;
+  height: 64%;
+  border-radius: 50%;
   background:
-    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.16), transparent 24%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.76) 68%, rgba(0, 0, 0, 0.96) 100%);
-  border: 2px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    inset 0 10px 16px rgba(255, 255, 255, 0.06),
-    inset 0 -10px 18px rgba(0, 0, 0, 0.4),
-    0 12px 24px rgba(0, 0, 0, 0.22);
-  opacity: 0.18;
-  transform: scale(0.88);
+    radial-gradient(circle at 36% 30%, rgba(255,255,255,0.18), transparent 24%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), rgba(10,10,10,0.82) 68%, rgba(0,0,0,0.98) 100%);
+  border: 2px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 10px 16px rgba(255,255,255,0.06), inset 0 -10px 18px rgba(0,0,0,0.4), 0 14px 24px rgba(0,0,0,0.18);
+  opacity: 0.14;
+  transform: scale(0.86);
   transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .playoff-slot.is-filled {
-  background:
-    radial-gradient(100px 100px at 50% 46%, rgba(255, 207, 104, 0.14), transparent 70%),
-    rgba(5, 7, 13, 0.28);
-  border-color: rgba(255, 207, 104, 0.18);
+  background: radial-gradient(circle at 50% 42%, rgba(255,255,255,0.08), rgba(11, 25, 18, 0.28) 62%, rgba(0,0,0,0.4) 100%);
+  border-color: rgba(255, 214, 120, 0.16);
 }
 
 .playoff-slot.is-filled .playoff-puck {
   opacity: 1;
   transform: scale(1);
-  box-shadow:
-    inset 0 10px 16px rgba(255, 255, 255, 0.08),
-    inset 0 -10px 18px rgba(0, 0, 0, 0.44),
-    0 16px 34px rgba(0, 0, 0, 0.26),
-    0 0 22px rgba(255, 207, 104, 0.14);
+  box-shadow: inset 0 10px 16px rgba(255,255,255,0.08), inset 0 -10px 18px rgba(0,0,0,0.44), 0 16px 34px rgba(0,0,0,0.22);
+}
+
+.playoff-slot.is-filled::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(255, 214, 120, 0.14);
+  pointer-events: none;
 }
 
 .playoff-board-foot {
   margin-top: 18px;
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
   color: rgba(255, 255, 255, 0.84);
+  font-size: 0.95rem;
+}
+
+.playoff-board-foot b {
+  color: #fff;
 }
 
 @media (max-width: 1220px) {
@@ -2800,16 +2911,51 @@ iframe {
   }
 }
 
+@media (max-width: 860px) {
+  .playoff-board-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .playoff-centerpiece {
+    order: -1;
+    padding-bottom: 8px;
+  }
+
+  .playoff-side {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 720px) {
-  .playoff-board-grid {
-    gap: 10px;
+  .playoff-akb-logo {
+    width: 58px;
+    height: 58px;
   }
 
   .playoff-board {
     padding: 18px;
+    border-radius: 28px;
   }
 
-  .playoff-board-title {
-    font-size: 1.3rem;
+  .playoff-board-brand {
+    font-size: 1.2rem;
+  }
+
+  .playoff-side {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .playoff-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .playoff-board-top {
+    flex-direction: column;
+  }
+
+  .playoff-board-foot {
+    flex-direction: column;
   }
 }
