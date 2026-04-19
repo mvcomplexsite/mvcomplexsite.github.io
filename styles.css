@@ -2744,134 +2744,12 @@ iframe {
 }
 
 .playoff-slot {
-  aspect-ratio: 1 / 1;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 50% 36%, rgba(255,255,255,0.08), rgba(255,255,255,0.01) 42%, rgba(0,0,0,0.26) 75%),
-    linear-gradient(180deg, rgba(0,0,0,0.34), rgba(0,0,0,0.5));
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: inset 0 10px 24px rgba(255,255,255,0.05), inset 0 -10px 20px rgba(0,0,0,0.32), 0 10px 26px rgba(0,0,0,0.24);
-}
-
-.playoff-puck {
-  width: 68%;
-  aspect-ratio: 1 / 1;
-  border-radius: 999px;
-  opacity: 0;
-  transform: scale(0.82);
-  transition: opacity 0.24s ease, transform 0.24s ease;
-  background:
-    radial-gradient(circle at 36% 32%, rgba(255,255,255,0.34), rgba(255,255,255,0.08) 18%, transparent 20%),
-    radial-gradient(circle at 54% 54%, rgba(0,0,0,0.06), rgba(0,0,0,0.22) 48%, rgba(0,0,0,0.82) 78%, #050505 100%);
-  box-shadow: inset 0 8px 14px rgba(255,255,255,0.08), inset 0 -10px 16px rgba(0,0,0,0.34), 0 8px 16px rgba(0,0,0,0.34);
-}
-
-.playoff-slot.is-filled .playoff-puck {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.playoff-centerpiece {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-}
-
-.playoff-cup {
-  width: min(100%, 220px);
-  max-height: 330px;
-  object-fit: contain;
-  filter: drop-shadow(0 18px 42px rgba(0,0,0,0.42));
-}
-
-@media (max-width: 1220px) {
-  .playoff-promo {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 860px) {
-  .playoff-board-core {
-    grid-template-columns: 1fr;
-  }
-
-  .playoff-centerpiece {
-    order: -1;
-    margin-bottom: 4px;
-  }
-
-  .playoff-cup {
-    width: min(100%, 180px);
-    max-height: 240px;
-  }
-}
-
-@media (max-width: 560px) {
-  .playoff-board,
-  .playoff-copy {
-    padding: 18px;
-  }
-
-  .playoff-column {
-    gap: 10px;
-  }
-
-  .playoff-board-brand {
-    font-size: 0.96rem;
-  }
-
-  .playoff-team-logo {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-
-/* Playoff board refinement */
-.playoff-subtitle {
-  max-width: 58ch;
-}
-
-.playoff-note {
-  color: rgba(255,255,255,0.78);
-}
-
-.playoff-board {
-  background:
-    radial-gradient(520px 220px at 50% 8%, rgba(255, 209, 110, 0.16), transparent 72%),
-    radial-gradient(480px 280px at 18% 88%, rgba(45, 226, 142, 0.10), transparent 72%),
-    radial-gradient(480px 280px at 82% 88%, rgba(255, 79, 139, 0.08), transparent 72%),
-    linear-gradient(180deg, #184c39 0%, #113a2b 54%, #0d2d23 100%);
-}
-
-.playoff-board-head {
-  margin-bottom: 18px;
-}
-
-.playoff-team-logo {
-  width: 58px;
-  height: 58px;
-}
-
-.playoff-board-brand {
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-}
-
-.playoff-column {
-  gap: 16px;
-}
-
-.playoff-slot {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background:
-    radial-gradient(circle at 50% 28%, rgba(255,255,255,0.08), transparent 32%),
-    radial-gradient(circle at 50% 58%, rgba(0,0,0,0.18), rgba(0,0,0,0.48) 62%, rgba(0,0,0,0.72) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0.38), rgba(0,0,0,0.58));
+    radial-gradient(circle at 50% 34%, rgba(255,255,255,0.12), transparent 34%),
+    radial-gradient(circle at 50% 52%, rgba(0,0,0,0.16), rgba(0,0,0,0.44) 64%, rgba(0,0,0,0.7) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.58));
   border: 1px solid rgba(255,255,255,0.14);
   box-shadow:
     inset 0 10px 18px rgba(255,255,255,0.05),
@@ -2888,55 +2766,81 @@ iframe {
   pointer-events: none;
 }
 
+.playoff-slot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.04), inset 0 0 28px rgba(0,0,0,0.22);
+  pointer-events: none;
+}
+
 .playoff-puck {
-  width: 78%;
-  aspect-ratio: 1 / 0.58;
-  border-radius: 999px / 72%;
+  width: 72%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   opacity: 0;
-  transform: scale(0.78) translateY(2px);
-  transition: opacity 0.24s ease, transform 0.24s ease;
+  transform: scale(0.8);
+  transition: opacity 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
+  position: relative;
   background:
-    linear-gradient(180deg, #2a2a2a 0%, #111 24%, #050505 52%, #141414 78%, #030303 100%);
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 14%, transparent 26%),
+    radial-gradient(circle at 50% 42%, #232323 0%, #111 46%, #050505 78%, #000 100%);
   border: 1px solid rgba(255,255,255,0.06);
   box-shadow:
-    inset 0 2px 0 rgba(255,255,255,0.12),
-    inset 0 -6px 12px rgba(0,0,0,0.56),
-    0 8px 16px rgba(0,0,0,0.42);
-  position: relative;
+    inset 0 2px 3px rgba(255,255,255,0.08),
+    inset 0 -10px 14px rgba(0,0,0,0.56),
+    0 10px 16px rgba(0,0,0,0.34);
 }
 
 .playoff-puck::before {
   content: '';
   position: absolute;
-  left: 18%;
-  right: 18%;
-  top: 14%;
-  height: 20%;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0.03));
-  filter: blur(0.5px);
+  inset: 9%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), inset 0 10px 10px rgba(255,255,255,0.03);
 }
 
 .playoff-puck::after {
   content: '';
   position: absolute;
-  inset: 22% 10%;
-  border-radius: 999px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(0,0,0,0.46);
-  opacity: 0.8;
+  inset: 22%;
+  border-radius: 50%;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.42);
+  opacity: 0.75;
 }
 
 .playoff-puck-core {
   position: absolute;
-  inset: 16% 8%;
-  border-radius: 999px;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+  inset: 32%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.03), rgba(255,255,255,0.00) 72%);
+}
+
+.playoff-slot.is-filled {
+  box-shadow:
+    inset 0 10px 18px rgba(255,255,255,0.05),
+    inset 0 -14px 18px rgba(0,0,0,0.34),
+    0 12px 24px rgba(0,0,0,0.26),
+    0 0 24px rgba(255, 215, 110, 0.10);
+}
+
+.playoff-slot.is-filled::after {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    inset 0 0 28px rgba(0,0,0,0.22),
+    inset 0 0 22px rgba(255, 214, 117, 0.08);
 }
 
 .playoff-slot.is-filled .playoff-puck {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: scale(1);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.08),
+    inset 0 -10px 14px rgba(0,0,0,0.56),
+    0 10px 16px rgba(0,0,0,0.34),
+    0 0 14px rgba(255,255,255,0.03);
 }
 
 .playoff-centerpiece {
@@ -2949,8 +2853,19 @@ iframe {
 }
 
 @media (max-width: 860px) {
-  .playoff-column {
+  .playoff-board-core {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .playoff-centerpiece {
+    grid-column: 1 / -1;
+    order: -1;
+    margin-bottom: 4px;
+  }
+
+  .playoff-column {
+    display: contents;
   }
 
   .playoff-slot {
@@ -2958,11 +2873,9 @@ iframe {
   }
 
   .playoff-puck {
-    aspect-ratio: 1 / 0.6;
+    width: 74%;
   }
 }
-
-/* Round face-view hockey pucks fix */
 .playoff-slot {
   background:
     radial-gradient(circle at 50% 32%, rgba(255,255,255,0.06), transparent 28%),
