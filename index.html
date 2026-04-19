@@ -246,6 +246,7 @@
                 </div>
 
                 <div class="playoff-column playoff-column-right" data-playoff-right-grid></div>
+                <div class="playoff-mobile-grid" data-playoff-mobile-grid></div>
               </div>
             </div>
           </div>
@@ -699,11 +700,13 @@
 
       const leftGrid = q('[data-playoff-left-grid]', board);
       const rightGrid = q('[data-playoff-right-grid]', board);
+      const mobileGrid = q('[data-playoff-mobile-grid]', board);
       const currentEl = q('[data-playoff-current]');
       const leftEl = q('[data-playoff-left]');
 
       const leftPositions = [12, 13, 8, 9, 4, 5, 0, 1];
       const rightPositions = [14, 15, 10, 11, 6, 7, 2, 3];
+      const mobilePositions = [12, 13, 14, 15, 8, 9, 10, 11, 4, 5, 6, 7, 0, 1, 2, 3];
 
       const createSlot = (absoluteIndex) => {
         const filled = absoluteIndex < wins;
@@ -718,9 +721,10 @@
         return slot;
       };
 
-      if (!leftGrid || !rightGrid) return;
+      if (!leftGrid || !rightGrid || !mobileGrid) return;
       leftGrid.innerHTML = '';
       rightGrid.innerHTML = '';
+      mobileGrid.innerHTML = '';
 
       leftPositions.slice(0, perSide).forEach((absoluteIndex) => {
         leftGrid.appendChild(createSlot(absoluteIndex));
@@ -728,6 +732,10 @@
 
       rightPositions.slice(0, perSide).forEach((absoluteIndex) => {
         rightGrid.appendChild(createSlot(absoluteIndex));
+      });
+
+      mobilePositions.slice(0, total).forEach((absoluteIndex) => {
+        mobileGrid.appendChild(createSlot(absoluteIndex));
       });
 
       if (currentEl) currentEl.textContent = String(wins);
