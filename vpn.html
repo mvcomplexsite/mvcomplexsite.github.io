@@ -13,6 +13,95 @@
   <link rel="shortcut icon" type="image/jpeg" href="assets/logo-mvz.jpg" />
   <link rel="apple-touch-icon" href="assets/logo-mvz.jpg" />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .site-connect-box {
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 10px;
+    }
+
+    .site-connect-box b {
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .site-connect-box p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .sub-link-box {
+      position: relative;
+      z-index: 1;
+      margin: 16px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .sub-link-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.84);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 10px;
+    }
+
+    .sub-link-value {
+      margin: 0;
+      color: #fff;
+      font-size: 0.96rem;
+      line-height: 1.7;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+    }
+
+    .sub-link-value a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    .sub-link-value a:hover {
+      color: #fff;
+    }
+
+    .copy-note {
+      margin-top: 10px;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+    }
+
+    .copy-feedback {
+      min-height: 22px;
+      margin-top: 2px;
+      color: var(--cyan);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 720px) {
+      .sub-link-value {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body class="page-vpn">
   <a class="skip-link" href="#main">К содержимому</a>
@@ -49,7 +138,9 @@
       </nav>
 
       <div class="nav-actions">
-        <a class="btn ghost small" href="#site-pay-soon">Оплата на сайте</a>
+        <button class="btn ghost small" type="button" data-modal-open="vpn-site-connect">
+          Подключить через сайт
+        </button>
         <a class="btn primary small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
           Открыть бота
         </a>
@@ -102,10 +193,12 @@
         </div>
 
         <div class="drawer-buttons">
-          <a class="btn primary" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
+          <button class="btn primary" type="button" data-modal-open="vpn-site-connect" data-drawer-close>
+            Подключить через сайт
+          </button>
+          <a class="btn ghost" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
             Открыть бота
           </a>
-          <a class="btn ghost" href="#site-pay-soon" data-drawer-close>Оплата на сайте — скоро</a>
           <button class="btn ghost" type="button" data-modal-open="mvz-support" data-drawer-close>
             Поддержка
           </button>
@@ -131,20 +224,19 @@
 
           <h1 class="hero-title">
             MVZ VPN —
-            <span>подключение через Telegram-бота</span>
+            <span>подключение через сайт или Telegram-бота</span>
             и понятный сценарий старта
           </h1>
 
           <p class="hero-text">
-            MVZ VPN — это подписка с выдачей доступа через Telegram-бота. Сейчас оформление и активация
-            проходят через бота, а на странице собран понятный путь: сколько стоит подписка, как подключить
-            её на телефоне или ПК и куда идти за доступом.
+            На странице можно сразу открыть готовую ссылку для подключения и вставить её в V2RayTun
+            или HApp. Для покупки подписки зайди в Telegram и оформи доступ через @MVZapretBot.
           </p>
 
           <div class="hero-actions">
-            <a class="btn primary big" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
-              Открыть бота
-            </a>
+            <button class="btn primary big" type="button" data-modal-open="vpn-site-connect">
+              Подключить VPN через сайт
+            </button>
             <a class="btn ghost big" href="#connect">Как подключить</a>
           </div>
 
@@ -152,7 +244,7 @@
             <span class="trust-chip">60 ₽ / месяц</span>
             <span class="trust-chip">3 дня бесплатно</span>
             <span class="trust-chip">+5 дней за реферала</span>
-            <span class="trust-chip">Телефон и ПК</span>
+            <span class="trust-chip">V2RayTun / HApp</span>
           </div>
         </div>
 
@@ -171,9 +263,9 @@
                 alt="Экран VPN внутри MVZ"
                 loading="eager"
               />
-              <div class="floating-chip fc-1">доступ через бота</div>
-              <div class="floating-chip fc-2">телефон и ПК</div>
-              <div class="floating-chip fc-3">простое подключение</div>
+              <div class="floating-chip fc-1">ссылка уже готова</div>
+              <div class="floating-chip fc-2">V2RayTun / HApp</div>
+              <div class="floating-chip fc-3">покупка через бота</div>
             </div>
           </div>
         </div>
@@ -191,7 +283,7 @@
             <span>60 ₽ / месяц</span>
             <span>3 дня бесплатно</span>
             <span>+5 дней за реферала</span>
-            <span>Оформление через бота</span>
+            <span>Подключение через сайт</span>
           </div>
         </div>
       </div>
@@ -211,36 +303,38 @@
             <ul class="list pricing-list">
               <li>3 дня пробного периода для знакомства с сервисом.</li>
               <li>+5 дней за каждого приглашённого пользователя.</li>
-              <li>Выдача подписки и ссылки через @MVZapretBot.</li>
-              <li>Подключение на телефонах и ПК по одной ссылке.</li>
+              <li>Готовая ссылка для импорта в V2RayTun или HApp.</li>
+              <li>Покупка подписки через @MVZapretBot.</li>
             </ul>
 
             <div class="hero-actions compact">
-              <a class="btn primary" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
-                Открыть бота
+              <button class="btn primary" type="button" data-modal-open="vpn-site-connect">
+                Подключить через сайт
+              </button>
+              <a class="btn ghost" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
+                Купить в боте
               </a>
-              <a class="btn ghost" href="#connect">Как подключить</a>
             </div>
           </article>
 
           <article class="pricing-card">
             <div class="pricing-head">
               <span class="screen-kicker">как это работает сейчас</span>
-              <h3>Оплата и выдача доступа</h3>
+              <h3>Подключение и покупка</h3>
             </div>
 
             <div class="note-stack">
               <div class="note-item">
-                <b>Сейчас</b>
-                <span>Оплата проходит через Telegram-бота. Там же пользователь получает доступ и свою ссылку.</span>
+                <b>Подключение</b>
+                <span>На сайте можно сразу открыть готовую ссылку и вставить её в V2RayTun или HApp.</span>
               </div>
               <div class="note-item">
-                <b>Дальше</b>
-                <span>Полученную ссылку можно вставить в клиент на телефоне или на ПК.</span>
+                <b>Рекомендуется</b>
+                <span>Лучше использовать V2RayTun, HApp тоже подходит для подключения.</span>
               </div>
               <div class="note-item">
-                <b>Позже</b>
-                <span>Позже на сайте может появиться отдельная веб-оплата как дополнительный вариант.</span>
+                <b>Подписка</b>
+                <span>Чтобы купить или продлить доступ, зайди в Telegram и открой @MVZapretBot.</span>
               </div>
             </div>
           </article>
@@ -254,34 +348,34 @@
           <div class="section-label">подключение</div>
           <h2 class="section-title">Как подключить MVZ VPN</h2>
           <p class="section-subtitle">
-            Сейчас сценарий простой: открыть бота, оформить доступ, получить ссылку и добавить её в клиент.
-            Этого достаточно, чтобы быстро подключиться без лишних шагов.
+            Теперь можно открыть готовую ссылку прямо на сайте, вставить её в V2RayTun
+            (рекомендуется) или HApp, а подписку купить через Telegram-бота.
           </p>
         </div>
 
         <div class="step-grid reveal">
           <article class="step-card">
             <div class="t-n">01</div>
-            <h3>Открыть бота</h3>
-            <p>Зайди в @MVZapretBot и выбери подключение или оформление подписки.</p>
+            <h3>Открыть подключение</h3>
+            <p>Нажми кнопку «Подключить VPN через сайт» и получи готовую ссылку для импорта.</p>
           </article>
 
           <article class="step-card">
             <div class="t-n">02</div>
-            <h3>Оплатить подписку</h3>
-            <p>Сейчас оформление подписки и выдача доступа происходят прямо внутри Telegram-бота.</p>
+            <h3>Скопировать ссылку</h3>
+            <p>Скопируй выданную ссылку целиком, чтобы потом вставить её в поддерживаемый клиент.</p>
           </article>
 
           <article class="step-card">
             <div class="t-n">03</div>
-            <h3>Получить ссылку</h3>
-            <p>После оформления бот выдаёт личную ссылку, которую можно использовать в поддерживаемых клиентах.</p>
+            <h3>Вставить в клиент</h3>
+            <p>Вставь ссылку в V2RayTun (рекомендуется) или HApp и импортируй подключение.</p>
           </article>
 
           <article class="step-card">
             <div class="t-n">04</div>
-            <h3>Вставить в клиент</h3>
-            <p>На телефоне подойдут HApp, V2RayTun и V2Box. На ПК сценарий такой же, а при желании можно использовать и MVZ.</p>
+            <h3>Купить подписку</h3>
+            <p>Для оплаты, продления и управления доступом зайди в Telegram и открой @MVZapretBot.</p>
           </article>
         </div>
       </div>
@@ -295,8 +389,8 @@
               <span class="screen-kicker">телефон и ПК</span>
               <h3>Где можно использовать доступ</h3>
               <p>
-                MVZ VPN сделан как понятный сервис без лишней теории: получил ссылку, вставил её в клиент и
-                пользуешься на нужном устройстве.
+                MVZ VPN сделан как понятный сервис без лишней теории: открыл ссылку, вставил её в клиент
+                и пользуешься на нужном устройстве.
               </p>
             </div>
 
@@ -313,11 +407,17 @@
             <article class="card glass">
               <h3>На телефоне</h3>
               <ul class="list">
-                <li>HApp.</li>
-                <li>V2RayTun.</li>
-                <li>V2Box.</li>
-                <li>Ссылку выдаёт бот после активации доступа.</li>
+                <li>V2RayTun — рекомендуется.</li>
+                <li>HApp — тоже подходит.</li>
+                <li>Скопируй ссылку на сайте и вставь её в клиент.</li>
+                <li>Покупка и продление подписки — через @MVZapretBot.</li>
               </ul>
+
+              <div class="vpn-actions">
+                <button class="btn primary" type="button" data-modal-open="vpn-site-connect">
+                  Подключить через сайт
+                </button>
+              </div>
             </article>
 
             <article class="card glass">
@@ -331,7 +431,7 @@
 
               <div class="vpn-actions">
                 <a class="btn primary" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
-                  Открыть бота
+                  Купить в боте
                 </a>
                 <a class="btn ghost" href="mvz.html">Открыть MVZ</a>
               </div>
@@ -344,11 +444,11 @@
     <section class="section" id="site-pay-soon">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-label">важно</div>
-          <h2 class="section-title">Сейчас доступ оформляется через бота</h2>
+          <div class="section-label">через сайт</div>
+          <h2 class="section-title">Подключение уже доступно на странице</h2>
           <p class="section-subtitle">
-            Чтобы не путать пользователя, основной и рабочий путь сейчас один: Telegram-бот. Ниже оставлена
-            краткая подсказка, куда идти прямо сейчас.
+            На сайте можно сразу получить ссылку для подключения, а для покупки подписки перейти в Telegram
+            и оформить доступ через бота.
           </p>
         </div>
 
@@ -360,31 +460,35 @@
             </div>
 
             <p>
-              Открой @MVZapretBot, оформи подписку, получи ссылку и добавь её в клиент. Это основной путь,
-              который работает сейчас и не требует лишних действий на сайте.
+              Нажми «Подключить VPN через сайт», скопируй ссылку и вставь её в V2RayTun
+              (рекомендуется) или HApp. Для покупки подписки зайди в Telegram и открой @MVZapretBot.
             </p>
 
             <div class="hero-actions compact">
-              <a class="btn primary" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">Открыть бота</a>
-              <a class="btn ghost" href="#connect">Посмотреть шаги подключения</a>
+              <button class="btn primary" type="button" data-modal-open="vpn-site-connect">
+                Подключить VPN через сайт
+              </button>
+              <a class="btn ghost" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
+                Купить подписку в боте
+              </a>
             </div>
           </article>
 
           <article class="site-pay-card">
             <div class="faq-list">
               <div class="faq-row">
-                <div class="faq-q">Где сейчас оформлять доступ?</div>
-                <div class="faq-a">Сейчас оформление подписки и выдача ссылки происходят через @MVZapretBot.</div>
+                <div class="faq-q">Как подключить через сайт?</div>
+                <div class="faq-a">Открой модалку, скопируй ссылку и вставь её в V2RayTun или HApp.</div>
               </div>
 
               <div class="faq-row">
-                <div class="faq-q">Что получу после оформления?</div>
-                <div class="faq-a">Бот выдаст личную ссылку, которую можно добавить в поддерживаемый клиент на телефоне или ПК.</div>
+                <div class="faq-q">Какой клиент лучше?</div>
+                <div class="faq-a">Рекомендуется V2RayTun, но HApp тоже подходит для подключения.</div>
               </div>
 
               <div class="faq-row">
-                <div class="faq-q">Нужен ли сайт для активации?</div>
-                <div class="faq-a">Нет. Для старта достаточно открыть бота, оформить доступ и подключить ссылку в клиенте.</div>
+                <div class="faq-q">Где купить подписку?</div>
+                <div class="faq-a">Для покупки и продления зайди в Telegram и открой @MVZapretBot.</div>
               </div>
             </div>
           </article>
@@ -418,14 +522,14 @@
           <div class="section-label">контакты</div>
           <h2 class="section-title">Куда писать по MVZ VPN</h2>
           <p class="section-subtitle">
-            Основной путь по VPN сейчас — бот. Для новостей остаётся канал, для прямой связи — почта.
+            Для покупки подписки используй бота, а для быстрого старта можешь сразу взять ссылку на этой странице.
           </p>
         </div>
 
         <div class="contacts-grid reveal">
           <article class="contact-card">
             <h3>MVZapretBot</h3>
-            <p>Основной путь для оплаты, получения доступа и части вопросов по подписке.</p>
+            <p>Основной путь для оплаты, продления доступа и части вопросов по подписке.</p>
             <a href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">@MVZapretBot</a>
           </article>
 
@@ -449,10 +553,12 @@
         </div>
 
         <div class="contact-actions reveal">
-          <a class="btn primary" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
-            Открыть бота
+          <button class="btn primary" type="button" data-modal-open="vpn-site-connect">
+            Подключить через сайт
+          </button>
+          <a class="btn ghost" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
+            Купить в боте
           </a>
-          <a class="btn ghost" href="#connect">Как подключить</a>
           <button class="btn ghost" type="button" data-modal-open="mvz-disclaimer">Условия использования</button>
         </div>
       </div>
@@ -464,6 +570,53 @@
       <span>MVZ VPN · Подписка и подключение · 2026</span>
     </div>
   </footer>
+
+  <div class="modal" id="vpn-site-connect" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="vpn-site-connect-title">
+      <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">✕</button>
+      <h3 class="modal-title" id="vpn-site-connect-title">Подключить VPN через сайт</h3>
+      <p class="modal-sub">
+        Вставь эту ссылку в V2RayTun <b>(рекомендуется)</b> или HApp. Чтобы купить подписку,
+        зайди в Telegram и открой @MVZapretBot.
+      </p>
+
+      <div class="sub-link-box">
+        <div class="sub-link-label">ссылка для подключения</div>
+        <p class="sub-link-value">
+          <a
+            href="https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="vpn-sub-link"
+          >https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw</a>
+        </p>
+        <div class="copy-note">Скопируй ссылку целиком и импортируй её в клиент.</div>
+        <div class="copy-feedback" id="vpn-copy-feedback" aria-live="polite"></div>
+      </div>
+
+      <div class="site-connect-box">
+        <b>Как использовать</b>
+        <p>1. Скопируй ссылку выше.</p>
+        <p>2. Вставь в V2RayTun (рекомендуется) или HApp.</p>
+        <p>3. Для покупки подписки зайди в Telegram и через бота @MVZapretBot оформи доступ.</p>
+      </div>
+
+      <div class="modal-actions">
+        <button
+          class="btn primary small"
+          type="button"
+          data-copy-target="https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw"
+        >
+          Скопировать ссылку
+        </button>
+        <a class="btn ghost small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
+          Купить подписку в боте
+        </a>
+        <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
 
   <div class="modal" id="mvz-disclaimer" aria-hidden="true">
     <div class="modal-overlay" data-modal-close></div>
@@ -518,13 +671,13 @@
 
       <div class="faq-list">
         <div class="faq-row">
-          <div class="faq-q">Где оформлять подписку?</div>
-          <div class="faq-a">Сейчас основной путь — через @MVZapretBot.</div>
+          <div class="faq-q">Где купить подписку?</div>
+          <div class="faq-a">Для покупки и продления используй @MVZapretBot.</div>
         </div>
 
         <div class="faq-row">
-          <div class="faq-q">Где потом будет веб-оплата?</div>
-          <div class="faq-a">Под неё уже оставлен отдельный блок на этой странице — “Оплата на сайте”.</div>
+          <div class="faq-q">Как быстро подключиться?</div>
+          <div class="faq-a">Открой кнопку «Подключить через сайт», скопируй ссылку и вставь её в клиент.</div>
         </div>
 
         <div class="faq-row">
@@ -534,10 +687,12 @@
       </div>
 
       <div class="modal-actions">
-        <a class="btn primary small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
+        <button class="btn primary small" type="button" data-modal-open="vpn-site-connect">
+          Открыть подключение
+        </button>
+        <a class="btn ghost small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
           Открыть бота
         </a>
-        <a class="btn ghost small" href="mailto:MVComplexsite@gmail.com">Написать на почту</a>
         <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
       </div>
     </div>
@@ -685,7 +840,9 @@
         const opener = e.target.closest("[data-modal-open]");
         if (opener) {
           e.preventDefault();
-          openModal(opener.getAttribute("data-modal-open"));
+          const id = opener.getAttribute("data-modal-open");
+          if (!id) return;
+          openModal(id);
           return;
         }
 
@@ -701,6 +858,45 @@
           const modal = accept.closest(".modal");
           closeModal(modal);
         }
+      });
+    })();
+
+    (() => {
+      const feedback = q("#vpn-copy-feedback");
+      const copyButtons = qa("[data-copy-target]");
+
+      if (!copyButtons.length) return;
+
+      const setFeedback = (text) => {
+        if (!feedback) return;
+        feedback.textContent = text;
+      };
+
+      copyButtons.forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const text = btn.getAttribute("data-copy-target");
+          if (!text) return;
+
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(text);
+            } else {
+              const area = document.createElement("textarea");
+              area.value = text;
+              area.setAttribute("readonly", "");
+              area.style.position = "absolute";
+              area.style.left = "-9999px";
+              document.body.appendChild(area);
+              area.select();
+              document.execCommand("copy");
+              area.remove();
+            }
+
+            setFeedback("Ссылка скопирована. Вставь её в V2RayTun (рекомендуется) или HApp.");
+          } catch (err) {
+            setFeedback("Не удалось скопировать автоматически. Скопируй ссылку вручную.");
+          }
+        });
       });
     })();
   </script>
