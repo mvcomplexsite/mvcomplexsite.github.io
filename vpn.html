@@ -96,9 +96,323 @@
       font-weight: 700;
     }
 
+
+    .vpn-pulse-card {
+      position: relative;
+      z-index: 1;
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(89, 239, 255, 0.1), rgba(155, 92, 255, 0.08)),
+        rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.26);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .vpn-pulse-item {
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .vpn-pulse-item b {
+      display: block;
+      color: #fff;
+      font-size: 1.08rem;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .vpn-pulse-item span {
+      color: var(--muted-2);
+      font-size: 0.88rem;
+    }
+
+    .vpn-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .vpn-feature-card {
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .vpn-feature-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: radial-gradient(420px 180px at 20% 0%, rgba(89, 239, 255, 0.14), transparent 62%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .vpn-feature-icon,
+    .vpn-feature-card h3,
+    .vpn-feature-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .vpn-feature-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 14px;
+      color: #fff;
+      background: linear-gradient(135deg, rgba(89, 239, 255, 0.22), rgba(155, 92, 255, 0.18));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .vpn-feature-card h3 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .vpn-feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .client-choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      margin-top: 34px;
+    }
+
+    .client-choice-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      padding: 34px 32px 30px;
+      border-radius: 30px;
+      text-align: center;
+      background:
+        radial-gradient(420px 220px at 16% 0%, rgba(130, 210, 255, 0.10), transparent 58%),
+        radial-gradient(460px 240px at 86% 0%, rgba(173, 75, 255, 0.12), transparent 62%),
+        linear-gradient(145deg, rgba(33, 38, 56, 0.94), rgba(30, 24, 42, 0.93) 58%, rgba(15, 14, 24, 0.98));
+      border: 1px solid rgba(151, 144, 180, 0.22);
+      box-shadow:
+        0 22px 70px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.055);
+    }
+
+    .client-choice-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 36%, rgba(122, 74, 160, 0.08));
+      pointer-events: none;
+    }
+
+    .client-choice-card::after {
+      content: "";
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      bottom: -1px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(160, 116, 220, 0.55), rgba(101, 207, 255, 0.42), transparent);
+      filter: blur(0.2px);
+    }
+
+    .client-choice-card.recommended {
+      border-color: rgba(166, 139, 210, 0.36);
+      box-shadow:
+        0 24px 78px rgba(0, 0, 0, 0.32),
+        0 0 28px rgba(139, 82, 255, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.065);
+    }
+
+    .client-choice-icon,
+    .client-choice-top,
+    .client-choice-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .client-choice-icon {
+      width: 78px;
+      height: 78px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      color: #b9a8ff;
+      background:
+        radial-gradient(circle at 35% 20%, rgba(137, 217, 255, 0.10), transparent 45%),
+        rgba(126, 96, 170, 0.08);
+      border: 1px solid rgba(156, 143, 190, 0.24);
+      box-shadow: 0 0 24px rgba(134, 95, 190, 0.10);
+    }
+
+    .client-choice-icon svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .client-choice-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .client-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .client-choice-top h3 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.35rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .client-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 112px;
+      padding: 8px 17px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 900;
+      color: rgba(242, 237, 255, 0.94);
+      background: rgba(118, 99, 151, 0.16);
+      border: 1px solid rgba(165, 151, 197, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+      white-space: nowrap;
+    }
+
+
+
+    .client-pill.rec-pill {
+      color: #160f25;
+      background: linear-gradient(135deg, #84d8ff 0%, #b95cff 100%);
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 8px 22px rgba(133, 84, 205, 0.18);
+    }
+
+    .client-choice-card p {
+      max-width: 430px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.68;
+    }
+
+    .connect-mini-guide {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .connect-mini-guide ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .connect-mini-guide li + li {
+      margin-top: 8px;
+    }
+
+    .modal-copy-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .modal-link-field {
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .safe-note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      color: rgba(255, 255, 255, 0.78);
+      background: rgba(155, 92, 255, 0.09);
+      border: 1px solid rgba(185, 141, 255, 0.16);
+    }
+
+    .mobile-sticky-cta {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .vpn-feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 720px) {
       .sub-link-value {
         font-size: 0.9rem;
+      }
+
+      .vpn-pulse-card,
+      .client-choice-grid,
+      .modal-copy-row {
+        grid-template-columns: 1fr;
+      }
+
+      .vpn-feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-sticky-cta {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 90;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 8px;
+        border-radius: 20px;
+        background: rgba(5, 7, 13, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow-mid);
+      }
+
+      .mobile-sticky-cta .btn {
+        width: 100%;
+        min-height: 44px;
+        padding-inline: 10px;
       }
     }
   </style>
@@ -224,13 +538,13 @@
 
           <h1 class="hero-title">
             MVZ VPS —
-            <span>подключение через сайт или Telegram-бота</span>
-            и понятный сценарий старта
+            <span>быстрое подключение в 2 клика</span>
+            без лишней настройки
           </h1>
 
           <p class="hero-text">
-            На странице можно сразу открыть готовую ссылку для подключения и вставить её в V2RayTun
-            или HApp. Для покупки подписки зайди в Telegram и оформи доступ через @MVZapretBot.
+            Открой готовую ссылку на сайте, импортируй её в V2RayTun или HApp на телефоне,
+            а подпиской управляй через Telegram-бота. Всё собрано в один понятный сценарий для телефона и компьютера.
           </p>
 
           <div class="hero-actions">
@@ -244,7 +558,23 @@
             <span class="trust-chip">60 ₽ / месяц</span>
             <span class="trust-chip">3 дня бесплатно</span>
             <span class="trust-chip">+5 дней за реферала</span>
-            <span class="trust-chip">V2RayTun / HApp</span>
+            <span class="trust-chip">V2RayTun рекомендуется</span>
+            <span class="trust-chip">HApp для телефона</span>
+          </div>
+
+          <div class="vpn-pulse-card" aria-label="Преимущества MVZ VPS">
+            <div class="vpn-pulse-item">
+              <b>1 ссылка</b>
+              <span>для быстрого импорта</span>
+            </div>
+            <div class="vpn-pulse-item">
+              <b>телефон + ПК</b>
+              <span>V2RayTun и HApp</span>
+            </div>
+            <div class="vpn-pulse-item">
+              <b>24/7</b>
+              <span>доступ к управлению в боте</span>
+            </div>
           </div>
         </div>
 
@@ -264,7 +594,7 @@
                 loading="eager"
               />
               <div class="floating-chip fc-1">ссылка уже готова</div>
-              <div class="floating-chip fc-2">V2RayTun / HApp</div>
+              <div class="floating-chip fc-2">V2RayTun + HApp</div>
               <div class="floating-chip fc-3">покупка через бота</div>
             </div>
           </div>
@@ -289,6 +619,33 @@
       </div>
     </section>
 
+    <section class="section section-tight">
+      <div class="container">
+        <div class="vpn-feature-grid reveal">
+          <article class="vpn-feature-card">
+            <div class="vpn-feature-icon">⚡</div>
+            <h3>Быстрый старт</h3>
+            <p>Не нужно искать инструкцию по всему сайту: ссылка, клиенты для телефона и бот указаны прямо на странице.</p>
+          </article>
+          <article class="vpn-feature-card">
+            <div class="vpn-feature-icon">📱</div>
+            <h3>Телефон и ПК</h3>
+            <p>Для телефона лучше используй V2RayTun, а HApp оставь как запасной вариант. Ссылка и покупка подписки остаются в одном сценарии.</p>
+          </article>
+          <article class="vpn-feature-card">
+            <div class="vpn-feature-icon">🎁</div>
+            <h3>Бонусы</h3>
+            <p>Есть 3 дня пробного периода и +5 дней за приглашённого пользователя.</p>
+          </article>
+          <article class="vpn-feature-card">
+            <div class="vpn-feature-icon">🤖</div>
+            <h3>Управление в боте</h3>
+            <p>Покупка, продление и основные действия с подпиской проходят через @MVZapretBot.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
         <div class="pricing-grid reveal">
@@ -303,7 +660,7 @@
             <ul class="list pricing-list">
               <li>3 дня пробного периода для знакомства с сервисом.</li>
               <li>+5 дней за каждого приглашённого пользователя.</li>
-              <li>Готовая ссылка для импорта в V2RayTun или HApp.</li>
+              <li>Готовая ссылка для подключения: V2RayTun или HApp на телефоне.</li>
               <li>Покупка подписки через @MVZapretBot.</li>
             </ul>
 
@@ -326,11 +683,11 @@
             <div class="note-stack">
               <div class="note-item">
                 <b>Подключение</b>
-                <span>На сайте можно сразу открыть готовую ссылку и вставить её в V2RayTun или HApp.</span>
+                <span>На сайте можно сразу открыть готовую ссылку: для телефона подойдёт V2RayTun или HApp.</span>
               </div>
               <div class="note-item">
                 <b>Рекомендуется</b>
-                <span>Лучше использовать V2RayTun, HApp тоже подходит для подключения.</span>
+                <span>Для телефона лучше использовать V2RayTun, а HApp можно оставить как запасной клиент.</span>
               </div>
               <div class="note-item">
                 <b>Подписка</b>
@@ -348,9 +705,44 @@
           <div class="section-label">подключение</div>
           <h2 class="section-title">Как подключить MVZ VPS</h2>
           <p class="section-subtitle">
-            Теперь можно открыть готовую ссылку прямо на сайте, вставить её в V2RayTun
-            (рекомендуется) или HApp, а подписку купить через Telegram-бота.
+            Открой готовую ссылку на сайте, выбери удобный клиент для телефона и подключись за пару минут.
           </p>
+
+          <div class="client-choice-grid" aria-label="Выбор клиента для подключения MVZ VPS">
+            <article class="client-choice-card recommended">
+              <div class="client-choice-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M8 3.5h8A1.5 1.5 0 0 1 17.5 5v14a1.5 1.5 0 0 1-1.5 1.5H8A1.5 1.5 0 0 1 6.5 19V5A1.5 1.5 0 0 1 8 3.5Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M10.5 6h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M11.25 17.7h1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="client-choice-top">
+                <h3>V2RayTun</h3>
+                <div class="client-badges">
+                  <span class="client-pill">для телефона</span>
+                  <span class="client-pill rec-pill">рекомендуется</span>
+                </div>
+              </div>
+              <p>Лучший вариант для iPhone и Android: вставь ссылку, импортируй профиль и подключайся без лишних настроек.</p>
+            </article>
+            <article class="client-choice-card">
+              <div class="client-choice-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M8 3.5h8A1.5 1.5 0 0 1 17.5 5v14a1.5 1.5 0 0 1-1.5 1.5H8A1.5 1.5 0 0 1 6.5 19V5A1.5 1.5 0 0 1 8 3.5Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M10.5 6h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M11.25 17.7h1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="client-choice-top">
+                <h3>HApp</h3>
+                <div class="client-badges">
+                  <span class="client-pill">для телефона</span>
+                </div>
+              </div>
+              <p>Альтернативный клиент для телефона: открой ссылку, добавь конфиг и используй его как запасной вариант.</p>
+            </article>
+          </div>
         </div>
 
         <div class="step-grid reveal">
@@ -369,7 +761,7 @@
           <article class="step-card">
             <div class="t-n">03</div>
             <h3>Вставить в клиент</h3>
-            <p>Вставь ссылку в V2RayTun (рекомендуется) или HApp и импортируй подключение.</p>
+            <p>На телефоне вставь ссылку в V2RayTun или HApp и импортируй профиль.</p>
           </article>
 
           <article class="step-card">
@@ -407,8 +799,8 @@
             <article class="card glass">
               <h3>На телефоне</h3>
               <ul class="list">
-                <li>V2RayTun — рекомендуется.</li>
-                <li>HApp — тоже подходит.</li>
+                <li>V2RayTun — лучший вариант для телефона.</li>
+                <li>Ссылка импортируется прямо в приложение.</li>
                 <li>Скопируй ссылку на сайте и вставь её в клиент.</li>
                 <li>Покупка и продление подписки — через @MVZapretBot.</li>
               </ul>
@@ -423,10 +815,10 @@
             <article class="card glass">
               <h3>На ПК</h3>
               <ul class="list">
-                <li>Тот же сценарий с импортом ссылки.</li>
-                <li>Можно использовать VPS отдельно.</li>
-                <li>Можно использовать вместе с MVZ.</li>
-                <li>Если нужен Windows-клиент, переходи на отдельную страницу MVZapret.</li>
+                <li>HApp можно использовать как альтернативный клиент для телефона.</li>
+                <li>Подходит для подключения с компьютера.</li>
+                <li>Можно использовать вместе с подпиской MVZ VPS.</li>
+                <li>Если нужен Windows-клиент, переходи на отдельную страницу MVZ.</li>
               </ul>
 
               <div class="vpn-actions">
@@ -460,8 +852,8 @@
             </div>
 
             <p>
-              Нажми «Подключить VPS через сайт», скопируй ссылку и вставь её в V2RayTun
-              (рекомендуется) или HApp. Для покупки подписки зайди в Telegram и открой @MVZapretBot.
+              Нажми «Подключить VPS через сайт», скопируй ссылку и используй V2RayTun на телефоне
+              или HApp. Для покупки подписки зайди в Telegram и открой @MVZapretBot.
             </p>
 
             <div class="hero-actions compact">
@@ -478,12 +870,12 @@
             <div class="faq-list">
               <div class="faq-row">
                 <div class="faq-q">Как подключить через сайт?</div>
-                <div class="faq-a">Открой модалку, скопируй ссылку и вставь её в V2RayTun или HApp.</div>
+                <div class="faq-a">Открой модалку и скопируй ссылку. На телефоне лучше используй V2RayTun, а HApp — как запасной вариант.</div>
               </div>
 
               <div class="faq-row">
-                <div class="faq-q">Какой клиент лучше?</div>
-                <div class="faq-a">Рекомендуется V2RayTun, но HApp тоже подходит для подключения.</div>
+                <div class="faq-q">Что использовать для подключения?</div>
+                <div class="faq-a">Для телефона лучше V2RayTun. HApp можно использовать как альтернативный клиент.</div>
               </div>
 
               <div class="faq-row">
@@ -565,6 +957,11 @@
     </section>
   </main>
 
+  <div class="mobile-sticky-cta" aria-label="Быстрые действия">
+    <button class="btn primary small" type="button" data-modal-open="vpn-site-connect">Подключить</button>
+    <a class="btn ghost small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">Купить</a>
+  </div>
+
   <footer class="footer">
     <div class="footer-inner container">
       <span>MVZ VPS · Подписка и подключение · 2026</span>
@@ -577,40 +974,43 @@
       <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">✕</button>
       <h3 class="modal-title" id="vpn-site-connect-title">Подключить VPS через сайт</h3>
       <p class="modal-sub">
-        Вставь эту ссылку в V2RayTun <b>(рекомендуется)</b> или HApp. Чтобы купить подписку,
+        На телефоне вставь эту ссылку в V2RayTun или HApp. Чтобы купить подписку,
         зайди в Telegram и открой @MVZapretBot.
       </p>
 
       <div class="sub-link-box">
         <div class="sub-link-label">ссылка для подключения</div>
-        <p class="sub-link-value">
-          <a
-            href="https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw"
-            target="_blank"
-            rel="noopener noreferrer"
-            id="vpn-sub-link"
-          >https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw</a>
-        </p>
-        <div class="copy-note">Скопируй ссылку целиком и импортируй её в клиент.</div>
+        <div class="modal-copy-row">
+          <p class="sub-link-value modal-link-field">
+            <a
+              href="https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="vpn-sub-link"
+            >https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw</a>
+          </p>
+          <button
+            class="btn primary small"
+            type="button"
+            data-copy-target="https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw"
+          >
+            Скопировать
+          </button>
+        </div>
+        <div class="copy-note">Скопируй ссылку целиком: для телефона лучше используй V2RayTun, HApp подойдёт как запасной вариант.</div>
         <div class="copy-feedback" id="vpn-copy-feedback" aria-live="polite"></div>
+        <div class="safe-note">Совет: сначала оформи или продли подписку в боте, затем подключайся на нужном устройстве.</div>
       </div>
 
       <div class="site-connect-box">
         <b>Как использовать</b>
         <p>1. Скопируй ссылку выше.</p>
-        <p>2. Вставь в V2RayTun (рекомендуется) или HApp.</p>
+        <p>2. На телефоне вставь ссылку в V2RayTun или HApp.</p>
         <p>3. Для покупки подписки зайди в Telegram и через бота @MVZapretBot оформи доступ.</p>
       </div>
 
       <div class="modal-actions">
-        <button
-          class="btn primary small"
-          type="button"
-          data-copy-target="https://mvz-bot.mvcomplexsite.workers.dev/sub/u/2526/d3c50f12f5ac1b0073441983/raw"
-        >
-          Скопировать ссылку
-        </button>
-        <a class="btn ghost small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
+        <a class="btn primary small" href="https://t.me/MVZapretBot" target="_blank" rel="noopener noreferrer">
           Купить подписку в боте
         </a>
         <button class="btn ghost small" type="button" data-modal-close>Закрыть</button>
@@ -892,7 +1292,7 @@
               area.remove();
             }
 
-            setFeedback("Ссылка скопирована. Вставь её в V2RayTun (рекомендуется) или HApp.");
+            setFeedback("Ссылка скопирована. На телефоне лучше используй V2RayTun, HApp — как запасной вариант.");
           } catch (err) {
             setFeedback("Не удалось скопировать автоматически. Скопируй ссылку вручную.");
           }
